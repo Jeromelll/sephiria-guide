@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sephiria-guide.com/sitemap.xml
