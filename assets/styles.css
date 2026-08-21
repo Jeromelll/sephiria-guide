@@ -1,15 +1,4 @@
-:root {
-  --bg: #f7f1e8;
-  --bg-deep: #ebe2d4;
-  --ink: #1a2433;
-  --muted: #5c6675;
-  --line: #d4c7b4;
-  --accent: #e85d04;
-  --accent-ink: #9a3412;
-  --panel: #fffaf3;
-  --max: 720px;
-  --wide: 1040px;
-}
+/* Color tokens come from generated assets/theme.css (config/site.json). */
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

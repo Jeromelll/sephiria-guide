@@ -1,0 +1,14 @@
+{
+  "path": "/",
+  "layout": "home",
+  "title": "Sephiria 1.0 Guide — Hard Mode, Destiny Tree, Builds",
+  "description": "Just bought Sephiria 1.0? Unlock Hard Mode (Root’s Retreat), spend Destiny sapphires, then commit to one build. Short English pages with sources—not a wiki dump.",
+  "hero_kicker": "Fan guides · Updated for Sephiria 1.0",
+  "hero_h1": "Sephiria 1.0 guide",
+  "lede": "Start with Hard Mode / Root’s Retreat, the Destiny Inscription tree, and one build. Each page is a single search question with sources—not AI filler.",
+  "cta_label": "Start beginner guide",
+  "cta_path": "/beginner-guide/",
+  "what_h2": "What Sephiria is",
+  "what_html": "<p>Sephiria is a top-down action roguelite from Team Horay (also known for Dungreed). You descend floors, upgrade weapons at anvils, and build power through an Artifact + Tablet inventory grid. Full release landed <strong>July 31, 2026</strong> after Early Access; Steam lists six chapters, six weapon lines, and online co-op for up to four players.</p>\n      <div class=\"note\">This site is English-first P0 coverage for sephiria-guide.com. Patch-sensitive tips note when they come from older Steam Community guides.</div>",
+  "order": 0
+}

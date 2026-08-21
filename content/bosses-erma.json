@@ -1,0 +1,48 @@
+{
+  "path": "/bosses/erma/",
+  "title": "Sephiria Erma Guide — Mad Scientist Boss",
+  "description": "Sephiria Erma boss guide: phases, golem hitboxes, laser dodge timing, status weaknesses, and Pantaxis replacement note.",
+  "h1": "Erma (Mad Scientist)",
+  "meta": "For sephiria erma searches.",
+  "body": "<p><strong>Erma, the Mad Scientist</strong>, is the Floor 3 / library-line boss (Steam achievement “This Is Not Stalking”). From Chapter 2 onward she can be replaced by Pantaxis, Guardian of the Library.</p>\n<h2>Fight structure (NamuWiki cross-check)</h2>\n<ul>\n  <li>About <strong>three phases</strong> involving a golem Erma pilots.</li>\n  <li>Golem head and hands have <strong>separate hitboxes</strong>—wide attacks that clip multiple parts deal more effective damage.</li>\n  <li>When golem HP depletes, Erma becomes targetable; deplete her HP to advance phases.</li>\n</ul>\n<h2>Key pattern note — dual lasers</h2>\n<p>Hands park top/bottom and scrape lasers across the arena while the head sprays. The clean dodge is to <strong>dash in the moment both lasers overlap and move the same direction</strong> (speeds are unequal). If tanky, sitting in the safer band and eating minimal chip can be better than panicking.</p>\n<h2>Weaknesses</h2>\n<ul>\n  <li>AoE that hits multiple parts.</li>\n  <li>Status effects applied to any part count for the whole (freeze on a hand freezes the head; burns scale hard).</li>\n  <li>High-damage runs often just delete the head first when full AoE is awkward.</li>\n</ul>",
+  "sources": [
+    [
+      "NamuWiki Boss · Erma",
+      "https://en.namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A6%AC%EC%95%84/%EB%B3%B4%EC%8A%A4"
+    ],
+    [
+      "YT run with Erma fight",
+      "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
+    ],
+    [
+      "YT All Bosses (EA) @ Erma",
+      "https://www.youtube.com/watch?v=xC9ofSpci8U"
+    ],
+    [
+      "YT Library replacement boss short",
+      "https://www.youtube.com/watch?v=iRqqwRa-bTk"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Bosses",
+      "/bosses/"
+    ],
+    [
+      "Erma",
+      ""
+    ]
+  ],
+  "hub_label": "Erma — Mad Scientist",
+  "hub_em": "Floor 3 library line",
+  "home_also": {
+    "title": "Erma boss guide",
+    "em": "Mad Scientist · Floor 3"
+  },
+  "order": 71
+}

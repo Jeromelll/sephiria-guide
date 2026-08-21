@@ -1,40 +1,31 @@
 # Sephiria Guide (sephiria-guide.com)
 
 Fan guides for the Steam roguelite **Sephiria** (Team Horay).  
-Built for the 生财航海「AI 产品（国外-热词游戏站）」关卡 4 — locally browsable English P0 site.
+三层分离（航海关卡 7）：框架 / 配置 / 内容。加一篇内页 = 往 `content/` 丢一个 JSON 再 build。
 
-## Local preview
+## Layers
 
-```bash
-python3 -m http.server 8765 --bind 127.0.0.1
-# open http://127.0.0.1:8765/
-```
-
-Regenerate HTML from research notes:
+| Layer | Where | Change when |
+|---|---|---|
+| Framework | `build.py`, `assets/styles.css` | Almost never |
+| Config | `config/site.json` → writes `assets/theme.css` | New game / rebrand |
+| Content | `content/*.json` | Every page |
 
 ```bash
 python3 build.py
+python3 tools/swap_test.py          # 换游戏名只改配置的验证
+python3 -m http.server 8765 --bind 127.0.0.1
+# http://127.0.0.1:8765/
 ```
 
-## Pages (P0)
+关卡 8 提示词在仓库外：`../关卡8_内页清单与提示词.md`。
 
-| Path | Intent |
-|---|---|
-| `/` | Home / sephiria |
-| `/guides/` | Wiki hub |
-| `/beginner-guide/` | Beginner |
-| `/builds/` | Builds |
-| `/weapons/` | Weapons |
-| `/destiny-inscription/` | Destiny tree |
-| `/artifacts/` | Artifacts & tablets |
-| `/bosses/` `/bosses/erma/` `/bosses/final/` | Bosses |
-| `/multiplayer/` | Co-op |
-| `/secret-rooms/` | Secrets |
-| `/costumes/` | Costumes |
-| `/items/scythe/` | Blizzard Scythe / Drifa |
+## Pages
+
+Generated from `content/`. Current set includes home, guides hub, beginner, builds, companion, weapons, Destiny, Hard Mode, wishing fountain, artifacts, bosses (Erma / final), multiplayer, secret rooms, costumes, scythe.
 
 ## Notes
 
 - Content is sourced from Steam + cross-checked guides/videos (no fabricated game facts).
 - Unofficial fan site; not affiliated with Team Horay.
-- Target domain: `sephiria-guide.com` (deploy in later stage).
+- Live: https://sephiria-guide.com/

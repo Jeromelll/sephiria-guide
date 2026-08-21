@@ -1,0 +1,13 @@
+{
+  "path": "/about/",
+  "layout": "legal",
+  "title": "About Sephiria Guide",
+  "description": "About sephiria-guide.com — an unofficial English fan guide for Sephiria 1.0 by Team Horay.",
+  "h1": "About this site",
+  "meta": "Unofficial fan guide · Not affiliated with Team Horay",
+  "body": "<p><strong>sephiria-guide.com</strong> is an unofficial English fan guide for <a href=\"https://store.steampowered.com/app/2436940/Sephiria/\">Sephiria</a> (Team Horay). It is not affiliated with, endorsed by, or sponsored by the developer.</p>\n<p>Pages are short answers to real search questions (Hard Mode / Root’s Retreat, Destiny Inscription, builds, bosses). Facts are checked against Steam, community guides, and cross-sourced videos. Early Access–era numbers are marked when used.</p>\n<p>Contact: <a href=\"mailto:jeromell@be-winner.com\">jeromell@be-winner.com</a></p>\n<p>See also the <a href=\"../privacy/\">privacy policy</a>.</p>",
+  "sources": [],
+  "crumbs": [["Home", "/"], ["About", ""]],
+  "in_guides": false,
+  "order": 900
+}

@@ -1,0 +1,37 @@
+{
+  "path": "/artifacts/",
+  "title": "Sephiria Artifacts & Tablets — Inventory Grid Tips",
+  "description": "Sephiria Artifact and Tablet guide: Side Bag rules, adjacency, and why tablet geometry beats raw rarity.",
+  "h1": "Artifacts & Tablets",
+  "meta": "Supports artifact / tablet searches; pairs with builds pages.",
+  "body": "<p>Artifacts and Tablets are the mid-run puzzle. Tablets buff geometry (lines, crosses, columns). An Artifact outside an active pattern wastes space.</p>\n<ul>\n  <li>Side Bag storage <strong>disables</strong> effects—use it as a bench, not a secret second board.</li>\n  <li>Adjacency / edge / “no neighbors” constraints force full reshuffles after bosses.</li>\n  <li>Mystic Pot can convert leftover Artifacts (same rarity, or feed two to climb a rarity)—handy for awkward drops.</li>\n</ul>",
+  "sources": [
+    [
+      "2UpSkill artifact grid",
+      "https://2upskill.com/sephiria-1-0-artifact-placement-grid-guide-best-combos-and-inventory-layouts/"
+    ],
+    [
+      "9Puz first build",
+      "https://9puz.com/3580-sephiria-first-run/"
+    ],
+    [
+      "YT 10 Things…",
+      "https://www.youtube.com/watch?v=BgYwuTVTEzE"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Artifacts",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Artifacts & Tablets",
+  "guides_em": "Inventory grid",
+  "order": 60
+}

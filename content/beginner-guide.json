@@ -1,0 +1,45 @@
+{
+  "path": "/beginner-guide/",
+  "title": "Sephiria Beginner Guide & Walkthrough — First Run Tips",
+  "description": "Sephiria beginner guide and walkthrough: first-run priorities, Side Bag rules, Destiny New Events, and combat habits for 1.0.",
+  "h1": "Sephiria beginner guide & walkthrough",
+  "meta": "For searches like sephiria beginner guide / sephiria walkthrough.",
+  "body": "<p>Sephiria throws systems at you fast. Treat the first dozen runs as unlocking the Destiny tree and learning one build sentence—not chasing every shiny Artifact.</p>\n<h2>Core loop</h2>\n<ul>\n  <li>Pick a costume and weapon, enter a floor, choose nodes (Anvil / Dice / combat / shops).</li>\n  <li>Spend Sapphires after runs on the Destiny Inscription permanent tree.</li>\n  <li>Open the Journal (Esc) to review unlocked weapons, Artifacts, Tablets, and Miracles before committing.</li>\n</ul>\n<h2>First-run priorities</h2>\n<ul>\n  <li><strong>Do New Events</strong> on the Destiny tree—they unlock systems (<a href=\"../wishing-fountain/\">wishing fountain</a>, costumes salon, weapons) that snowball later.</li>\n  <li><strong>Prefer Anvil early</strong> so your weapon skill matches the build you are forcing.</li>\n  <li><strong>Side Bag is not free power</strong>—items stored there are inactive (including Tablets).</li>\n  <li><strong>Commit to 1–2 combo tags</strong> (Storm Cloud, Companion, Glacier, etc.). Diluting five tags starves Tablet payoffs.</li>\n</ul>\n<div class=\"note\">Steam Community “Basic Guide” still helps for systems vocabulary, but prefer 1.0-era writeups for route advice after the July 31, 2026 full release.</div>\n<h2>Combat habits that transfer</h2>\n<ul>\n  <li>Perfect Guard saves huge MP versus holding block.</li>\n  <li>Reorganize inventory after bosses—adjacency and Tablet geometry matter more than raw rarity.</li>\n  <li>Fruit Skewers bias which combo families appear; frozen fruit can suppress junk families.</li>\n</ul>",
+  "sources": [
+    [
+      "Steam Basic Guide",
+      "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+    ],
+    [
+      "9Puz 1.0 beginner",
+      "https://9puz.com/3580-sephiria-first-run/"
+    ],
+    [
+      "YT: 10 Things the Game Doesn’t Tell You",
+      "https://www.youtube.com/watch?v=BgYwuTVTEzE"
+    ],
+    [
+      "YT: 1.0 advanced tips",
+      "https://www.youtube.com/watch?v=wXSOeKAbelM"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Beginner",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Beginner guide",
+  "guides_em": "First run",
+  "home_start": {
+    "title": "Beginner Guide",
+    "em": "First-run priorities and common traps."
+  },
+  "order": 20
+}

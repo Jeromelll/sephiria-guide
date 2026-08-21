@@ -1,28 +1,44 @@
 #!/usr/bin/env python3
-"""Generate Sephiria Guide static site from verified research notes only."""
+"""Framework layer: read config + content files, write static HTML.
+
+Add or delete a file in content/ and rebuild — nav hubs, home cards,
+and sitemap follow automatically. Game-specific strings live in
+config/site.json and content/*.json, not in this file.
+"""
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-
-NAV = [
-    ("Guides", "/guides/"),
-    ("Beginner", "/beginner-guide/"),
-    ("Builds", "/builds/"),
-    ("Weapons", "/weapons/"),
-    ("Destiny", "/destiny-inscription/"),
-    ("Bosses", "/bosses/"),
-    ("Co-op", "/multiplayer/"),
-]
-
-STEAM = "https://store.steampowered.com/app/2436940/Sephiria/"
-STEAM_NEWS = "https://steamcommunity.com/app/2436940/allnews/"
-STEAM_GUIDE = "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+CONFIG_PATH = ROOT / "config" / "site.json"
+CONTENT_DIR = ROOT / "content"
 
 
-def css_href(depth: int) -> str:
-    return "../" * depth + "assets/styles.css"
+def load_config(path: Path = CONFIG_PATH) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_pages(content_dir: Path = CONTENT_DIR) -> list[dict]:
+    pages = []
+    for p in sorted(content_dir.glob("*.json")):
+        if p.name.startswith("_"):
+            continue
+        page = json.loads(p.read_text(encoding="utf-8"))
+        page["_file"] = p.name
+        pages.append(page)
+    pages.sort(key=lambda x: (x.get("order", 500), x.get("path", "")))
+    return pages
+
+
+def depth_of(path: str) -> int:
+    if path == "/":
+        return 0
+    return len([p for p in path.strip("/").split("/") if p])
+
+
+def css_href(depth: int, name: str) -> str:
+    return "../" * depth + f"assets/{name}"
 
 
 def link(depth: int, path: str) -> str:
@@ -31,40 +47,56 @@ def link(depth: int, path: str) -> str:
     return "../" * depth + path.strip("/") + "/"
 
 
-def shell(
-    *,
-    title: str,
-    description: str,
-    depth: int,
-    path: str,
-    body: str,
-    h1: str | None = None,
-    kicker: str = "Sephiria 1.0 fan guide",
-) -> str:
+def write_theme(cfg: dict) -> None:
+    t = cfg["theme"]
+    css = f"""/* Generated from config/site.json — do not edit by hand. */
+:root {{
+  --bg: {t["bg"]};
+  --bg-deep: {t["bg_deep"]};
+  --ink: {t["ink"]};
+  --muted: {t["muted"]};
+  --line: {t["line"]};
+  --accent: {t["accent"]};
+  --accent-ink: {t["accent_ink"]};
+  --panel: {t["panel"]};
+  --max: 720px;
+  --wide: 1040px;
+}}
+"""
+    (ROOT / "assets" / "theme.css").write_text(css, encoding="utf-8")
+
+
+def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str) -> str:
     nav_html = []
-    for label, href in NAV:
-        current = ' aria-current="page"' if href.rstrip("/") in path.rstrip("/") else ""
+    for label, href in cfg["nav"]:
+        current = ' aria-current="page"' if href.rstrip("/") == path.rstrip("/") else ""
         nav_html.append(f'<a href="{link(depth, href)}"{current}>{label}</a>')
-    page_h1 = h1 or title.split("—")[0].strip()
+    game_link = f'<a href="{cfg["links"]["steam"]}">{cfg["game_name"]}</a>'
+    footer_line = (
+        cfg["footer_line"]
+        .replace("{game_link}", game_link)
+        .replace("{developer}", cfg["developer"])
+    )
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{cfg["lang"]}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
-  <meta name="keywords" content="sephiria, sephiria wiki, sephiria builds, sephiria weapons, destiny inscription" />
-  <link rel="canonical" href="https://sephiria-guide.com{path}" />
+  <meta name="keywords" content="{cfg["seo_keywords"]}" />
+  <link rel="canonical" href="{cfg["domain"]}{path}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{css_href(depth)}" />
-  <script src="{css_href(depth).replace('styles.css', 'analytics.js')}" defer></script>
+  <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
+  <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
+  <script src="{css_href(depth, "analytics.js")}" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="{link(depth, '/')}">Sephiria <span>Guide</span></a>
+      <a class="brand" href="{link(depth, '/')}">{cfg["brand_name"]} <span>{cfg["brand_suffix"]}</span></a>
       <nav class="nav">{''.join(nav_html)}</nav>
     </div>
   </header>
@@ -73,9 +105,9 @@ def shell(
   </main>
   <footer class="site-footer">
     <div class="narrow">
-      <p>Unofficial fan guides for <a href="{STEAM}">Sephiria</a> by Team Horay. Not affiliated with the developer.</p>
-      <p>Facts checked against Steam, community guides, and cross-sourced videos. EA-era numbers are marked when used.</p>
-      <p><a href="{link(depth, '/guides/')}">All guides</a> · Updated 2026-08-12</p>
+      <p>{footer_line}</p>
+      <p>{cfg["footer_facts"]}</p>
+      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · Updated {cfg["updated"]}</p>
     </div>
   </footer>
 </body>
@@ -83,71 +115,88 @@ def shell(
 """
 
 
-def article(depth: int, crumbs: list[tuple[str, str]], title: str, meta: str, content: str, sources: list[tuple[str, str]]) -> str:
-    crumb_html = ' / '.join(
-        (f'<a href="{link(depth, href)}">{label}</a>' if href else label)
-        for label, href in crumbs
+def article(depth: int, crumbs: list, title: str, meta: str, content: str, sources: list) -> str:
+    crumb_html = " / ".join(
+        (f'<a href="{link(depth, href)}">{label}</a>' if href else label) for label, href in crumbs
     )
-    src = "".join(f'<li><a href="{u}" rel="noopener">{n}</a></li>' for n, u in sources)
+    sources_html = ""
+    if sources:
+        src = "".join(f'<li><a href="{u}" rel="noopener">{n}</a></li>' for n, u in sources)
+        sources_html = f"""
+    <section class="sources">
+      <h2>Sources</h2>
+      <ul>{src}</ul>
+    </section>"""
     return f"""
   <div class="narrow">
     <p class="breadcrumbs">{crumb_html}</p>
     <h1 class="page-title">{title}</h1>
     <p class="meta-line">{meta}</p>
-    {content}
-    <section class="sources">
-      <h2>Sources</h2>
-      <ul>{src}</ul>
-    </section>
+    {content}{sources_html}
   </div>
 """
 
 
-PAGES: dict[str, tuple[str, str, str, str]] = {}
+def guide_list(pages: list[dict], *, kind: str) -> str:
+    items = []
+    if kind == "guides":
+        rows = [p for p in pages if p.get("in_guides")]
+        for p in rows:
+            items.append(
+                f'<a href="{p["path"]}"><strong>{p.get("guides_label") or p.get("h1")}</strong><em>{p.get("guides_em", "")}</em></a>'
+            )
+    elif kind == "bosses":
+        rows = [p for p in pages if p.get("path", "").startswith("/bosses/") and p.get("layout") == "article"]
+        for p in rows:
+            rel = "./" + p["path"].strip("/").split("/")[-1] + "/"
+            items.append(
+                f'<a href="{rel}"><strong>{p.get("hub_label") or p.get("h1")}</strong><em>{p.get("hub_em", "")}</em></a>'
+            )
+    elif kind == "home_start":
+        rows = [p for p in pages if p.get("home_start")]
+        for p in rows:
+            card = p["home_start"]
+            items.append(
+                f'<a class="start-link" href="{p["path"]}"><strong>{card["title"]}</strong><span>{card["em"]}</span></a>'
+            )
+        return "\n        ".join(items)
+    elif kind == "home_also":
+        rows = [p for p in pages if p.get("home_also")]
+        for p in rows:
+            card = p["home_also"]
+            items.append(
+                f'<a href="{p["path"]}"><strong>{card["title"]}</strong><em>{card["em"]}</em></a>'
+            )
+        items.append('<a href="/guides/"><strong>Full guide index</strong><em>Wiki-style navigation</em></a>')
+    return "\n  ".join(items)
 
 
-def add(path: str, title: str, description: str, body: str):
-    depth = 0 if path == "/" else path.strip("/").count("/") + 1
-    # path /bosses/erma/ -> depth 2; / -> 0; /guides/ -> 1
-    if path == "/":
-        depth = 0
-    else:
-        depth = len([p for p in path.strip("/").split("/") if p])
-    html = shell(title=title, description=description, depth=depth, path=path, body=body)
-    out = ROOT / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
-    print("wrote", out.relative_to(ROOT))
-
-
-# --- Home ---
-home_body = f"""
+def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
+    start = guide_list(pages, kind="home_start")
+    also = guide_list(pages, kind="home_also")
+    return f"""
   <section class="hero">
     <div class="wrap">
-      <p class="hero-kicker">Fan guides · Updated for Sephiria 1.0</p>
-      <h1>Sephiria Guide</h1>
-      <p class="lede">Builds, weapons, Destiny Inscription, bosses, and co-op notes distilled from Steam and cross-checked sources—not AI filler.</p>
+      <p class="hero-kicker">{home["hero_kicker"]}</p>
+      <h1>{home["hero_h1"]}</h1>
+      <p class="lede">{home["lede"]}</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="{link(0, '/beginner-guide/')}">Start beginner guide</a>
-        <a class="btn btn-ghost" href="{STEAM}" rel="noopener">Steam page</a>
+        <a class="btn btn-primary" href="{link(0, home["cta_path"])}">{home["cta_label"]}</a>
+        <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="wrap">
-      <h2>What Sephiria is</h2>
-      <p>Sephiria is a top-down action roguelite from Team Horay (also known for Dungreed). You descend floors, upgrade weapons at anvils, and build power through an Artifact + Tablet inventory grid. Full release landed <strong>July 31, 2026</strong> after Early Access; Steam lists six chapters, six weapon lines, and online co-op for up to four players.</p>
-      <div class="note">This site is English-first P0 coverage for sephiria-guide.com. Patch-sensitive tips note when they come from older Steam Community guides.</div>
+      <h2>{home["what_h2"]}</h2>
+      {home["what_html"]}
     </div>
   </section>
   <section class="section">
     <div class="wrap">
       <h2>Start here</h2>
       <div class="grid-4">
-        <a class="start-link" href="/beginner-guide/"><strong>Beginner Guide</strong><span>First-run priorities and common traps.</span></a>
-        <a class="start-link" href="/builds/"><strong>Builds</strong><span>Commit to one or two combo tags.</span></a>
-        <a class="start-link" href="/weapons/"><strong>Weapons</strong><span>Six branches, beginner picks, unlock notes.</span></a>
-        <a class="start-link" href="/destiny-inscription/"><strong>Destiny Inscription</strong><span>Permanent sapphire tree and talents.</span></a>
+        {start}
       </div>
     </div>
   </section>
@@ -155,340 +204,122 @@ home_body = f"""
     <div class="wrap">
       <h2>Also covered</h2>
       <div class="guide-list">
-        <a href="/bosses/erma/"><strong>Erma boss guide</strong><em>Mad Scientist · Floor 3</em></a>
-        <a href="/multiplayer/"><strong>Multiplayer / co-op</strong><em>Stone-wall lobby + invite notes</em></a>
-        <a href="/secret-rooms/"><strong>Secret rooms</strong><em>Cracked walls & post-Erma lore room</em></a>
-        <a href="/costumes/"><strong>Costumes</strong><em>Starter skins & hidden unlocks</em></a>
-        <a href="/items/scythe/"><strong>How to get the Scythe</strong><em>Blizzard Scythe via Drifa—not a 6th weapon</em></a>
-        <a href="/guides/"><strong>Full guide index</strong><em>Wiki-style navigation</em></a>
+        {also}
       </div>
     </div>
   </section>
 """
-add(
-    "/",
-    "Sephiria Guide — Builds, Weapons, Wiki Tips",
-    "Fan guides for Sephiria: beginner tips, builds, weapons, Destiny Inscription, bosses, co-op, and secret rooms. Updated for the 1.0 release.",
-    home_body,
-)
 
-# --- Guides index ---
-guides_content = """
-<p>Looking for a Sephiria wiki-style hub? Use this index. Pages answer real search intents from Google Suggest / Trends / SimilarWeb research—not a dump of every noun in the game.</p>
-<div class="guide-list">
-  <a href="../beginner-guide/"><strong>Beginner guide</strong><em>First run</em></a>
-  <a href="../builds/"><strong>Builds</strong><em>Combo focus</em></a>
-  <a href="../weapons/"><strong>Weapons</strong><em>Six branches</em></a>
-  <a href="../destiny-inscription/"><strong>Destiny Inscription</strong><em>Permanent tree</em></a>
-  <a href="../artifacts/"><strong>Artifacts & Tablets</strong><em>Inventory grid</em></a>
-  <a href="../bosses/"><strong>Bosses</strong><em>Erma · Final</em></a>
-  <a href="../multiplayer/"><strong>Multiplayer</strong><em>Co-op lobby</em></a>
-  <a href="../secret-rooms/"><strong>Secret rooms</strong><em>Cracks & lore rooms</em></a>
-  <a href="../costumes/"><strong>Costumes</strong><em>Unlocks</em></a>
-  <a href="../items/scythe/"><strong>Scythe</strong><em>Drifa / Blizzard Scythe</em></a>
-</div>
+
+def write_page(cfg: dict, path: str, title: str, description: str, body: str) -> None:
+    depth = depth_of(path)
+    html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body)
+    out = ROOT / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print("wrote", out.relative_to(ROOT))
+
+
+def write_sitemap(cfg: dict, pages: list[dict]) -> None:
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    listed = [p for p in pages if not p.get("sitemap_exclude")]
+    for i, page in enumerate(listed):
+        pri = "1.0" if page["path"] == "/" else ("0.9" if i < 5 else "0.8")
+        if page.get("layout") == "legal":
+            pri = "0.3"
+        lines.append(
+            f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><changefreq>weekly</changefreq><priority>{pri}</priority></url>'
+        )
+    lines.append("</urlset>")
+    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("wrote sitemap.xml", len(listed), "urls")
+
+
+def write_404(cfg: dict) -> None:
+    body = """
+  <div class="narrow">
+    <h1 class="page-title">Page not found</h1>
+    <p class="meta-line">That URL is not a guide on this site.</p>
+    <p><a href="/">Back to the Sephiria 1.0 guide</a> · <a href="/guides/">All guides</a></p>
+  </div>
 """
-add(
-    "/guides/",
-    "Sephiria Wiki / Guide Hub — Sephiria Guide",
-    "Sephiria guide index: beginner tips, builds, weapons, Destiny Inscription, bosses, multiplayer, and secrets.",
-    article(1, [("Home", "/"), ("Guides", "")], "Sephiria guide hub", "Maps to searches like sephiria wiki / sephiria guide.", guides_content, [
-        ("Steam store", STEAM),
-        ("Steam Basic Guide", STEAM_GUIDE),
-    ]),
-)
+    html = shell(
+        cfg,
+        title="404 — Page not found | Sephiria Guide",
+        description="This URL is not a page on sephiria-guide.com.",
+        depth=0,
+        path="/404.html",
+        body=body,
+    )
+    # Avoid claiming a fake canonical for a missing URL.
+    html = html.replace(
+        f'<link rel="canonical" href="{cfg["domain"]}/404.html" />',
+        f'<meta name="robots" content="noindex" />',
+    )
+    (ROOT / "404.html").write_text(html, encoding="utf-8")
+    print("wrote 404.html")
 
-beginner = """
-<p>Sephiria throws systems at you fast. Treat the first dozen runs as unlocking the Destiny tree and learning one build sentence—not chasing every shiny Artifact.</p>
-<h2>Core loop</h2>
-<ul>
-  <li>Pick a costume and weapon, enter a floor, choose nodes (Anvil / Dice / combat / shops).</li>
-  <li>Spend Sapphires after runs on the Destiny Inscription permanent tree.</li>
-  <li>Open the Journal (Esc) to review unlocked weapons, Artifacts, Tablets, and Miracles before committing.</li>
-</ul>
-<h2>First-run priorities</h2>
-<ul>
-  <li><strong>Do New Events</strong> on the Destiny tree—they unlock systems (wishing fountain, costumes salon, weapons) that snowball later.</li>
-  <li><strong>Prefer Anvil early</strong> so your weapon skill matches the build you are forcing.</li>
-  <li><strong>Side Bag is not free power</strong>—items stored there are inactive (including Tablets).</li>
-  <li><strong>Commit to 1–2 combo tags</strong> (Storm Cloud, Companion, Glacier, etc.). Diluting five tags starves Tablet payoffs.</li>
-</ul>
-<div class="note">Steam Community “Basic Guide” still helps for systems vocabulary, but prefer 1.0-era writeups for route advice after the July 31, 2026 full release.</div>
-<h2>Combat habits that transfer</h2>
-<ul>
-  <li>Perfect Guard saves huge MP versus holding block.</li>
-  <li>Reorganize inventory after bosses—adjacency and Tablet geometry matter more than raw rarity.</li>
-  <li>Fruit Skewers bias which combo families appear; frozen fruit can suppress junk families.</li>
-</ul>
-"""
-add(
-    "/beginner-guide/",
-    "Sephiria Beginner Guide — First Run Tips",
-    "Sephiria beginner guide: first-run priorities, Side Bag rules, Destiny New Events, and combat habits for 1.0.",
-    article(1, [("Home", "/"), ("Beginner", "")], "Sephiria beginner guide", "For searches like sephiria beginner guide / walkthrough.", beginner, [
-        ("Steam Basic Guide", STEAM_GUIDE),
-        ("9Puz 1.0 beginner", "https://9puz.com/3580-sephiria-first-run/"),
-        ("YT: 10 Things the Game Doesn’t Tell You", "https://www.youtube.com/watch?v=BgYwuTVTEzE"),
-        ("YT: 1.0 advanced tips", "https://www.youtube.com/watch?v=wXSOeKAbelM"),
-    ]),
-)
 
-builds = """
-<p>Strong Sephiria builds are boring on purpose: pick a theme, feed it, and let Tablets amplify the pieces that matter.</p>
-<h2>Build rules that keep showing up</h2>
-<ul>
-  <li>Force <strong>one or two combo families</strong> (Storm Cloud, Companion, Ember/Solar, Glacier, Magitech…).</li>
-  <li>Use Bond Artifacts to bridge two combos—you usually only need one side active to start seeing them.</li>
-  <li>Stack levels into a few carry Artifacts instead of spreading upgrades evenly.</li>
-  <li>After every new Tablet/Artifact, pause and rebuild adjacency.</li>
-</ul>
-<h2>Starter themes (community consensus)</h2>
-<ul>
-  <li><strong>Storm Cloud / Magitech</strong> — lightning cloud DPS while you focus bosses.</li>
-  <li><strong>Companion</strong> — summons soak aggro; strong in co-op.</li>
-  <li><strong>Sword &amp; Shield tank / reflect</strong> — learn patterns with Perfect Guard; Shield Bash is a beginner-friendly weapon skill path.</li>
-  <li><strong>Frost / Ice Armament</strong> — dagger path can convert Blizzard Hammer into Blizzard Scythe via Drifa (see Scythe page).</li>
-</ul>
-<div class="note">Offer rates differ by weapon branch—Greatsword upgrades appear more often than Dagger in community 1.0 data—so “best” also means “completes more often.”</div>
-"""
-add(
-    "/builds/",
-    "Sephiria Builds — Best Themes for 1.0",
-    "Sephiria builds guide: combo focus, Storm Cloud, Companion, shield tank, and frost themes for version 1.0.",
-    article(1, [("Home", "/"), ("Builds", "")], "Sephiria builds", "Answers sephiria builds / companion / planet-style queries at a theme level.", builds, [
-        ("9Puz first build", "https://9puz.com/3580-sephiria-first-run/"),
-        ("SlashSkill weapons & builds", "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"),
-        ("YT companion build", "https://www.youtube.com/watch?v=EftqxGiFgbM"),
-    ]),
-)
+def write_ads_txt() -> None:
+    # Plain text so SPA fallback cannot serve homepage HTML here.
+    text = (
+        "# sephiria-guide.com — no ad network authorized yet.\n"
+        "# When ads go live, publisher lines will be listed below.\n"
+    )
+    (ROOT / "ads.txt").write_text(text, encoding="utf-8")
+    print("wrote ads.txt")
 
-weapons = """
-<p>Sephiria has <strong>six weapon branches</strong>, each with large upgrade trees. There is no separate “Scythe” starter weapon—see the dedicated Scythe page if that is what you searched.</p>
-<h2>How community tier lists currently read (1.0)</h2>
-<ul>
-  <li><strong>Greatsword</strong> — high damage, generous upgrade offers; slower swings.</li>
-  <li><strong>Sword &amp; Shield</strong> — best learner kit; block/reflect and Shield Bash paths.</li>
-  <li><strong>Staff / Magic</strong> — versatile spells; Staff unlocks via Destiny weapon training after chapter progress.</li>
-  <li><strong>Crossbow</strong> — safer ranged option with reload discipline.</li>
-  <li><strong>Blade / Katana</strong> — aggressive melee, higher mastery curve.</li>
-  <li><strong>Dagger</strong> — fastest hits / status; lower offer rate, higher commitment.</li>
-</ul>
-<h2>Unlock pattern (example: Staff)</h2>
-<ol>
-  <li>Progress the required chapter / patch.</li>
-  <li>Buy the weapon training node on Destiny Inscription (Staff example: Graceful Weapon Training for Sapphires).</li>
-  <li>Talk to Morrow, complete the short training ground, then the weapon appears on the village rack.</li>
-</ol>
-<div class="note">Exact sapphire costs and node names can shift with patches—verify in your client Journal / Destiny UI.</div>
-"""
-add(
-    "/weapons/",
-    "Sephiria Weapons Tier Notes — Six Branches",
-    "Sephiria weapons guide: six branches, beginner Sword & Shield, Staff unlock path, and links to the Scythe clarification page.",
-    article(1, [("Home", "/"), ("Weapons", "")], "Sephiria weapons", "Covers sephiria weapons / tier list / unlock dagger intent at branch level.", weapons, [
-        ("Destructoid 1.0 weapons tier list", "https://www.destructoid.com/sephiria-1-0-weapons-tier-list/"),
-        ("SlashSkill six weapon types", "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"),
-        ("YT Shield Bash build", "https://www.youtube.com/watch?v=9DEtDVr4fqs"),
-        ("YT Staff unlock", "https://www.youtube.com/watch?v=VqwdlBnFZ40"),
-    ]),
-)
 
-destiny = """
-<p>Destiny Inscription is Sephiria’s permanent meta tree. Sapphires come from dungeon depth and bosses defeated; spending them unlocks weapons, events, inventory, dice, and talent access.</p>
-<h2>Early spends that matter</h2>
-<ul>
-  <li><strong>New Events / fruit skewers lines</strong> — unlock systems you will use every run.</li>
-  <li><strong>Home Repairs</strong> — progresses village quests and opens Talents (talk to the relevant NPCs after unlocking).</li>
-  <li><strong>Weapon training nodes</strong> — required before Morrow’s training grounds grant new weapons.</li>
-  <li><strong>Hard Mode root unlock</strong> — appears after Chapter II progress and grants extra talent budget (per Steam guide).</li>
-</ul>
-<h2>Talents</h2>
-<p>Once unlocked, talent points let you bias defense, MP regen, Willpower (luck-like outcomes), dash windows, and more. Guides agree you can respec—use that to match the weapon you are learning.</p>
-"""
-add(
-    "/destiny-inscription/",
-    "Sephiria Destiny Inscription — Sapphire Tree & Talents",
-    "Sephiria Destiny Inscription guide: sapphire spends, New Events, Home Repairs, weapon unlocks, and talents.",
-    article(1, [("Home", "/"), ("Destiny Inscription", "")], "Destiny Inscription", "For sephiria destiny inscription / best talents searches.", destiny, [
-        ("Steam Basic Guide · Destiny", STEAM_GUIDE),
-        ("Pro Game Guides talents section", "https://progameguides.com/sephiria/sephiria-beginners-guide-best-artifacts-talents-more/"),
-    ]),
-)
+def write_redirects() -> None:
+    # Override Cloudflare Pages SPA soft-404 (/* → index.html 200).
+    text = "/* /404.html 404\n"
+    (ROOT / "_redirects").write_text(text, encoding="utf-8")
+    print("wrote _redirects")
 
-artifacts = """
-<p>Artifacts and Tablets are the mid-run puzzle. Tablets buff geometry (lines, crosses, columns). An Artifact outside an active pattern wastes space.</p>
-<ul>
-  <li>Side Bag storage <strong>disables</strong> effects—use it as a bench, not a secret second board.</li>
-  <li>Adjacency / edge / “no neighbors” constraints force full reshuffles after bosses.</li>
-  <li>Mystic Pot can convert leftover Artifacts (same rarity, or feed two to climb a rarity)—handy for awkward drops.</li>
-</ul>
-"""
-add(
-    "/artifacts/",
-    "Sephiria Artifacts & Tablets — Inventory Grid Tips",
-    "Sephiria Artifact and Tablet guide: Side Bag rules, adjacency, and why tablet geometry beats raw rarity.",
-    article(1, [("Home", "/"), ("Artifacts", "")], "Artifacts & Tablets", "Supports artifact / tablet searches; pairs with builds pages.", artifacts, [
-        ("2UpSkill artifact grid", "https://2upskill.com/sephiria-1-0-artifact-placement-grid-guide-best-combos-and-inventory-layouts/"),
-        ("9Puz first build", "https://9puz.com/3580-sephiria-first-run/"),
-        ("YT 10 Things…", "https://www.youtube.com/watch?v=BgYwuTVTEzE"),
-    ]),
-)
 
-bosses = """
-<p>Boss pages will expand as we verify more pattern notes. Start with the high-search fights:</p>
-<div class="guide-list">
-  <a href="./erma/"><strong>Erma — Mad Scientist</strong><em>Floor 3 library line</em></a>
-  <a href="./final/"><strong>Final boss (Qliphoth line)</strong><em>Chapter 6 / endgame</em></a>
-</div>
-"""
-add(
-    "/bosses/",
-    "Sephiria Bosses — Guide Index",
-    "Sephiria bosses hub linking to Erma and final boss notes for version 1.0.",
-    article(1, [("Home", "/"), ("Bosses", "")], "Sephiria bosses", "Navigation page for boss intents.", bosses, [
-        ("Steam news / patches", STEAM_NEWS),
-        ("ProdigyGamers achievements", "https://prodigygamers.com/2026/08/06/sephiria-100-achievements-walkthrough-guide/"),
-    ]),
-)
+def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict]:
+    cfg = cfg or load_config()
+    pages = load_pages(content_dir)
+    write_theme(cfg)
+    by_path = {p["path"]: p for p in pages}
 
-erma = """
-<p><strong>Erma, the Mad Scientist</strong>, is the Floor 3 / library-line boss (Steam achievement “This Is Not Stalking”). From Chapter 2 onward she can be replaced by Pantaxis, Guardian of the Library.</p>
-<h2>Fight structure (NamuWiki cross-check)</h2>
-<ul>
-  <li>About <strong>three phases</strong> involving a golem Erma pilots.</li>
-  <li>Golem head and hands have <strong>separate hitboxes</strong>—wide attacks that clip multiple parts deal more effective damage.</li>
-  <li>When golem HP depletes, Erma becomes targetable; deplete her HP to advance phases.</li>
-</ul>
-<h2>Key pattern note — dual lasers</h2>
-<p>Hands park top/bottom and scrape lasers across the arena while the head sprays. The clean dodge is to <strong>dash in the moment both lasers overlap and move the same direction</strong> (speeds are unequal). If tanky, sitting in the safer band and eating minimal chip can be better than panicking.</p>
-<h2>Weaknesses</h2>
-<ul>
-  <li>AoE that hits multiple parts.</li>
-  <li>Status effects applied to any part count for the whole (freeze on a hand freezes the head; burns scale hard).</li>
-  <li>High-damage runs often just delete the head first when full AoE is awkward.</li>
-</ul>
-"""
-add(
-    "/bosses/erma/",
-    "Sephiria Erma Guide — Mad Scientist Boss",
-    "Sephiria Erma boss guide: phases, golem hitboxes, laser dodge timing, status weaknesses, and Pantaxis replacement note.",
-    article(2, [("Home", "/"), ("Bosses", "/bosses/"), ("Erma", "")], "Erma (Mad Scientist)", "For sephiria erma searches.", erma, [
-        ("NamuWiki Boss · Erma", "https://en.namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A6%AC%EC%95%84/%EB%B3%B4%EC%8A%A4"),
-        ("YT run with Erma fight", "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"),
-        ("YT All Bosses (EA) @ Erma", "https://www.youtube.com/watch?v=xC9ofSpci8U"),
-        ("YT Library replacement boss short", "https://www.youtube.com/watch?v=iRqqwRa-bTk"),
-    ]),
-)
+    for page in pages:
+        layout = page.get("layout", "article")
+        if layout == "home":
+            write_page(cfg, page["path"], page["title"], page["description"], home_body(page, pages, cfg))
+        elif layout == "hub":
+            kind = page.get("hub", "guides")
+            listing = f'<div class="guide-list">\n  {guide_list(pages, kind=kind)}\n</div>'
+            body = article(
+                depth_of(page["path"]),
+                page.get("crumbs") or [("Home", "/"), (page.get("h1", "Guides"), "")],
+                page["h1"],
+                page["meta"],
+                f'<p>{page["intro"]}</p>\n{listing}',
+                page.get("sources") or [],
+            )
+            write_page(cfg, page["path"], page["title"], page["description"], body)
+        else:
+            body = article(
+                depth_of(page["path"]),
+                page.get("crumbs") or [("Home", "/"), (page.get("h1", ""), "")],
+                page["h1"],
+                page["meta"],
+                page.get("body") or "",
+                page.get("sources") or [],
+            )
+            write_page(cfg, page["path"], page["title"], page["description"], body)
 
-final = """
-<p>The story climax sits in the late chapters around the <strong>Qliphoth</strong> fight line. Steam patches after 1.0 explicitly tuned final-boss readability (bullet density, warning indicators, Hard Mode clear flags).</p>
-<ul>
-  <li>Expect multi-phase pressure; community clear videos often melt phases with stacked burn/frost/scythe setups.</li>
-  <li>Use official patch notes when something “feels wrong”—several patterns were hotfix-adjusted in mid-August patches.</li>
-</ul>
-<div class="note">We keep this page shorter until more pattern tables are dual-sourced beyond montage footage.</div>
-"""
-add(
-    "/bosses/final/",
-    "Sephiria Final Boss — Qliphoth Notes",
-    "Sephiria final boss notes for the Qliphoth endgame fight, with Steam patch cross-checks.",
-    article(2, [("Home", "/"), ("Bosses", "/bosses/"), ("Final boss", "")], "Final boss", "For sephiria final boss searches.", final, [
-        ("grindnstrat bosses guide", "https://grindnstrat.com/sephiria-1-0-bosses-guide/"),
-        ("Steam allnews / patches", STEAM_NEWS),
-        ("YT final boss hard mode", "https://www.youtube.com/watch?v=R7rdy_owfbo"),
-    ]),
-)
+    write_sitemap(cfg, pages)
+    write_404(cfg)
+    write_ads_txt()
+    write_redirects()
+    return pages
 
-multi = """
-<p>Steam lists online co-op for up to <strong>four players</strong> with trading and revive support. Host disconnects can ruin the lobby—expect host-authoritative progress.</p>
-<h2>How to open a lobby (quick)</h2>
-<ul>
-  <li>In the village / hub, find the large <strong>stone wall next to the dungeon entrance</strong>.</li>
-  <li>Interact to create a lobby—you do not need to clear story gates first (per short tutorial footage).</li>
-  <li>Invite via Steam; PixelNitro’s 1.0 writeup also describes the Mysterious Door / host flow.</li>
-</ul>
-"""
-add(
-    "/multiplayer/",
-    "Sephiria Multiplayer — How to Invite Friends",
-    "Sephiria multiplayer guide: 4-player co-op, stone-wall lobby creation, Steam invites, and host caveats.",
-    article(1, [("Home", "/"), ("Multiplayer", "")], "Sephiria multiplayer", "For sephiria multiplayer / co-op / invite searches.", multi, [
-        ("Steam Features", STEAM),
-        ("PixelNitro multiplayer guide", "https://pixelnitro.com/sephiria-multiplayer-guide-how-to-invite-friends-for-online-co-op-version-1-0/"),
-        ("YT how to create a lobby", "https://www.youtube.com/watch?v=3Eq4REN8wEQ"),
-    ]),
-)
 
-secrets = """
-<p>Secret rooms are an achievement (“Traveler”) and a real loot swing.</p>
-<h2>Standard secret rooms</h2>
-<ul>
-  <li>Scan dungeon walls for <strong>subtle cracks near the top</strong>.</li>
-  <li>Walk up and strike the crack. A notification confirms the find.</li>
-  <li>The room appears on the map without a drawn passage. Rewards include leaves, Artifacts/Tablets, dice, or rare potions.</li>
-</ul>
-<h2>Special post-Erma room (community)</h2>
-<p>After defeating Erma, cross the bridge; on the left side of the table in the next room you can <strong>walk under the wall</strong>—no crack. Players report it as mostly lore.</p>
-<div class="note">Treat the crackless room as community experience; cracked-wall rooms are documented in the Steam Basic Guide with screenshots.</div>
-"""
-add(
-    "/secret-rooms/",
-    "Sephiria Secret Rooms — Cracked Walls Guide",
-    "Sephiria secret rooms guide: how to spot cracked walls, Traveler achievement, and the post-Erma lore room.",
-    article(1, [("Home", "/"), ("Secret rooms", "")], "Secret rooms", "For sephiria secret rooms / hidden room searches.", secrets, [
-        ("Steam Basic Guide · Secret Room", STEAM_GUIDE),
-        ("Steam discussion: secrets?", "https://steamcommunity.com/app/2436940/discussions/0/596280581879355354/"),
-        ("ProdigyGamers Traveler achievement", "https://prodigygamers.com/2026/08/06/sephiria-100-achievements-walkthrough-guide/"),
-    ]),
-)
-
-costumes = """
-<p>Costumes change <strong>opening stats</strong>, not just looks. Align the skin with the weapon you plan to push.</p>
-<h2>Unlock buckets (Steam Basic Guide)</h2>
-<ul>
-  <li>Several costumes unlocked by default.</li>
-  <li>Task-based unlocks (e.g., grab many Tablets in one run for Red Fox).</li>
-  <li>Secret costumes:
-    <ul>
-      <li><strong>Skeleton</strong> — take 333 cumulative damage in a single run.</li>
-      <li><strong>Wingless Bat</strong> — complete Blood Donation (Manoc / iron maiden) five times across runs.</li>
-      <li><strong>Adventurer</strong> — commonly tied to owning Dungreed; Steam guide author marks this as uncertain.</li>
-    </ul>
-  </li>
-</ul>
-"""
-add(
-    "/costumes/",
-    "Sephiria Costumes — Unlocks & Hidden Skins",
-    "Sephiria costumes guide: starter skins, Skeleton, Wingless Bat blood donation unlock, and Adventurer caveat.",
-    article(1, [("Home", "/"), ("Costumes", "")], "Sephiria costumes", "For sephiria costumes searches.", costumes, [
-        ("Steam Basic Guide · Costumes", STEAM_GUIDE),
-        ("Treyex beginner · costumes", "https://www.treyexgaming.com/sephiria-beginner-guide/"),
-        ("YT unlock Bat", "https://www.youtube.com/watch?v=BipTb4jrM8o"),
-    ]),
-)
-
-scythe = """
-<div class="note"><strong>Search intent check:</strong> “How to get the scythe in Sephiria” usually means the <em>Blizzard Scythe</em> weapon skill—not a seventh starter weapon. Official branch lists stop at six.</div>
-<h2>Blizzard Scythe path (Dagger)</h2>
-<ol>
-  <li>Play <strong>Dagger</strong>.</li>
-  <li>At the Anvil, take the frost enhancement line <strong>Dormant Frost</strong>.</li>
-  <li>Second enhancement <strong>Drifa</strong> converts <strong>Blizzard Hammer</strong> into <strong>Blizzard Scythe</strong>.</li>
-</ol>
-<p>Korean clear videos build around Ice Armament + Precision, shop needles (Northbound Golden Needle), and Glacier support. Once Drifa lands, dash-fired scythes become the carry.</p>
-<h2>Not the same item</h2>
-<p><strong>Verut’s Scythe</strong> can drop as an Artifact tied to execution/crit fantasies. Do not confuse it with the Drifa weapon conversion.</p>
-"""
-add(
-    "/items/scythe/",
-    "How to Get the Scythe in Sephiria — Blizzard Scythe / Drifa",
-    "How to get the scythe in Sephiria: Dagger → Dormant Frost → Drifa turns Blizzard Hammer into Blizzard Scythe. Not a sixth weapon branch.",
-    article(2, [("Home", "/"), ("Weapons", "/weapons/"), ("Scythe", "")], "How to get the Scythe", "Clarifies the high-volume scythe query.", scythe, [
-        ("YT Blizzard Scythe all-in", "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"),
-        ("YT same build description card", "https://www.youtube.com/watch?v=XMEXRKQZ8o4"),
-        ("Destructoid weapons (no scythe branch)", "https://www.destructoid.com/sephiria-1-0-weapons-tier-list/"),
-    ]),
-)
-
-print("done")
+if __name__ == "__main__":
+    build()
+    print("done")

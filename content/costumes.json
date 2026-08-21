@@ -1,0 +1,41 @@
+{
+  "path": "/costumes/",
+  "title": "Sephiria Costumes — Unlocks & Hidden Skins",
+  "description": "Sephiria costumes guide: starter skins, Skeleton, Wingless Bat blood donation unlock, and Adventurer caveat.",
+  "h1": "Sephiria costumes",
+  "meta": "For sephiria costumes searches.",
+  "body": "<p>Costumes change <strong>opening stats</strong>, not just looks. Align the skin with the weapon you plan to push.</p>\n<h2>Unlock buckets (Steam Basic Guide)</h2>\n<ul>\n  <li>Several costumes unlocked by default.</li>\n  <li>Task-based unlocks (e.g., grab many Tablets in one run for Red Fox).</li>\n  <li>Secret costumes:\n    <ul>\n      <li><strong>Skeleton</strong> — take 333 cumulative damage in a single run.</li>\n      <li><strong>Wingless Bat</strong> — complete Blood Donation (Manoc / iron maiden) five times across runs.</li>\n      <li><strong>Adventurer</strong> — commonly tied to owning Dungreed; Steam guide author marks this as uncertain.</li>\n    </ul>\n  </li>\n</ul>",
+  "sources": [
+    [
+      "Steam Basic Guide · Costumes",
+      "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+    ],
+    [
+      "Treyex beginner · costumes",
+      "https://www.treyexgaming.com/sephiria-beginner-guide/"
+    ],
+    [
+      "YT unlock Bat",
+      "https://www.youtube.com/watch?v=BipTb4jrM8o"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Costumes",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Costumes",
+  "guides_em": "Unlocks",
+  "home_also": {
+    "title": "Costumes",
+    "em": "Starter skins & hidden unlocks"
+  },
+  "order": 100
+}

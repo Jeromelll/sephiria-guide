@@ -1,0 +1,45 @@
+{
+  "path": "/weapons/",
+  "title": "Sephiria Weapons Tier Notes — Six Branches",
+  "description": "Sephiria weapons guide: six branches, beginner Sword & Shield, Staff unlock path, and links to the Scythe clarification page.",
+  "h1": "Sephiria weapons",
+  "meta": "Covers sephiria weapons / tier list / unlock dagger intent at branch level.",
+  "body": "<p>Sephiria has <strong>six weapon branches</strong>, each with large upgrade trees. There is no separate “Scythe” starter weapon—see the dedicated Scythe page if that is what you searched.</p>\n<h2>How community tier lists currently read (1.0)</h2>\n<ul>\n  <li><strong>Greatsword</strong> — high damage, generous upgrade offers; slower swings.</li>\n  <li><strong>Sword &amp; Shield</strong> — best learner kit; block/reflect and Shield Bash paths.</li>\n  <li><strong>Staff / Magic</strong> — versatile spells; Staff unlocks via Destiny weapon training after chapter progress.</li>\n  <li><strong>Crossbow</strong> — safer ranged option with reload discipline.</li>\n  <li><strong>Blade / Katana</strong> — aggressive melee, higher mastery curve.</li>\n  <li><strong>Dagger</strong> — fastest hits / status; lower offer rate, higher commitment.</li>\n</ul>\n<h2>Unlock pattern (example: Staff)</h2>\n<ol>\n  <li>Progress the required chapter / patch.</li>\n  <li>Buy the weapon training node on Destiny Inscription (Staff example: Graceful Weapon Training for Sapphires).</li>\n  <li>Talk to Morrow, complete the short training ground, then the weapon appears on the village rack.</li>\n</ol>\n<div class=\"note\">Exact sapphire costs and node names can shift with patches—verify in your client Journal / Destiny UI.</div>",
+  "sources": [
+    [
+      "Destructoid 1.0 weapons tier list",
+      "https://www.destructoid.com/sephiria-1-0-weapons-tier-list/"
+    ],
+    [
+      "SlashSkill six weapon types",
+      "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"
+    ],
+    [
+      "YT Shield Bash build",
+      "https://www.youtube.com/watch?v=9DEtDVr4fqs"
+    ],
+    [
+      "YT Staff unlock",
+      "https://www.youtube.com/watch?v=VqwdlBnFZ40"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Weapons",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Weapons",
+  "guides_em": "Six branches",
+  "home_start": {
+    "title": "Weapons",
+    "em": "Six branches, beginner picks, unlock notes."
+  },
+  "order": 40
+}

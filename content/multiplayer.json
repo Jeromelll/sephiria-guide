@@ -1,0 +1,41 @@
+{
+  "path": "/multiplayer/",
+  "title": "Sephiria Multiplayer — How to Invite Friends",
+  "description": "Sephiria multiplayer guide: 4-player co-op, stone-wall lobby creation, Steam invites, and host caveats.",
+  "h1": "Sephiria multiplayer",
+  "meta": "For sephiria multiplayer / co-op / invite searches.",
+  "body": "<p>Steam lists online co-op for up to <strong>four players</strong> with trading and revive support. Host disconnects can ruin the lobby—expect host-authoritative progress.</p>\n<h2>How to open a lobby (quick)</h2>\n<ul>\n  <li>In the village / hub, find the large <strong>stone wall next to the dungeon entrance</strong>.</li>\n  <li>Interact to create a lobby—you do not need to clear story gates first (per short tutorial footage).</li>\n  <li>Invite via Steam; PixelNitro’s 1.0 writeup also describes the Mysterious Door / host flow.</li>\n</ul>",
+  "sources": [
+    [
+      "Steam Features",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "PixelNitro multiplayer guide",
+      "https://pixelnitro.com/sephiria-multiplayer-guide-how-to-invite-friends-for-online-co-op-version-1-0/"
+    ],
+    [
+      "YT how to create a lobby",
+      "https://www.youtube.com/watch?v=3Eq4REN8wEQ"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Multiplayer",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Multiplayer",
+  "guides_em": "Co-op lobby",
+  "home_also": {
+    "title": "Multiplayer / co-op",
+    "em": "Stone-wall lobby + invite notes"
+  },
+  "order": 80
+}

@@ -1,0 +1,35 @@
+{
+  "path": "/bosses/",
+  "layout": "hub",
+  "hub": "bosses",
+  "title": "Sephiria Bosses — Guide Index",
+  "description": "Sephiria bosses hub linking to Erma and final boss notes for version 1.0.",
+  "h1": "Sephiria bosses",
+  "meta": "Navigation page for boss intents.",
+  "intro": "Boss pages will expand as we verify more pattern notes. Start with the high-search fights:",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Bosses",
+      ""
+    ]
+  ],
+  "sources": [
+    [
+      "Steam news / patches",
+      "https://steamcommunity.com/app/2436940/allnews/"
+    ],
+    [
+      "ProdigyGamers achievements",
+      "https://prodigygamers.com/2026/08/06/sephiria-100-achievements-walkthrough-guide/"
+    ]
+  ],
+  "order": 70,
+  "child_prefix": "/bosses/",
+  "in_guides": true,
+  "guides_label": "Bosses",
+  "guides_em": "Erma · Final"
+}

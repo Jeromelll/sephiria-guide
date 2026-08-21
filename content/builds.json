@@ -1,0 +1,41 @@
+{
+  "path": "/builds/",
+  "title": "Sephiria Builds — Best Themes for 1.0",
+  "description": "Sephiria builds guide: combo focus, Storm Cloud, Companion, shield tank, and frost themes for version 1.0.",
+  "h1": "Sephiria builds",
+  "meta": "Answers sephiria builds / companion / planet-style queries at a theme level.",
+  "body": "<p>Strong Sephiria builds are boring on purpose: pick a theme, feed it, and let Tablets amplify the pieces that matter.</p>\n<h2>Build rules that keep showing up</h2>\n<ul>\n  <li>Force <strong>one or two combo families</strong> (Storm Cloud, Companion, Ember/Solar, Glacier, Magitech…).</li>\n  <li>Use Bond Artifacts to bridge two combos—you usually only need one side active to start seeing them.</li>\n  <li>Stack levels into a few carry Artifacts instead of spreading upgrades evenly.</li>\n  <li>After every new Tablet/Artifact, pause and rebuild adjacency.</li>\n</ul>\n<h2>Starter themes (community consensus)</h2>\n<ul>\n  <li><strong>Storm Cloud / Magitech</strong> — lightning cloud DPS while you focus bosses.</li>\n  <li><strong>Companion</strong> — summons soak aggro; strong in co-op.</li>\n  <li><strong>Sword &amp; Shield tank / reflect</strong> — learn patterns with Perfect Guard; Shield Bash is a beginner-friendly weapon skill path.</li>\n  <li><strong>Frost / Ice Armament</strong> — dagger path can convert Blizzard Hammer into Blizzard Scythe via Drifa (see Scythe page).</li>\n</ul>\n<p>Deep dive: <a href=\"../builds/companion/\">Companion / summoner build</a>.</p>\n<div class=\"note\">Offer rates differ by weapon branch—Greatsword upgrades appear more often than Dagger in community 1.0 data—so “best” also means “completes more often.”</div>",
+  "sources": [
+    [
+      "9Puz first build",
+      "https://9puz.com/3580-sephiria-first-run/"
+    ],
+    [
+      "SlashSkill weapons & builds",
+      "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"
+    ],
+    [
+      "YT companion build",
+      "https://www.youtube.com/watch?v=EftqxGiFgbM"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Builds",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Builds",
+  "guides_em": "Combo focus",
+  "home_start": {
+    "title": "Builds",
+    "em": "Commit to one or two combo tags."
+  },
+  "order": 30
+}

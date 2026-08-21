@@ -1,0 +1,40 @@
+{
+  "path": "/bosses/final/",
+  "title": "Sephiria Final Boss — Qliphoth Notes",
+  "description": "Sephiria final boss notes for the Qliphoth endgame fight, with Steam patch cross-checks.",
+  "h1": "Final boss",
+  "meta": "For sephiria final boss searches.",
+  "body": "<p>The story climax sits in the late chapters around the <strong>Qliphoth</strong> fight line. Steam patches after 1.0 explicitly tuned final-boss readability (bullet density, warning indicators, Hard Mode clear flags).</p>\n<ul>\n  <li>Expect multi-phase pressure; community clear videos often melt phases with stacked burn/frost/scythe setups.</li>\n  <li>Use official patch notes when something “feels wrong”—several patterns were hotfix-adjusted in mid-August patches.</li>\n</ul>\n<div class=\"note\">We keep this page shorter until more pattern tables are dual-sourced beyond montage footage.</div>",
+  "sources": [
+    [
+      "grindnstrat bosses guide",
+      "https://grindnstrat.com/sephiria-1-0-bosses-guide/"
+    ],
+    [
+      "Steam allnews / patches",
+      "https://steamcommunity.com/app/2436940/allnews/"
+    ],
+    [
+      "YT final boss hard mode",
+      "https://www.youtube.com/watch?v=R7rdy_owfbo"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Bosses",
+      "/bosses/"
+    ],
+    [
+      "Final boss",
+      ""
+    ]
+  ],
+  "hub_label": "Final boss (Qliphoth line)",
+  "hub_em": "Chapter 6 / endgame",
+  "order": 72
+}

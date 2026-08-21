@@ -1,0 +1,39 @@
+{
+  "game_name": "Sephiria",
+  "brand_name": "Sephiria",
+  "brand_suffix": "Guide",
+  "site_name": "Sephiria Guide",
+  "domain": "https://sephiria-guide.com",
+  "lang": "en",
+  "kicker": "Sephiria 1.0 fan guide",
+  "developer": "Team Horay",
+  "developer_note": "also known for Dungreed",
+  "updated": "2026-08-21",
+  "seo_keywords": "sephiria, sephiria wiki, sephiria builds, sephiria weapons, destiny inscription",
+  "footer_line": "Unofficial fan guides for {game_link} by {developer}. Not affiliated with the developer.",
+  "footer_facts": "Facts checked against Steam, community guides, and cross-sourced videos. EA-era numbers are marked when used.",
+  "theme": {
+    "bg": "#f7f1e8",
+    "bg_deep": "#ebe2d4",
+    "ink": "#1a2433",
+    "muted": "#5c6675",
+    "line": "#d4c7b4",
+    "accent": "#e85d04",
+    "accent_ink": "#9a3412",
+    "panel": "#fffaf3"
+  },
+  "nav": [
+    ["Guides", "/guides/"],
+    ["Beginner", "/beginner-guide/"],
+    ["Builds", "/builds/"],
+    ["Weapons", "/weapons/"],
+    ["Destiny", "/destiny-inscription/"],
+    ["Bosses", "/bosses/"],
+    ["Co-op", "/multiplayer/"]
+  ],
+  "links": {
+    "steam": "https://store.steampowered.com/app/2436940/Sephiria/",
+    "steam_news": "https://steamcommunity.com/app/2436940/allnews/",
+    "steam_guide": "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+  }
+}

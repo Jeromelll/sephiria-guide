@@ -1,0 +1,45 @@
+{
+  "path": "/builds/companion/",
+  "title": "Sephiria Companion Build — Summoner / Ballista Guide",
+  "description": "Sephiria companion build: prioritize Companion Artifacts, Ballista/mines, Tablet buffs on summons, and Dimensional Pocket carry.",
+  "h1": "Companion build",
+  "meta": "For sephiria companion build / summoner searches.",
+  "body": "<p><strong>sephiria companion build</strong> searches want a summoner route: stack Companion-tagged Artifacts, keep them leveled, and let pets soak aggro while you finish elites/bosses.</p>\n<h2>Core idea</h2>\n<ul>\n  <li>Prioritize <strong>Companion</strong> family items early (contracts, moles, jellyfish, cushions, etc.). Community clear videos treat “get all companions online” as the first-floor job.</li>\n  <li><strong>Ballista</strong> / mine-crossbow evolutions play like extra companions once mines become seeking drones.</li>\n  <li>Put Tablets and buffs on companions, not on random side DPS tags.</li>\n  <li>Companions are expensive to max—Dimensional Pocket / Willpower lines that carry items between runs make the build much smoother.</li>\n</ul>\n<h2>Run habits</h2>\n<ul>\n  <li>Accept Storm Cloud or light fire as secondary only if it supports Ballista/mines—do not dilute five tags.</li>\n  <li>In co-op, companions keep drawing aggro so human players can focus mechanics.</li>\n  <li>After bosses, rebuild adjacency so Companion pieces stay bonded.</li>\n</ul>\n<div class=\"note\">Theme-level consensus also appears in 9Puz / SlashSkill “commit to one combo family” advice. Exact item IDs shift with patches—use the Journal and this page’s video sources for current names.</div>\n<p>Parent hub: <a href=\"../\">Builds overview</a>.</p>",
+  "sources": [
+    [
+      "YT Explosive Companion Build",
+      "https://www.youtube.com/watch?v=EftqxGiFgbM"
+    ],
+    [
+      "9Puz first build (theme focus)",
+      "https://9puz.com/3580-sephiria-first-run/"
+    ],
+    [
+      "SlashSkill weapons & builds",
+      "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Builds",
+      "/builds/"
+    ],
+    [
+      "Companion",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Companion build",
+  "guides_em": "Summoner route",
+  "home_also": {
+    "title": "Companion build",
+    "em": "Summons / Ballista focus"
+  },
+  "order": 31
+}

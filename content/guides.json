@@ -1,0 +1,31 @@
+{
+  "path": "/guides/",
+  "layout": "hub",
+  "hub": "guides",
+  "title": "Sephiria Wiki / Guide Hub — Sephiria Guide",
+  "description": "Sephiria guide index: beginner tips, builds, weapons, Destiny Inscription, bosses, multiplayer, and secrets.",
+  "h1": "Sephiria guide hub",
+  "meta": "Maps to searches like sephiria wiki / sephiria guide.",
+  "intro": "Looking for a Sephiria wiki-style hub? Use this index. Pages answer real search intents from Google Suggest / Trends / SimilarWeb research—not a dump of every noun in the game.",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Guides",
+      ""
+    ]
+  ],
+  "sources": [
+    [
+      "Steam store",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "Steam Basic Guide",
+      "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+    ]
+  ],
+  "order": 10
+}

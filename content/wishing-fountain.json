@@ -1,0 +1,24 @@
+{
+  "path": "/wishing-fountain/",
+  "layout": "article",
+  "title": "Sephiria Wishing Fountain — Town Artifact Picker",
+  "description": "Sephiria wishing fountain guide: unlock via Destiny New Events, pick town Artifacts for the next run, and how Willpower expands capacity.",
+  "h1": "Sephiria Wishing Fountain",
+  "meta": "For sephiria wishing fountain searches. Town pre-run picker—not the dungeon color-water fountain.",
+  "crumbs": [["Home", "/"], ["Wishing Fountain", ""]],
+  "in_guides": true,
+  "guides_label": "Wishing Fountain",
+  "guides_em": "Town artifact picker",
+  "home_also": {
+    "title": "Wishing Fountain",
+    "em": "Pre-run Artifact picks in town"
+  },
+  "order": 58,
+  "sources": [
+    ["Treyex talent guide (fountain capacity)", "https://www.treyexgaming.com/sephiria-talent-guide/"],
+    ["YT: 1.0 advanced tips (Willpower / fountain)", "https://www.youtube.com/watch?v=wXSOeKAbelM"],
+    ["YT: intro tips (wishing well / artifact favorites)", "https://www.youtube.com/watch?v=xMofUHrAdAI"],
+    ["Steam Basic Guide · New Events", "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"]
+  ],
+  "body": "<p>Players search <strong>sephiria wishing fountain</strong> because the town fountain is easy to miss: it is a <em>pre-run Artifact picker</em>, not the dungeon interactable whose water changes color.</p>\n<h2>What it does</h2>\n<p>Once unlocked, you select Artifacts in Bunnyville and carry those picks into the next dungeon run. Intro footage treats this as the “wishing well” step after you decide a weapon / combo family.</p>\n<h2>How you unlock it</h2>\n<p>Open it through <strong>New Events</strong> on <a href=\"../destiny-inscription/\">Destiny Inscription</a>—the same early spends that unlock the costume salon and extra weapons. See the <a href=\"../beginner-guide/\">beginner guide</a>.</p>\n<h2>Capacity</h2>\n<ul>\n  <li>Default capacity is <strong>4</strong> (Treyex talent writeup).</li>\n  <li><strong>Willpower</strong> expands it: +1 at talent Lv5 and +4 at Lv20, for a writeup maximum of <strong>9</strong>. A 1.0 tips video also treats Willpower as the stat that changes fountain / dice quality.</li>\n  <li>Higher rarity costs more capacity (Treyex’s bars: Common 3 / Advanced 4 / Rare 5 / Legendary 6). Confirm the current bars in-client—patch numbers move.</li>\n</ul>\n<div class=\"note\">Do not mix this up with in-dungeon fountains that can grant XP, gold, or spawn enemies when the water changes color. Those are a different object.</div>\n<p>Related: <a href=\"../destiny-inscription/\">Destiny / talents</a> · <a href=\"../artifacts/\">Artifacts</a> · <a href=\"../builds/\">Builds</a>.</p>"
+}

@@ -3,7 +3,7 @@
   script, or edit GA_ID below once Jerome creates the property.
 */
 (function () {
-  var GA_ID = window.SEPHIRIA_GA_ID || "";
+  var GA_ID = window.SEPHIRIA_GA_ID || "G-X8S6QVZB0E";
   if (!GA_ID || GA_ID.indexOf("G-") !== 0) return;
   var s = document.createElement("script");
   s.async = true;

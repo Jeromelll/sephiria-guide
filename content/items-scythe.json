@@ -1,0 +1,45 @@
+{
+  "path": "/items/scythe/",
+  "title": "How to Get the Scythe in Sephiria — Blizzard Scythe / Drifa",
+  "description": "How to get the scythe in Sephiria: Dagger → Dormant Frost → Drifa turns Blizzard Hammer into Blizzard Scythe. Not a sixth weapon branch.",
+  "h1": "How to get the Scythe",
+  "meta": "Clarifies the high-volume scythe query.",
+  "body": "<div class=\"note\"><strong>Search intent check:</strong> “How to get the scythe in Sephiria” usually means the <em>Blizzard Scythe</em> weapon skill—not a seventh starter weapon. Official branch lists stop at six.</div>\n<h2>Blizzard Scythe path (Dagger)</h2>\n<ol>\n  <li>Play <strong>Dagger</strong>.</li>\n  <li>At the Anvil, take the frost enhancement line <strong>Dormant Frost</strong>.</li>\n  <li>Second enhancement <strong>Drifa</strong> converts <strong>Blizzard Hammer</strong> into <strong>Blizzard Scythe</strong>.</li>\n</ol>\n<p>Korean clear videos build around Ice Armament + Precision, shop needles (Northbound Golden Needle), and Glacier support. Once Drifa lands, dash-fired scythes become the carry.</p>\n<h2>Not the same item</h2>\n<p><strong>Verut’s Scythe</strong> can drop as an Artifact tied to execution/crit fantasies. Do not confuse it with the Drifa weapon conversion.</p>",
+  "sources": [
+    [
+      "YT Blizzard Scythe all-in",
+      "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
+    ],
+    [
+      "YT same build description card",
+      "https://www.youtube.com/watch?v=XMEXRKQZ8o4"
+    ],
+    [
+      "Destructoid weapons (no scythe branch)",
+      "https://www.destructoid.com/sephiria-1-0-weapons-tier-list/"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Weapons",
+      "/weapons/"
+    ],
+    [
+      "Scythe",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Scythe",
+  "guides_em": "Drifa / Blizzard Scythe",
+  "home_also": {
+    "title": "How to get the Scythe",
+    "em": "Blizzard Scythe via Drifa—not a 6th weapon"
+  },
+  "order": 110
+}
