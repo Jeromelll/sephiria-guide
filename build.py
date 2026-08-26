@@ -59,6 +59,8 @@ def write_theme(cfg: dict) -> None:
   --accent: {t["accent"]};
   --accent-ink: {t["accent_ink"]};
   --panel: {t["panel"]};
+  --shadow: {t.get("shadow", "rgba(26, 36, 51, 0.08)")};
+  --shadow-accent: {t.get("shadow_accent", "rgba(232, 93, 4, 0.18)")};
   --max: 720px;
   --wide: 1040px;
 }}
@@ -88,26 +90,27 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link rel="canonical" href="{cfg["domain"]}{path}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="{link(depth, '/')}">{cfg["brand_name"]} <span>{cfg["brand_suffix"]}</span></a>
-      <nav class="nav">{''.join(nav_html)}</nav>
+      <nav class="nav" aria-label="Primary">{''.join(nav_html)}</nav>
     </div>
   </header>
-  <main>
+  <main id="content">
 {body}
   </main>
   <footer class="site-footer">
     <div class="narrow">
       <p>{footer_line}</p>
       <p>{cfg["footer_facts"]}</p>
-      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · Updated {cfg["updated"]}</p>
+      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
     </div>
   </footer>
 </body>
@@ -115,7 +118,23 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
 """
 
 
-def article(depth: int, crumbs: list, title: str, meta: str, content: str, sources: list) -> str:
+def stuck_prompt(depth: int) -> str:
+    """Light post-read ask — high-intent moment, same idea as Zigpoll's one question."""
+    contact = link(depth, "/contact/")
+    return f"""
+    <p class="stuck-prompt">Still stuck? Tell us which step failed — Hard Mode tree / Scythe Drifa / Destiny sapphires — via <a href="{contact}">contact</a>.</p>"""
+
+
+def article(
+    depth: int,
+    crumbs: list,
+    title: str,
+    meta: str,
+    content: str,
+    sources: list,
+    *,
+    show_stuck_prompt: bool = False,
+) -> str:
     crumb_html = " / ".join(
         (f'<a href="{link(depth, href)}">{label}</a>' if href else label) for label, href in crumbs
     )
@@ -127,12 +146,13 @@ def article(depth: int, crumbs: list, title: str, meta: str, content: str, sourc
       <h2>Sources</h2>
       <ul>{src}</ul>
     </section>"""
+    prompt_html = stuck_prompt(depth) if show_stuck_prompt else ""
     return f"""
   <div class="narrow">
     <p class="breadcrumbs">{crumb_html}</p>
     <h1 class="page-title">{title}</h1>
     <p class="meta-line">{meta}</p>
-    {content}{sources_html}
+    {content}{prompt_html}{sources_html}
   </div>
 """
 
@@ -154,10 +174,11 @@ def guide_list(pages: list[dict], *, kind: str) -> str:
             )
     elif kind == "home_start":
         rows = [p for p in pages if p.get("home_start")]
-        for p in rows:
+        for i, p in enumerate(rows):
             card = p["home_start"]
+            featured = ' start-link--featured' if i == 0 else ""
             items.append(
-                f'<a class="start-link" href="{p["path"]}"><strong>{card["title"]}</strong><span>{card["em"]}</span></a>'
+                f'<a class="start-link{featured}" href="{p["path"]}"><strong>{card["title"]}</strong><span>{card["em"]}</span></a>'
             )
         return "\n        ".join(items)
     elif kind == "home_also":
@@ -174,15 +195,29 @@ def guide_list(pages: list[dict], *, kind: str) -> str:
 def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
     start = guide_list(pages, kind="home_start")
     also = guide_list(pages, kind="home_also")
+    # Start here before "what is" — visitors land with a job to do, not a wiki intro.
     return f"""
   <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker">{home["hero_kicker"]}</p>
+        <h1>{home["hero_h1"]}</h1>
+      </div>
+      <div class="hero-action">
+        <p class="lede">{home["lede"]}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="{link(0, home["cta_path"])}">{home["cta_label"]}</a>
+          <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--start">
     <div class="wrap">
-      <p class="hero-kicker">{home["hero_kicker"]}</p>
-      <h1>{home["hero_h1"]}</h1>
-      <p class="lede">{home["lede"]}</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="{link(0, home["cta_path"])}">{home["cta_label"]}</a>
-        <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
+      <h2>Start here</h2>
+      <p class="section-lead">Four first-run paths — beginner first, then builds, weapons, and Destiny.</p>
+      <div class="grid-start">
+        {start}
       </div>
     </div>
   </section>
@@ -190,14 +225,6 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
     <div class="wrap">
       <h2>{home["what_h2"]}</h2>
       {home["what_html"]}
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
-      <h2>Start here</h2>
-      <div class="grid-4">
-        {start}
-      </div>
     </div>
   </section>
   <section class="section">
@@ -300,6 +327,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page["meta"],
                 f'<p>{page["intro"]}</p>\n{listing}',
                 page.get("sources") or [],
+                show_stuck_prompt=True,
             )
             write_page(cfg, page["path"], page["title"], page["description"], body)
         else:
@@ -310,6 +338,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page["meta"],
                 page.get("body") or "",
                 page.get("sources") or [],
+                show_stuck_prompt=(layout != "legal"),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body)
 

@@ -1,0 +1,13 @@
+{
+  "path": "/contact/",
+  "layout": "legal",
+  "title": "Contact — Sephiria Guide",
+  "description": "Contact sephiria-guide.com for corrections, questions, or advertising inquiries.",
+  "h1": "Contact",
+  "meta": "Unofficial fan guide · Not affiliated with Team Horay",
+  "body": "<p>Email: <a href=\"mailto:jeromell@be-winner.com\">jeromell@be-winner.com</a></p>\n<p>For guide corrections, include the page URL, the sentence that needs review, and the suggested fix. Prefer sources we can re-check (Steam, patch notes, dated community guides).</p>\n<p>Advertising or partnership inquiries can use the same address. This site does not display third-party ads yet.</p>\n<p>See also <a href=\"../about/\">About</a>, <a href=\"../privacy/\">Privacy</a>, and <a href=\"../editorial-policy/\">Editorial policy</a>.</p>",
+  "sources": [],
+  "crumbs": [["Home", "/"], ["Contact", ""]],
+  "in_guides": false,
+  "order": 920
+}

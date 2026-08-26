@@ -8,6 +8,8 @@
   --accent: #e85d04;
   --accent-ink: #9a3412;
   --panel: #fffaf3;
+  --shadow: rgba(26, 36, 51, 0.08);
+  --shadow-accent: rgba(232, 93, 4, 0.18);
   --max: 720px;
   --wide: 1040px;
 }

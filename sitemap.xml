@@ -19,4 +19,6 @@
   <url><loc>https://sephiria-guide.com/items/scythe/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sephiria-guide.com/about/</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://sephiria-guide.com/privacy/</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sephiria-guide.com/contact/</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sephiria-guide.com/editorial-policy/</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
 </urlset>

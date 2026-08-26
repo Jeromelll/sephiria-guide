@@ -9,6 +9,6 @@
   "cta_label": "Start beginner guide",
   "cta_path": "/beginner-guide/",
   "what_h2": "What Sephiria is",
-  "what_html": "<p>Sephiria is a top-down action roguelite from Team Horay (also known for Dungreed). You descend floors, upgrade weapons at anvils, and build power through an Artifact + Tablet inventory grid. Full release landed <strong>July 31, 2026</strong> after Early Access; Steam lists six chapters, six weapon lines, and online co-op for up to four players.</p>\n      <div class=\"note\">This site is English-first P0 coverage for sephiria-guide.com. Patch-sensitive tips note when they come from older Steam Community guides.</div>",
+  "what_html": "<p>Sephiria is a top-down action roguelite from Team Horay (Dungreed). Full release <strong>July 31, 2026</strong>: six chapters, six weapon lines, Artifact + Tablet grid, co-op up to four. This site answers the first stuck moments—not a full wiki dump.</p>\n      <div class=\"note\">English-first P0 coverage. Patch-sensitive tips note when they come from older Steam Community guides.</div>",
   "order": 0
 }
