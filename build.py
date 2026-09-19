@@ -110,7 +110,7 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
     <div class="narrow">
       <p>{footer_line}</p>
       <p>{cfg["footer_facts"]}</p>
-      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
+      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/multiplayer/')}">Co-op</a> · <a href="{link(depth, '/bosses/')}">Bosses</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
     </div>
   </footer>
 </body>
