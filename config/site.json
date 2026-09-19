@@ -8,7 +8,7 @@
   "kicker": "Sephiria 1.0 fan guide",
   "developer": "Team Horay",
   "developer_note": "also known for Dungreed",
-  "updated": "2026-08-26",
+  "updated": "2026-09-19",
   "seo_keywords": "sephiria, sephiria wiki, sephiria builds, sephiria weapons, destiny inscription",
   "footer_line": "Unofficial fan guides for {game_link} by {developer}. Not affiliated with the developer.",
   "footer_facts": "Facts checked against Steam, community guides, and cross-sourced videos. EA-era numbers are marked when used.",
@@ -27,11 +27,11 @@
   "nav": [
     ["Guides", "/guides/"],
     ["Beginner", "/beginner-guide/"],
-    ["Builds", "/builds/"],
-    ["Weapons", "/weapons/"],
+    ["Hard Mode", "/hard-mode/"],
+    ["Fountain", "/wishing-fountain/"],
     ["Destiny", "/destiny-inscription/"],
-    ["Bosses", "/bosses/"],
-    ["Co-op", "/multiplayer/"]
+    ["Builds", "/builds/"],
+    ["Weapons", "/weapons/"]
   ],
   "links": {
     "steam": "https://store.steampowered.com/app/2436940/Sephiria/",
