@@ -31,7 +31,8 @@
     ["Fountain", "/wishing-fountain/"],
     ["Destiny", "/destiny-inscription/"],
     ["Builds", "/builds/"],
-    ["Weapons", "/weapons/"]
+    ["Weapons", "/weapons/"],
+    ["Log in", "/login.html"]
   ],
   "links": {
     "steam": "https://store.steampowered.com/app/2436940/Sephiria/",

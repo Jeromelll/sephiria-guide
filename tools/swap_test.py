@@ -43,16 +43,22 @@ def main() -> int:
             shutil.copy2(src, tmp / "content" / src.name)
         shutil.copy2(ROOT / "assets" / "styles.css", tmp / "assets" / "styles.css")
         shutil.copy2(ROOT / "assets" / "analytics.js", tmp / "assets" / "analytics.js")
+        shutil.copy2(ROOT / "assets" / "login.css", tmp / "assets" / "login.css")
+        shutil.copy2(ROOT / "assets" / "login.js", tmp / "assets" / "login.js")
+        shutil.copy2(ROOT / "login.html", tmp / "login.html")
 
         orig_root = build.ROOT
+        orig_output = build.OUTPUT_DIR
         build.ROOT = tmp
+        build.OUTPUT_DIR = tmp / "dist"
         try:
             pages = build.build(swapped, tmp / "content")
         finally:
             build.ROOT = orig_root
+            build.OUTPUT_DIR = orig_output
 
-        home = (tmp / "index.html").read_text(encoding="utf-8")
-        theme = (tmp / "assets" / "theme.css").read_text(encoding="utf-8")
+        home = (tmp / "dist" / "index.html").read_text(encoding="utf-8")
+        theme = (tmp / "dist" / "assets" / "theme.css").read_text(encoding="utf-8")
         checks = {
             "brand Gelum": "Gelum <span>Guide</span>" in home,
             "canonical domain": "https://gelum-guide.example/" in home,
@@ -62,7 +68,7 @@ def main() -> int:
             "page count": len(pages) >= 16,
         }
         leftovers = []
-        chrome_files = [tmp / "index.html", tmp / "guides" / "index.html"]
+        chrome_files = [tmp / "dist" / "index.html", tmp / "dist" / "guides" / "index.html"]
         for f in chrome_files:
             text = f.read_text(encoding="utf-8")
             header = text.split("</header>", 1)[0].split("<header", 1)[-1]

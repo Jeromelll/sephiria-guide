@@ -8,11 +8,13 @@ config/site.json and content/*.json, not in this file.
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "site.json"
 CONTENT_DIR = ROOT / "content"
+OUTPUT_DIR = ROOT / "dist"
 
 
 def load_config(path: Path = CONFIG_PATH) -> dict:
@@ -44,6 +46,8 @@ def css_href(depth: int, name: str) -> str:
 def link(depth: int, path: str) -> str:
     if path == "/":
         return "../" * depth if depth else "./"
+    if path.endswith(".html"):
+        return "/" + path.lstrip("/")
     return "../" * depth + path.strip("/") + "/"
 
 
@@ -65,7 +69,7 @@ def write_theme(cfg: dict) -> None:
   --wide: 1040px;
 }}
 """
-    (ROOT / "assets" / "theme.css").write_text(css, encoding="utf-8")
+    (OUTPUT_DIR / "assets" / "theme.css").write_text(css, encoding="utf-8")
 
 
 def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str) -> str:
@@ -241,10 +245,10 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
 def write_page(cfg: dict, path: str, title: str, description: str, body: str) -> None:
     depth = depth_of(path)
     html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body)
-    out = ROOT / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
+    out = OUTPUT_DIR / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
-    print("wrote", out.relative_to(ROOT))
+    print("wrote", out.relative_to(OUTPUT_DIR))
 
 
 def write_sitemap(cfg: dict, pages: list[dict]) -> None:
@@ -261,7 +265,7 @@ def write_sitemap(cfg: dict, pages: list[dict]) -> None:
             f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><changefreq>weekly</changefreq><priority>{pri}</priority></url>'
         )
     lines.append("</urlset>")
-    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (OUTPUT_DIR / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("wrote sitemap.xml", len(listed), "urls")
 
 
@@ -286,7 +290,7 @@ def write_404(cfg: dict) -> None:
         f'<link rel="canonical" href="{cfg["domain"]}/404.html" />',
         f'<meta name="robots" content="noindex" />',
     )
-    (ROOT / "404.html").write_text(html, encoding="utf-8")
+    (OUTPUT_DIR / "404.html").write_text(html, encoding="utf-8")
     print("wrote 404.html")
 
 
@@ -296,20 +300,26 @@ def write_ads_txt() -> None:
         "# sephiria-guide.com — no ad network authorized yet.\n"
         "# When ads go live, publisher lines will be listed below.\n"
     )
-    (ROOT / "ads.txt").write_text(text, encoding="utf-8")
+    (OUTPUT_DIR / "ads.txt").write_text(text, encoding="utf-8")
     print("wrote ads.txt")
 
 
 def write_redirects() -> None:
     # Override Cloudflare Pages SPA soft-404 (/* → index.html 200).
     text = "/* /404.html 404\n"
-    (ROOT / "_redirects").write_text(text, encoding="utf-8")
+    (OUTPUT_DIR / "_redirects").write_text(text, encoding="utf-8")
     print("wrote _redirects")
 
 
 def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict]:
     cfg = cfg or load_config()
     pages = load_pages(content_dir)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
+    for filename in ("login.html", "robots.txt"):
+        source = ROOT / filename
+        if source.is_file():
+            shutil.copy2(source, OUTPUT_DIR / filename)
     write_theme(cfg)
     by_path = {p["path"]: p for p in pages}
 

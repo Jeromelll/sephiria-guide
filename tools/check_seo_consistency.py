@@ -22,7 +22,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
-SITE = Path(__file__).resolve().parents[1]
+SITE = Path(__file__).resolve().parents[1] / "dist"
 ORIGIN = "https://sephiria-guide.com"
 SITEMAP = SITE / "sitemap.xml"
 
@@ -126,6 +126,39 @@ def main() -> int:
 
     pages = iter_pages()
     page_urls = {file_to_url(p): p for p in pages}
+
+    for rel in ("login.html", "assets/login.css", "assets/login.js"):
+        path = SITE / rel
+        if path.is_file():
+            oks.append({"check": "login_asset", "file": rel})
+        else:
+            fails.append({"check": "login_asset_missing", "file": rel, "detail": "auth page asset missing"})
+
+    login_html = SITE / "login.html"
+    if login_html.is_file():
+        text = login_html.read_text(encoding="utf-8")
+        if '<link rel="stylesheet" href="/assets/login.css">' in text and '<script type="module" src="/assets/login.js"></script>' in text and not re.search(r"<style\b|<script\b[^>]*>[^<]", text, re.I):
+            oks.append({"check": "login_csp_compatible", "file": "login.html"})
+        else:
+            fails.append({"check": "login_csp_compatible", "file": "login.html", "detail": "login page must use external CSS/JS only"})
+
+    for path in pages:
+        text = path.read_text(encoding="utf-8")
+        if 'href="/login.html">Log in</a>' in text:
+            oks.append({"check": "login_navigation", "file": path.relative_to(SITE).as_posix()})
+        else:
+            fails.append({"check": "login_navigation", "file": path.relative_to(SITE).as_posix(), "detail": "primary navigation is missing Log in"})
+
+    privacy_path = SITE / "privacy" / "index.html"
+    if privacy_path.is_file() and "Optional account sign-in" in privacy_path.read_text(encoding="utf-8"):
+        oks.append({"check": "privacy_account_disclosure", "file": "privacy/index.html"})
+    else:
+        fails.append({"check": "privacy_account_disclosure", "file": "privacy/index.html", "detail": "account data disclosure missing"})
+
+    if (SITE / "functions").exists() or (SITE / "wrangler.jsonc").exists():
+        fails.append({"check": "private_auth_source_excluded", "detail": "runtime source/config must not be in static output"})
+    else:
+        oks.append({"check": "private_auth_source_excluded", "file": "dist"})
 
     for path in pages:
         html = path.read_text(encoding="utf-8")

@@ -1,0 +1,14 @@
+{
+  "name": "sephiria-guide",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-12",
+  "vars": {
+    "AUTH_ORIGIN": "https://sephiria-guide.com"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "AUTH_USERS",
+      "id": "2de1ba8cc84943558661619ba313f588"
+    }
+  ]
+}

@@ -28,7 +28,10 @@ jobs:
       - name: Build static site
         run: python3 build.py
 
+      - name: Check static site
+        run: python3 tools/check_seo_consistency.py && python3 tools/swap_test.py
+
       - name: Deploy to Cloudflare Pages
         # Only fires once the CLOUDFLARE_API_TOKEN secret is configured in the repo.
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
-        run: npx wrangler@4.129.0 pages deploy . --project-name sephiria-guide
+        run: npx wrangler@4.129.0 pages deploy dist --project-name sephiria-guide

@@ -2,4 +2,7 @@
 *.log
 .env
 .env.*
+.dev.vars
+.dev.vars.*
 .wrangler/
+dist/
