@@ -19,6 +19,8 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: "0319b5a34ac9ec72788d13d5cf706846"
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # build.py 用 git log 取 sitemap lastmod / dateModified
 
       - name: Set up Python
         uses: actions/setup-python@v5

@@ -8,6 +8,7 @@ config/site.json and content/*.json, not in this file.
 from __future__ import annotations
 
 import json
+import subprocess
 import shutil
 from pathlib import Path
 
@@ -72,7 +73,10 @@ def write_theme(cfg: dict) -> None:
     (OUTPUT_DIR / "assets" / "theme.css").write_text(css, encoding="utf-8")
 
 
-def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str) -> str:
+def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str, jsonld: list | None = None) -> str:
+    ld_html = "".join(
+        f'\n  <script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>' for obj in (jsonld or [])
+    )
     nav_html = []
     for label, href in cfg["nav"]:
         current = ' aria-current="page"' if href.rstrip("/") == path.rstrip("/") else ""
@@ -97,7 +101,7 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
-  <script src="{css_href(depth, "analytics.js")}" defer></script>
+  <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -242,9 +246,65 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
 """
 
 
-def write_page(cfg: dict, path: str, title: str, description: str, body: str) -> None:
+def git_lastmod(rel: str) -> str | None:
+    """Last commit date (YYYY-MM-DD) of a source file; None if git unavailable."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROOT,
+                             capture_output=True, text=True, timeout=10).stdout.strip()
+        return out or None
+    except Exception:
+        return None
+
+
+def page_lastmod(cfg: dict, page: dict) -> str:
+    return git_lastmod(f"content/{page.get('_file', '')}") or cfg["updated"]
+
+
+def page_jsonld(cfg: dict, page: dict) -> list:
+    """Structured data built only from fields already on the page (no invented facts)."""
+    domain = cfg["domain"]
+    org = {"@type": "Organization", "name": cfg["site_name"], "url": domain + "/"}
+    url = domain + page["path"]
+    layout = page.get("layout", "article")
+    if layout == "home":
+        return [
+            {"@context": "https://schema.org", "@type": "WebSite", "name": cfg["site_name"],
+             "url": domain + "/", "description": page["description"], "inLanguage": cfg["lang"], "publisher": org},
+            {"@context": "https://schema.org", **org},
+        ]
+    items = []
+    for i, (label, href) in enumerate(page.get("crumbs") or [("Home", "/"), (page.get("h1", ""), "")], start=1):
+        item = {"@type": "ListItem", "position": i, "name": label}
+        item["item"] = domain + href if href else url
+        items.append(item)
+    out = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}]
+    if layout not in ("legal", "hub"):
+        out.insert(0, {
+            "@context": "https://schema.org", "@type": "Article",
+            "headline": page.get("h1") or page["title"], "description": page["description"],
+            "url": url, "mainEntityOfPage": url, "inLanguage": cfg["lang"],
+            "dateModified": page_lastmod(cfg, page),
+            "author": org, "publisher": org,
+            "about": {"@type": "VideoGame", "name": cfg["game_name"], "url": cfg["links"]["steam"]},
+        })
+    return out
+
+
+def write_llms_txt(cfg: dict, pages: list[dict]) -> None:
+    lines = [f"# {cfg['site_name']}", "",
+             f"> Unofficial fan guides for {cfg['game_name']} by {cfg['developer']} ({cfg['links']['steam']}). "
+             "Not affiliated with the developer.", "", "## Guides"]
+    for p in pages:
+        if p.get("sitemap_exclude") or p.get("layout") == "legal":
+            continue
+        lines.append(f"- [{p.get('h1') or p['title']}]({cfg['domain']}{p['path']}): {p['description']}")
+    (OUTPUT_DIR / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("wrote llms.txt")
+
+
+def write_page(cfg: dict, path: str, title: str, description: str, body: str, jsonld: list | None = None) -> None:
     depth = depth_of(path)
-    html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body)
+    html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body, jsonld=jsonld)
     out = OUTPUT_DIR / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
@@ -262,7 +322,7 @@ def write_sitemap(cfg: dict, pages: list[dict]) -> None:
         if page.get("layout") == "legal":
             pri = "0.3"
         lines.append(
-            f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><changefreq>weekly</changefreq><priority>{pri}</priority></url>'
+            f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><lastmod>{page_lastmod(cfg, page)}</lastmod><changefreq>weekly</changefreq><priority>{pri}</priority></url>'
         )
     lines.append("</urlset>")
     (OUTPUT_DIR / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -326,7 +386,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     for page in pages:
         layout = page.get("layout", "article")
         if layout == "home":
-            write_page(cfg, page["path"], page["title"], page["description"], home_body(page, pages, cfg))
+            write_page(cfg, page["path"], page["title"], page["description"], home_body(page, pages, cfg), page_jsonld(cfg, page))
         elif layout == "hub":
             kind = page.get("hub", "guides")
             listing = f'<div class="guide-list">\n  {guide_list(pages, kind=kind)}\n</div>'
@@ -339,7 +399,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page.get("sources") or [],
                 show_stuck_prompt=True,
             )
-            write_page(cfg, page["path"], page["title"], page["description"], body)
+            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
         else:
             body = article(
                 depth_of(page["path"]),
@@ -350,11 +410,12 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page.get("sources") or [],
                 show_stuck_prompt=(layout != "legal"),
             )
-            write_page(cfg, page["path"], page["title"], page["description"], body)
+            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
 
     write_sitemap(cfg, pages)
     write_404(cfg)
     write_ads_txt()
+    write_llms_txt(cfg, pages)
     write_redirects()
     return pages
 
