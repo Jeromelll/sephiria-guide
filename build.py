@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "site.json"
 CONTENT_DIR = ROOT / "content"
 OUTPUT_DIR = ROOT / "dist"
+EXTRA_SITES_DIR = ROOT / "extra_sites"
 
 
 def load_config(path: Path = CONFIG_PATH) -> dict:
@@ -311,7 +312,28 @@ def write_page(cfg: dict, path: str, title: str, description: str, body: str, js
     print("wrote", out.relative_to(OUTPUT_DIR))
 
 
-def write_sitemap(cfg: dict, pages: list[dict]) -> None:
+def write_extra_sites(cfg: dict) -> list[dict]:
+    """Copy hand-authored game sub-sites (extra_sites/<slug>/) into dist.
+
+    These live outside content/ on purpose: each game keeps its own header and
+    footer (not the Sephiria nav or home cards) while sharing this domain and
+    canonical host. Returns sitemap entries for every index.html found.
+    """
+    extra: list[dict] = []
+    if not EXTRA_SITES_DIR.is_dir():
+        return extra
+    for slug_dir in sorted(p for p in EXTRA_SITES_DIR.iterdir() if p.is_dir()):
+        slug = slug_dir.name
+        shutil.copytree(slug_dir, OUTPUT_DIR / slug, dirs_exist_ok=True)
+        for index in sorted(slug_dir.rglob("index.html")):
+            parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
+            path = "/" + "/".join([slug, *parts]) + "/"
+            extra.append({"path": path, "lastmod": cfg.get("updated", "")})
+    print("extra sites:", len(extra), "pages")
+    return extra
+
+
+def write_sitemap(cfg: dict, pages: list[dict], extra: list[dict] | None = None) -> None:
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -324,9 +346,14 @@ def write_sitemap(cfg: dict, pages: list[dict]) -> None:
         lines.append(
             f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><lastmod>{page_lastmod(cfg, page)}</lastmod><changefreq>weekly</changefreq><priority>{pri}</priority></url>'
         )
+    for page in extra or []:
+        lastmod = f"<lastmod>{page['lastmod']}</lastmod>" if page.get("lastmod") else ""
+        lines.append(
+            f'  <url><loc>{cfg["domain"]}{page["path"]}</loc><changefreq>weekly</changefreq><priority>0.7</priority>{lastmod}</url>'
+        )
     lines.append("</urlset>")
     (OUTPUT_DIR / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print("wrote sitemap.xml", len(listed), "urls")
+    print("wrote sitemap.xml", len(listed) + len(extra or []), "urls")
 
 
 def write_404(cfg: dict) -> None:
@@ -412,7 +439,8 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
 
-    write_sitemap(cfg, pages)
+    extra = write_extra_sites(cfg)
+    write_sitemap(cfg, pages, extra)
     write_404(cfg)
     write_ads_txt()
     write_llms_txt(cfg, pages)

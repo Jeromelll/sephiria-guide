@@ -1,0 +1,45 @@
+{
+  "path": "/roots-retreat/",
+  "layout": "article",
+  "title": "Sephiria Root’s Retreat Guide — Hard Mode Stages & Unlock",
+  "description": "Sephiria Root’s Retreat guide: what Root’s Retreat is (Hard Mode stage clears), how to unlock Hard Mode, the Stage 1 / 15 / 30 achievements, and what changes.",
+  "h1": "Sephiria Root’s Retreat — Hard Mode Stages & Unlock",
+  "meta": "For sephiria roots retreat / root's retreat searches.",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Root’s Retreat",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Root’s Retreat",
+  "guides_em": "Hard Mode stages & unlock",
+  "home_also": {
+    "title": "Root’s Retreat",
+    "em": "Hard Mode stages 1 / 15 / 30"
+  },
+  "order": 56,
+  "sources": [
+    [
+      "Quest-Knight: Hard Mode freischalten",
+      "https://quest-knight.de/2026/08/02/sephiria-hard-mode-freischalten/"
+    ],
+    [
+      "PixelNitro 1.0 Hard Mode elements overview",
+      "https://pixelnitro.com/sephiria-1-0-hard-mode-guide-ultimate-18-elements-checklist-best-tier-30-builds/"
+    ],
+    [
+      "ProdigyGamers achievement list (Root’s Retreat stages)",
+      "https://prodigygamers.com/2026/08/06/sephiria-100-achievements-walkthrough-guide/"
+    ],
+    [
+      "Exophase Steam achievements (Root’s Retreat / 15 / 30)",
+      "https://www.exophase.com/game/sephiria-steam/achievements/"
+    ]
+  ],
+  "body": "<p><strong>Root’s Retreat</strong> is the name Steam achievements give to Sephiria’s Hard Mode stages — it is not a separate village or DLC area. If you searched for <em>sephiria roots retreat</em>, you are almost certainly looking for how to unlock Hard Mode or how far its stage line goes.</p>\n<h2>What Root’s Retreat actually is</h2>\n<p>Clearing Hard Mode stages grants three Steam achievements named after the retreat:</p>\n<ul>\n  <li><strong>Root’s Retreat</strong> — clear Hard Mode Stage 1</li>\n  <li><strong>Root’s Retreat 15</strong> — clear Stage 15</li>\n  <li><strong>Root’s Retreat 30</strong> — clear Stage 30</li>\n</ul>\n<p>So “Root’s Retreat” is the Hard Mode stage ladder. Stage 30 is the long-term goal most community clears are built around.</p>\n<h2>How to unlock it (post Update 0.7.55)</h2>\n<ol>\n  <li>Finish <strong>Chapter 2</strong> — story progress, not just any boss.</li>\n  <li>Return to Bunnyville and talk to the <strong>Destiny tree</strong>.</li>\n  <li>Open dialogue topics and select <strong>Hard Mode</strong>.</li>\n</ol>\n<p>You do <em>not</em> need to buy a paid Destiny node on the normal path.</p>\n<div class=\"note\"><strong>Legacy trap:</strong> older guides (and parts of the Steam “Basic Guide”) send you to a free node at the bottom of <a href=\"../destiny-inscription/\">Destiny Inscription</a>. TEAM HORAY moved the unlock to the tree dialogue in 0.7.55; treat Destiny-node instructions as outdated.</div>\n<h2>What changes in Hard Mode</h2>\n<ul>\n  <li>Dungeons gain tougher <strong>modifiers / “elements”</strong> — community 1.0 writeups catalog 18 of them — so the same route plays very differently.</li>\n  <li>The <strong>talent budget expands</strong> once Hard Mode access is online; exact totals shift by patch, so verify in-client.</li>\n  <li>It is where players take proven builds after the story route — see <a href=\"../builds/\">Builds</a> and the <a href=\"../builds/companion/\">companion build</a>.</li>\n</ul>\n<h2>Prepping for Stage 15 / 30</h2>\n<ul>\n  <li>Spend <a href=\"../wishing-fountain/\">Wishing Fountain</a> picks before each attempt — pre-run Artifacts matter more when modifiers punish improvisation.</li>\n  <li>If the tree says unlocked but no entrance shows up, restart the hub — community threads report UI lag after unlocking (<a href=\"../hard-mode/\">Hard Mode page</a>).</li>\n</ul>\n<h2>Quick FAQ</h2>\n<p><strong>Is Root’s Retreat a place in Bunnyville?</strong><br/>No — it is the achievement name for Hard Mode stage clears.</p>\n<p><strong>How many stages are there?</strong><br/>Achievements are documented up to Stage 30; anything beyond that is not yet documented.</p>\n<p><strong>Why don’t I see Hard Mode after Chapter 2?</strong><br/>Talk to the Destiny tree and pick the Hard Mode dialogue; if it says unlocked but the entrance is missing, restart the hub.</p>\n<p>Related: <a href=\"../hard-mode/\">Hard Mode unlock</a> · <a href=\"../destiny-inscription/\">Destiny Inscription</a> · <a href=\"../builds/\">Builds</a>.</p>"
+}
