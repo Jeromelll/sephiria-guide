@@ -1,11 +1,15 @@
 {
   "path": "/weapons/",
-  "title": "Sephiria Weapons Tier Notes — Six Branches",
-  "description": "Sephiria weapons guide: six branches, beginner Sword & Shield, Staff unlock path, and links to the Scythe clarification page.",
-  "h1": "Sephiria weapons",
-  "meta": "Covers sephiria weapons / tier list / unlock dagger intent at branch level.",
-  "body": "<p>Sephiria has <strong>six weapon branches</strong>, each with large upgrade trees. There is no separate “Scythe” starter weapon—see the dedicated Scythe page if that is what you searched.</p>\n<h2>How community tier lists currently read (1.0)</h2>\n<ul>\n  <li><strong>Greatsword</strong> — high damage, generous upgrade offers; slower swings.</li>\n  <li><strong>Sword &amp; Shield</strong> — best learner kit; block/reflect and Shield Bash paths.</li>\n  <li><strong>Staff / Magic</strong> — versatile spells; Staff unlocks via Destiny weapon training after chapter progress.</li>\n  <li><strong>Crossbow</strong> — safer ranged option with reload discipline.</li>\n  <li><strong>Blade / Katana</strong> — aggressive melee, higher mastery curve.</li>\n  <li><strong>Dagger</strong> — fastest hits / status; lower offer rate, higher commitment.</li>\n</ul>\n<h2>Unlock pattern (example: Staff)</h2>\n<ol>\n  <li>Progress the required chapter / patch.</li>\n  <li>Buy the weapon training node on Destiny Inscription (Staff example: Graceful Weapon Training for Sapphires).</li>\n  <li>Talk to Morrow, complete the short training ground, then the weapon appears on the village rack.</li>\n</ol>\n<div class=\"note\">Exact sapphire costs and node names can shift with patches—verify in your client Journal / Destiny UI.</div>",
+  "title": "Sephiria Weapons & Upgrades (1.0) — Six Branches, Tier Notes, Routes",
+  "description": "Sephiria weapons guide: the six branches compared, how weapon upgrade offers work, the 50+ upgrade trees, evolution routes and branch unlock steps.",
+  "h1": "Sephiria weapons & upgrades",
+  "meta": "Covers sephiria weapons / weapon upgrades / tier list / unlock dagger intent at branch level.",
+  "body": "<p>Sephiria has <strong>six weapon branches</strong>, and each one carries a deep upgrade tree — the store listing advertises more than 50 unique upgrades per weapon. There is no seventh starter weapon: the scythe people search for is a Dagger conversion, explained on the <a href=\"../items/scythe/\">scythe page</a>.</p>\n<h2>The six branches at a glance</h2>\n<table>\n  <thead><tr><th>Weapon</th><th>Identity</th><th>Best fit</th><th>Main tradeoff</th></tr></thead>\n  <tbody>\n    <tr><td>Sword and Shield</td><td>Defensive close melee</td><td>First runs and pattern learning</td><td>Short reach</td></tr>\n    <tr><td>Greatsword</td><td>Heavy, wide melee</td><td>Creating space and clearing groups</td><td>Long commitment per swing</td></tr>\n    <tr><td>Dagger</td><td>Fast reaction melee</td><td>Precise counters and bosses</td><td>Extremely short reach</td></tr>\n    <tr><td>Crossbow</td><td>Ranged positioning</td><td>Kiting and safe damage</td><td>Reload discipline</td></tr>\n    <tr><td>Katana</td><td>Aggressive melee</td><td>High ceilings once parry timing is learned</td><td>Steeper mastery curve</td></tr>\n    <tr><td>Staff / Quarterstaff</td><td>Versatile caster</td><td>Flexible damage at most ranges</td><td>Wants upgrade support to scale</td></tr>\n  </tbody>\n</table>\n<h2>How weapon upgrades actually work</h2>\n<ul>\n  <li><strong>Upgrades are offered, not bought.</strong> Each branch has a large pool — the advertised figure is more than 50 unique upgrades per weapon — and you pick from what the run shows you.</li>\n  <li><strong>Offer rates differ by branch.</strong> Community 1.0 data reports Greatsword upgrades appearing more often than Dagger upgrades, which is why best also means actually completes.</li>\n  <li><strong>Routes chain.</strong> An enhancement can convert one weapon skill into another: on Dagger, the frost line runs Dormant Frost into Drifa, and Drifa converts Blizzard Hammer into Blizzard Scythe.</li>\n  <li><strong>Endpoints have names.</strong> Community routes end at named evolutions — Frozen Smelt from the Dagger frost line, Minigun from the crossbow lightning line, Creaking Spine from the greatsword line, Biryuu on Katana, and the elemental fusion staff on the caster line.</li>\n  <li><strong>Presets remember the shape.</strong> Once a run works, a preset lets you rebuild it without re-deriving every pick.</li>\n</ul>\n<h2>Upgrade routes people finish</h2>\n<table>\n  <thead><tr><th>Route</th><th>Branch</th><th>Steps as the community writes them</th></tr></thead>\n  <tbody>\n    <tr><td>Blizzard Scythe</td><td>Dagger</td><td>Dagger &rarr; Dormant Frost &rarr; Drifa, which converts Blizzard Hammer into Blizzard Scythe</td></tr>\n    <tr><td>Frozen Smelt</td><td>Dagger</td><td>Dagger &rarr; Sleeping Frost &rarr; Frozen Smelt</td></tr>\n    <tr><td>Minigun</td><td>Crossbow</td><td>Heavy Crossbow &rarr; Unstable Lightning Mark &rarr; Minigun</td></tr>\n    <tr><td>Creaking Spine</td><td>Greatsword</td><td>Steel Greatsword &rarr; Bone Mechanism Sword &rarr; Creaking Spine</td></tr>\n    <tr><td>Biryuu</td><td>Katana</td><td>Katana &rarr; Biryuu</td></tr>\n    <tr><td>Formless Dance</td><td>Staff</td><td>Staff &rarr; Throwing Spear &rarr; Formless Dance</td></tr>\n    <tr><td>Elemental Fusion Staff</td><td>Staff</td><td>Staff &rarr; Flame Staff &rarr; Elemental Fusion Staff</td></tr>\n  </tbody>\n</table>\n<div class=\"note\">Route names and intermediate steps come from community reporting at 1.0.x. If a step is never offered in your client, the pool has changed — the branch is still the thing to commit to.</div>\n<h2>Unlocking a branch (Staff example)</h2>\n<ol>\n  <li>Progress to the chapter that opens weapon training.</li>\n  <li>Buy the weapon training node on the <a href=\"../destiny-inscription/\">Destiny Inscription</a> tree with Sapphires.</li>\n  <li>Talk to the village training-ground NPC, finish the short training ground, and the weapon appears on the village rack.</li>\n</ol>\n<div class=\"note\">Exact sapphire costs and node names shift between patches — confirm in your client Journal or Destiny UI before committing a save's Sapphires.</div>\n<h2>Are the tier lists trustworthy?</h2>\n<p>Tier lists for Sephiria disagree because they are editorial and version-bound. One 1.0 list puts Greatsword and Staff at the top and Sword and Shield near the bottom; a later 1.0.30 meta list reorders the same branches and puts Katana and Greatsword first. Both are community rankings, not official TEAM HORAY tiers.</p>\n<p>Use them to pick a branch to learn, then judge by whether your offers complete a route — see the <a href=\"../builds/\">builds page</a> for which routes people finish.</p>\n<p>Related: <a href=\"../builds/\">builds</a> &middot; <a href=\"../items/scythe/\">scythe / Drifa</a> &middot; <a href=\"../destiny-inscription/\">Destiny Inscription</a> &middot; <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
   "sources": [
+    [
+      "Steam store listing (6 weapons, 50+ upgrades each)",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
     [
       "Destructoid 1.0 weapons tier list",
       "https://www.destructoid.com/sephiria-1-0-weapons-tier-list/"
@@ -13,6 +17,14 @@
     [
       "SlashSkill six weapon types",
       "https://www.slashskill.com/sephiria-best-weapons-and-builds-for-1-0-all-6-weapon-types-ranked/"
+    ],
+    [
+      "sephiria.net weapons comparison (1.0.23)",
+      "https://sephiria.net/weapons/"
+    ],
+    [
+      "sephiriabuilds.xyz 1.0.30 weapon tier list",
+      "https://sephiriabuilds.xyz/guides/weapon-tier-list"
     ],
     [
       "YT Shield Bash build",
@@ -36,10 +48,10 @@
   ],
   "in_guides": true,
   "guides_label": "Weapons",
-  "guides_em": "Six branches",
+  "guides_em": "Six branches & routes",
   "home_start": {
     "title": "Weapons",
-    "em": "Six branches, beginner picks, unlock notes."
+    "em": "Six branches, upgrade routes, unlock notes."
   },
   "order": 40
 }

@@ -2,11 +2,11 @@
   "path": "/guides/",
   "layout": "hub",
   "hub": "guides",
-  "title": "Sephiria Wiki / Guide Hub — Sephiria Guide",
-  "description": "Sephiria guide index: beginner tips, builds, weapons, Destiny Inscription, bosses, multiplayer, and secrets.",
+  "title": "Sephiria Guide Index — Every Page on the Site",
+  "description": "Sephiria guide index: every page on the site, from the beginner guide and builds to weapons, Destiny Inscription, bosses, costumes and co-op.",
   "h1": "Sephiria guide hub",
   "meta": "Maps to searches like sephiria wiki / sephiria guide.",
-  "intro": "Looking for a Sephiria wiki-style hub? Use this index. Pages answer real search intents from Google Suggest / Trends / SimilarWeb research—not a dump of every noun in the game.",
+  "intro": "Every guide on the site, in one list. If you are new, start with the <a href=\"../wiki/\">Sephiria wiki index</a> instead — it groups these pages by topic and says which one answers what.",
   "crumbs": [
     [
       "Home",

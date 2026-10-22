@@ -1,0 +1,37 @@
+{
+  "path": "/wiki/",
+  "title": "Sephiria Wiki — Builds, Weapons, Costumes & Bosses (1.0)",
+  "description": "Source-checked Sephiria wiki index for 1.0: beginner guide, builds, weapon upgrades, Destiny Inscription, costumes, co-op, bosses and secret rooms.",
+  "h1": "Sephiria wiki",
+  "meta": "The index page for sephiria wiki / sephiria guide searches - every topic links to the page that answers it.",
+  "body": "<p>This is the index for our Sephiria wiki. Each topic lives on its own page, and every page is checked against the Steam listing, patch notes and cross-sourced community guides. Where a number depends on a patch, that page keeps its version label instead of pretending the number is permanent.</p>\n<h2>Start here</h2>\n<table>\n  <thead><tr><th>If you want</th><th>Go to</th><th>What it covers</th></tr></thead>\n  <tbody>\n    <tr><td>A first clear</td><td><a href=\"../beginner-guide/\">Beginner guide</a></td><td>The run loop, Side Bag, first twelve runs</td></tr>\n    <tr><td>A build that finishes</td><td><a href=\"../builds/\">Builds</a></td><td>Themes, weapon paths and Artifact pairings</td></tr>\n    <tr><td>Weapon upgrades</td><td><a href=\"../weapons/\">Weapons &amp; upgrades</a></td><td>Six branches, upgrade offers, evolution routes</td></tr>\n    <tr><td>Permanent power</td><td><a href=\"../destiny-inscription/\">Destiny Inscription</a></td><td>Sapphire spend order, New Events, Talents</td></tr>\n    <tr><td>Hard Mode</td><td><a href=\"../hard-mode/\">Hard Mode unlock</a></td><td>Chapter 2 into Root&rsquo;s Retreat</td></tr>\n    <tr><td>Hidden rooms</td><td><a href=\"../secret-rooms/\">Secret rooms</a></td><td>Cracked walls and hidden-room tells</td></tr>\n  </tbody>\n</table>\n<h2>Sephiria at a glance</h2>\n<ul>\n  <li><strong>Six chapters</strong> and <strong>six weapon branches</strong>. The store listing also counts 60+ distinct enemies and 10+ bosses.</li>\n  <li><strong>Deep weapon trees</strong> &mdash; the listing advertises more than 50 unique upgrades per weapon.</li>\n  <li><strong>Artifacts and Tablets</strong> are the inventory puzzle: arrange Artifacts, then amplify them with Tablets, so adjacency matters as much as rarity.</li>\n  <li><strong>Online co-op for up to four players</strong>, with item trading and revives.</li>\n  <li><strong>Costumes change opening stats</strong>, not just looks, so they are part of a build.</li>\n</ul>\n<h2>Systems and progression</h2>\n<ul>\n  <li><a href=\"../destiny-inscription/\">Destiny Inscription tree</a> &mdash; the permanent sapphire tree.</li>\n  <li><a href=\"../artifacts/\">Artifacts and Tablets</a> &mdash; grid rules, adjacency, Side Bag behaviour.</li>\n  <li><a href=\"../wishing-fountain/\">Wishing Fountain</a> &mdash; the town Artifact picker.</li>\n  <li><a href=\"../roots-retreat/\">Root&rsquo;s Retreat</a> &mdash; the Hard Mode stage run.</li>\n  <li><a href=\"../items/scythe/\">Scythe (Drifa)</a> &mdash; why the scythe is a Dagger route, not a seventh weapon.</li>\n</ul>\n<h2>Builds and combat</h2>\n<ul>\n  <li><a href=\"../builds/\">Builds overview</a> &mdash; archetypes, Artifact and Tablet pairings, version notes.</li>\n  <li><a href=\"../builds/companion/\">Companion / summoner setup</a> &mdash; the classic pet build.</li>\n  <li><a href=\"../weapons/\">Weapons and weapon upgrades</a> &mdash; branch comparison and evolution routes.</li>\n</ul>\n<h2>Characters, costumes and NPCs</h2>\n<ul>\n  <li><a href=\"../characters/\">Characters</a> &mdash; the playable hero, what costumes do, and the tower NPCs.</li>\n  <li><a href=\"../costumes/\">Costume roster and unlocks</a> &mdash; every skin with its effect and unlock condition.</li>\n</ul>\n<h2>Bosses and enemies</h2>\n<ul>\n  <li><a href=\"../bosses/\">Boss index</a> &middot; <a href=\"../bosses/erma/\">Erma (Mad Scientist)</a> &middot; <a href=\"../bosses/final/\">Final boss (Qliphoth)</a></li>\n</ul>\n<h2>Co-op</h2>\n<ul>\n  <li><a href=\"../multiplayer/\">Multiplayer setup</a> &mdash; requirements, host steps, invites.</li>\n  <li><a href=\"../coop/\">Co-op play guide</a> &mdash; party scaling, trading, revives, co-op-friendly builds.</li>\n</ul>\n<h2>How this wiki is kept honest</h2>\n<p>Official statements come from the Steam listing and the team&rsquo;s patch notes; everything else is labelled as community consensus or a single-source report. Version labels stay visible, so you can tell how old a number is. If a page disagrees with your client, trust your client and tell us through <a href=\"../contact/\">contact</a>.</p>\n<p>Every page on the site is also listed in the <a href=\"../guides/\">guide index</a>.</p>",
+  "sources": [
+    [
+      "Steam store listing",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "Steam news / patch notes",
+      "https://steamcommunity.com/app/2436940/allnews/"
+    ],
+    [
+      "Steam Basic Guide (community)",
+      "https://steamcommunity.com/sharedfiles/filedetails/?id=3474238982"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Wiki",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Wiki index",
+  "guides_em": "Every topic in one place",
+  "order": 5
+}

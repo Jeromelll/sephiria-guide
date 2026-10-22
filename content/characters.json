@@ -1,0 +1,41 @@
+{
+  "path": "/characters/",
+  "title": "Sephiria Characters — Hero, Costumes & Tower NPCs (1.0)",
+  "description": "Sephiria characters guide: the playable rabbit hero, how costumes change opening stats, and the village and tower NPCs that gate weapons and secret skins.",
+  "h1": "Sephiria characters",
+  "meta": "Covers sephiria characters / NPC searches; pairs with the costume roster page.",
+  "body": "<p>Sephiria has one playable hero — the rabbit — plus a roster of costumes that change how a run starts. Everyone else is an NPC, and two of them gate weapon unlocks and a secret costume.</p>\n<h2>Who you play</h2>\n<p>You play the rabbit of Bunnyville. There is no class pick and no second hero, so your real character choice is the <strong>costume</strong> — and costumes are not cosmetic, because each one trades opening stats against each other. That makes them behave like a pre-run loadout rather than a skin.</p>\n<h2>How costumes change a run</h2>\n<ul>\n  <li>Costumes set opening stats and trade-offs, so they shift which build comes online fastest — see <a href=\"../builds/\">builds</a>.</li>\n  <li>Some are unlocked by challenges rather than bought. The <a href=\"../costumes/\">costume roster page</a> lists every skin with its effect and unlock condition.</li>\n  <li>Roster size depends on when you count: the launch listing says over 20 costumes, while the community database tracked at v1.0.24 lists 27 playable skins (8 from the start, 19 unlocked).</li>\n</ul>\n<h2>Non-playable characters</h2>\n<table>\n  <thead><tr><th>Character</th><th>Where</th><th>What they do</th></tr></thead>\n  <tbody>\n    <tr><td>Moro (written Morrow in some guides)</td><td>Village training ground, east side</td><td>Unlocks weapon branches once you own the matching Destiny Inscription node. Community data lists Greatsword, Dagger, Crossbow, Blade and Staff on this route, with Sword and Shield excluded</td></tr>\n    <tr><td>Manok, the friendly wanderer</td><td>Village, at the Iron Maiden</td><td>Runs the Blood Donation event; donating five times across runs unlocks the Wingless Bat costume</td></tr>\n    <tr><td>Elru</td><td>Hides in three spots: the carrot farm, the pond by the clothing shop, and the Ark puzzle room</td><td>The Hide and Seek event target, and a repeatable Destiny Inscription event</td></tr>\n    <tr><td>Hizo</td><td>Near the farm</td><td>Village event NPC</td></tr>\n    <tr><td>Connor</td><td>In front of the Ark</td><td>Village event NPC</td></tr>\n    <tr><td>Valter</td><td>Magic Workshop</td><td>Village event NPC</td></tr>\n  </tbody>\n</table>\n<div class=\"note\">NPC roles and locations come from community records, including the in-game Destiny Inscription event text. If a village event has moved in a patch, your client wins.</div>\n<p>Related: <a href=\"../costumes/\">costume roster and unlocks</a> &middot; <a href=\"../builds/\">builds</a> &middot; <a href=\"../destiny-inscription/\">Destiny Inscription</a> &middot; <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
+  "sources": [
+    [
+      "Steam store listing",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "sephiriawiki.net character roster (v1.0.24)",
+      "https://www.sephiriawiki.net/character/sephiria-characters"
+    ],
+    [
+      "sephiria.net characters & costumes",
+      "https://sephiria.net/characters/"
+    ],
+    [
+      "sephiriawiki.online weapon training unlock",
+      "https://sephiriawiki.online/guides/moro-weapon-training"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Characters",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Characters",
+  "guides_em": "Hero + NPCs",
+  "order": 105
+}

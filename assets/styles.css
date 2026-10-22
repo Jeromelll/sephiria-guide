@@ -418,3 +418,27 @@ a:hover { color: var(--accent); }
   }
   .guide-list em { text-align: left; }
 }
+
+/* Tables - wiki index, build archetypes, costume roster */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.6rem;
+  font-size: 0.94rem;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+thead th {
+  background: var(--bg-deep);
+  border-bottom: 2px solid var(--line);
+  font-weight: 600;
+}
+tbody tr:nth-child(even) { background: rgba(26, 36, 51, 0.03); }
+@media (max-width: 640px) {
+  table { font-size: 0.88rem; }
+  th, td { padding: 0.45rem 0.5rem; }
+}

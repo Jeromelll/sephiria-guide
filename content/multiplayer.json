@@ -1,14 +1,18 @@
 {
   "path": "/multiplayer/",
-  "title": "Sephiria Multiplayer — How to Invite Friends",
-  "description": "Sephiria multiplayer guide: 4-player co-op, stone-wall lobby creation, Steam invites, and host caveats.",
+  "title": "Sephiria Multiplayer — How to Invite Friends & Open a Co-op Lobby",
+  "description": "Sephiria multiplayer guide: 4-player online co-op, co-op requirements, creating a Steam lobby, inviting friends, and the host caveats to expect.",
   "h1": "Sephiria multiplayer",
   "meta": "For sephiria multiplayer / co-op / invite searches.",
-  "body": "<p>Steam lists online co-op for up to <strong>four players</strong> with trading and revive support. Host disconnects can ruin the lobby—expect host-authoritative progress.</p>\n<h2>How to open a lobby (quick)</h2>\n<ul>\n  <li>In the village / hub, find the large <strong>stone wall next to the dungeon entrance</strong>.</li>\n  <li>Interact to create a lobby—you do not need to clear story gates first (per short tutorial footage).</li>\n  <li>Invite via Steam; PixelNitro’s 1.0 writeup also describes the Mysterious Door / host flow.</li>\n</ul>",
+  "body": "<p>Steam lists online co-op for up to four players, with item trading and revives. The session belongs to the host, so a host disconnect is the usual way a run breaks.</p>\n<h2>How to open a lobby (quick)</h2>\n<ul>\n  <li>Finish the prologue and tutorial first — guests have to as well.</li>\n  <li>In the village, find the co-op access point near the dungeon entrance and interact with it.</li>\n  <li>Create a Steam lobby; the creator becomes the host.</li>\n  <li>Invite friends through Steam. There are no in-game lobby codes.</li>\n</ul>\n<h2>Co-op requirements and party size</h2>\n<table>\n  <thead><tr><th>Item</th><th>Value</th></tr></thead>\n  <tbody>\n    <tr><td>Connection</td><td>Online co-op through Steam</td></tr>\n    <tr><td>Capacity</td><td>Up to 4 players total</td></tr>\n    <tr><td>Progress</td><td>Host-authoritative; guests play in the host's session</td></tr>\n    <tr><td>Shared actions</td><td>Trade items, revive fallen teammates</td></tr>\n    <tr><td>Prologue</td><td>Required for the host and for every guest</td></tr>\n  </tbody>\n</table>\n<div class=\"note\">Community guides describe the access point as a mysterious door or wall in the village; earlier write-ups point at the stone wall by the dungeon entrance. Both agree it is a village interaction that opens after the tutorial.</div>\n<h2>Host and guest steps</h2>\n<ol>\n  <li><strong>Host:</strong> finish the tutorial until the village hub opens.</li>\n  <li><strong>Host:</strong> interact with the co-op access point and choose to create a lobby.</li>\n  <li><strong>Guest:</strong> accept the Steam invite; you join the host's session.</li>\n  <li><strong>Everyone:</strong> agree the Artifact and Tablet split before the first floor — see the <a href=\"../coop/\">co-op play guide</a>.</li>\n</ol>\n<p>Related: <a href=\"../coop/\">co-op play guide</a> &middot; <a href=\"../builds/\">builds</a> &middot; <a href=\"../characters/\">characters</a> &middot; <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
   "sources": [
     [
-      "Steam Features",
+      "Steam store listing (online co-op, trade, revive)",
       "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "sephiria.net co-op guide (community, 1.0)",
+      "https://sephiria.net/guides/coop/"
     ],
     [
       "PixelNitro multiplayer guide",

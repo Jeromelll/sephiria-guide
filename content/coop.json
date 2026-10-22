@@ -1,0 +1,37 @@
+{
+  "path": "/coop/",
+  "title": "Sephiria Co-op Guide — 4-Player Runs, Trading & Revives (1.0)",
+  "description": "Sephiria co-op guide: how four-player runs change enemy pressure, what to trade, how revives work, and which builds carry a party.",
+  "h1": "Sephiria co-op",
+  "meta": "Covers sephiria co-op / coop / four-player run searches; lobby setup lives on the multiplayer page.",
+  "body": "<p>Co-op in Sephiria is online Steam co-op for up to four players, and it changes how a run plays: enemy pressure scales with the party, and the group can trade items and revive each other. For lobby setup, start with the <a href=\"../multiplayer/\">multiplayer setup page</a> — this page is about actually playing together.</p>\n<h2>What changes in co-op</h2>\n<table>\n  <thead><tr><th>System</th><th>Single player</th><th>In co-op</th></tr></thead>\n  <tbody>\n    <tr><td>Party size</td><td>One</td><td>Up to four players, joined through Steam invites</td></tr>\n    <tr><td>Enemies</td><td>Baseline density and health</td><td>Reported to scale with the number of players</td></tr>\n    <tr><td>Items</td><td>Yours only</td><td>You can trade items with the party</td></tr>\n    <tr><td>Death</td><td>Run over</td><td>A teammate can revive you mid-run</td></tr>\n    <tr><td>Loot pressure</td><td>Everything is yours</td><td>Artifact and Tablet competition is real — agree grid priorities before the run</td></tr>\n  </tbody>\n</table>\n<h2>Co-op builds that pull their weight</h2>\n<ul>\n  <li><strong>Companion / summoner</strong> — summons soak aggro, which is worth more in a party than solo. See the <a href=\"../builds/companion/\">companion build</a>.</li>\n  <li><strong>Freeze control (Dagger route)</strong> — locking down normal enemies lets the damage player work. See <a href=\"../builds/\">builds</a>.</li>\n  <li><strong>Tank sword and shield</strong> — block and reflect builds are the natural revive-buddy role.</li>\n  <li><strong>Ranged crossbow</strong> — safe damage while melee players hold the line.</li>\n</ul>\n<h2>Practical co-op habits</h2>\n<ul>\n  <li><strong>Agree the grid split before floor one.</strong> Tablets and Artifacts are shared loot, so decide who spends Tablets on what.</li>\n  <li><strong>Trade duplicates instead of vendoring them.</strong> Item trading is built in, so a drop you cannot use may complete a teammate's route.</li>\n  <li><strong>Keep one player on revive duty.</strong> Revives are the single biggest co-op advantage — a party that ignores them plays harder than solo.</li>\n  <li><strong>Match difficulty to the weakest member.</strong> Enemy scaling makes a carried player a liability, and Hard Mode is a per-run choice.</li>\n  <li><strong>Expect host-authoritative progress.</strong> The session belongs to the host, so a host disconnect is the usual cause of a broken lobby.</li>\n</ul>\n<h2>If co-op will not start</h2>\n<ul>\n  <li>Both host and guest should finish the prologue and tutorial before trying to join.</li>\n  <li>Look for the village co-op access point after the tutorial rather than expecting an option on the title screen.</li>\n  <li>Confirm the invite actually reached your friend through Steam — the lobby uses Steam invites, not in-game lobby codes.</li>\n</ul>\n<div class=\"note\">The four-player limit, item trading and revives are from the Steam listing; the monster-scaling behaviour is reported by a third-party review rather than stated officially, so treat it as a community observation.</div>\n<p>Related: <a href=\"../multiplayer/\">multiplayer setup</a> &middot; <a href=\"../builds/\">builds</a> &middot; <a href=\"../characters/\">characters</a> &middot; <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
+  "sources": [
+    [
+      "Steam store listing (4-player online co-op, trading, revives)",
+      "https://store.steampowered.com/app/2436940/Sephiria/"
+    ],
+    [
+      "sephiria.net co-op guide (community, 1.0)",
+      "https://sephiria.net/guides/coop/"
+    ],
+    [
+      "PixelNitro multiplayer guide",
+      "https://pixelnitro.com/sephiria-multiplayer-guide-how-to-invite-friends-for-online-co-op-version-1-0/"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Co-op",
+      ""
+    ]
+  ],
+  "in_guides": true,
+  "guides_label": "Co-op play",
+  "guides_em": "Party scaling & revives",
+  "order": 82
+}
