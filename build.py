@@ -414,11 +414,15 @@ def write_redirects() -> None:
             apex = MOVED_SITES.get(slug_dir.name)
             if not apex:
                 continue
-            for index in sorted(slug_dir.rglob("index.html")):
-                parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
-                old = "/" + "/".join([slug_dir.name, *parts]) + ("/" if parts else "")
-                new = f"https://{apex}/" + "/".join(parts) + ("/" if parts else "")
-                lines.append(f"{old} {new} 301")
+        for index in sorted(slug_dir.rglob("index.html")):
+            parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
+            old = "/" + "/".join([slug_dir.name, *parts]) + "/"
+            new = f"https://{apex}/" + "/".join(parts) + ("/" if parts else "")
+            lines.append(f"{old} {new} 301")
+            if not parts:
+                # Pages normalises a bare sub-site path to its trailing-slash form
+                # before matching, so the root needs both variants.
+                lines.append(f"/{slug_dir.name} {new} 301")
     text = "\n".join(lines) + ("\n" if lines else "")
     # Override Cloudflare Pages SPA soft-404 (/* → index.html 200).
     (OUTPUT_DIR / "_redirects").write_text(text + "/* /404.html 404\n", encoding="utf-8")
