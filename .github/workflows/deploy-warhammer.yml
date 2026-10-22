@@ -34,4 +34,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
-        run: npx wrangler@4.129.0 pages deploy warhammer-dist --project-name warhammer-survivors --commit-dirty=true
+        run: |
+          npx wrangler@4.129.0 pages project create warhammer-survivors --production-branch=main 2>&1 | tee /tmp/create.log || true
+          grep -qiE "already exists|already taken" /tmp/create.log && echo "project exists, continuing"
+          npx wrangler@4.129.0 pages deploy warhammer-dist --project-name warhammer-survivors --commit-dirty=true
