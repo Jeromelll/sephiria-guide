@@ -43,11 +43,15 @@ jobs:
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
         run: |
           for d in warhammersurvivors.com www.warhammersurvivors.com; do
-            echo "binding $d"
+            echo "=== binding $d ==="
             curl -sS -X POST \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
               -H "Content-Type: application/json" \
               --data "{\"name\":\"$d\"}" \
-              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/warhammer-survivors/domains" \
-              | head -c 400; echo
+              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/warhammer-survivors/domains"
+            echo
           done
+          echo "=== current domains ==="
+          curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/warhammer-survivors/domains"
+          echo
