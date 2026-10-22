@@ -106,7 +106,14 @@ def main() -> int:
         ),
         encoding="utf-8",
     )
-    (OUT / "_redirects").write_text("/* /404.html 404\n", encoding="utf-8")
+    (OUT / "_redirects").write_text(
+        # www → apex first: Pages applies rules in order, so the SPA 404 catch-all
+        # below must not swallow the host redirect.
+        "/index.html / 301\n"
+        "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301\n"
+        "/* /404.html 404\n",
+        encoding="utf-8",
+    )
     print(f"wrote sitemap.xml ({len(urls)} urls), robots.txt, 404.html, _redirects")
     return 0
 
