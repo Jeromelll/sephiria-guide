@@ -39,6 +39,21 @@ jobs:
           grep -qiE "already exists|already taken" /tmp/create.log && echo "project exists, continuing"
           npx wrangler@4.129.0 pages deploy warhammer-dist --project-name warhammer-survivors --commit-dirty=true
 
+      - name: Diagnose DNS and domain status
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        run: |
+          echo "=== domain status ==="
+          curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/warhammer-survivors/domains"
+          echo
+          echo "=== zone dns records ==="
+          ZID=$(curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones?name=warhammersurvivors.com" | python3 -c "import sys,json;print(json.load(sys.stdin)['result'][0]['id'])")
+          echo "zone=$ZID"
+          curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones/$ZID/dns_records" | head -c 2000
+          echo
+
       - name: Bind custom domain
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
         run: |
