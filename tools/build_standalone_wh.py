@@ -26,6 +26,8 @@ PREFIX = "/warhammer-survivors/"
 
 
 def rewrite(html: str) -> str:
+    # static assets (css/images) referenced by absolute sub-site path
+    html = html.replace(f"{PREFIX}assets/", "/assets/")
     # canonical first (most specific), then internal links
     html = html.replace(f'href="{OLD_DOMAIN}"', f'href="{NEW_DOMAIN}"')
     html = html.replace(OLD_DOMAIN, NEW_DOMAIN)
@@ -85,6 +87,12 @@ def main() -> int:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dest)
             print("copied", dest.relative_to(ROOT))
+
+    # Theme assets (css, screenshots) ship as-is under /assets/.
+    assets = SRC / "assets"
+    if assets.is_dir():
+        shutil.copytree(assets, OUT / "assets")
+        print("copied assets/")
 
     urls: list[str] = []
     for index in sorted(SRC.rglob("index.html")):
