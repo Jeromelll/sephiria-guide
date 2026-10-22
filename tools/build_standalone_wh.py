@@ -33,6 +33,8 @@ def rewrite(html: str) -> str:
     html = html.replace(OLD_DOMAIN, NEW_DOMAIN)
     html = re.sub(rf'href="{re.escape(PREFIX)}([^"]*)"', lambda m: f'href="/{m.group(1)}"', html)
     html = re.sub(rf'href="{re.escape(PREFIX.rstrip())}"', 'href="/"', html)
+    # login lives only on sephiria-guide.com; drop the nav entry on the standalone domain
+    html = re.sub(r'<a class="login" href="/login\.html">[^<]*</a>', "", html)
     # standalone footer: drop the cross-site network line
     html = re.sub(
         r'Part of the guide network at <a href="/">sephiria-guide\.com</a>[^.]*\.\s*',
@@ -62,6 +64,30 @@ def main() -> int:
                 bad.append(str(p.relative_to(OUT)))
             if "sephiria-guide.com" in t:
                 bad.append(f"{p.relative_to(OUT)} (sephiria ref)")
+        # every internal href/src must resolve to a file in warhammer-dist/
+        for p in OUT.rglob("*.html"):
+            t = p.read_text(encoding="utf-8")
+            base = "/" + "/".join(p.relative_to(OUT).parent.parts)
+            for ref in re.findall(r'(?:href|src)="([^"#?]+)', t):
+                if re.match(r"^(https?:|mailto:|data:|//)", ref):
+                    if ref.startswith(NEW_DOMAIN):
+                        ref = "/" + ref[len(NEW_DOMAIN):]
+                    else:
+                        continue
+                path = ref if ref.startswith("/") else (base.rstrip("/") + "/" + ref)
+                parts = []
+                for seg in path.split("/"):
+                    if seg in ("", "."):
+                        continue
+                    if seg == "..":
+                        parts and parts.pop()
+                    else:
+                        parts.append(seg)
+                target = OUT.joinpath(*parts) if parts else OUT
+                if target.is_dir():
+                    target = target / "index.html"
+                if not target.is_file():
+                    bad.append(f"{p.relative_to(OUT)} (broken link {ref})")
         if bad:
             print("FAIL leftover sub-site references:")
             for b in sorted(set(bad)):
