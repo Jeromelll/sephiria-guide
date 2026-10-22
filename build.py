@@ -17,6 +17,9 @@ CONFIG_PATH = ROOT / "config" / "site.json"
 CONTENT_DIR = ROOT / "content"
 OUTPUT_DIR = ROOT / "dist"
 EXTRA_SITES_DIR = ROOT / "extra_sites"
+# Sub-sites that now live on their own apex domain. Keys are directory names under
+# extra_sites/; values are the apex they moved to.
+MOVED_SITES = {"warhammer-survivors": "warhammersurvivors.com"}
 
 
 def load_config(path: Path = CONFIG_PATH) -> dict:
@@ -319,12 +322,19 @@ def write_extra_sites(cfg: dict) -> list[dict]:
     These live outside content/ on purpose: each game keeps its own header and
     footer (not the Sephiria nav or home cards) while sharing this domain and
     canonical host. Returns sitemap entries for every index.html found.
+
+    Sub-sites in MOVED_SITES live on their own apex now, so they are not copied
+    at all: write_redirects() emits 301s for their old sub-paths and the moved
+    domain serves the pages itself.
     """
     extra: list[dict] = []
     if not EXTRA_SITES_DIR.is_dir():
         return extra
     for slug_dir in sorted(p for p in EXTRA_SITES_DIR.iterdir() if p.is_dir()):
         slug = slug_dir.name
+        if slug in MOVED_SITES:
+            print(f"extra site {slug}: moved to {MOVED_SITES[slug]}, not copied")
+            continue
         shutil.copytree(slug_dir, OUTPUT_DIR / slug, dirs_exist_ok=True)
         for index in sorted(slug_dir.rglob("index.html")):
             parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
@@ -393,10 +403,26 @@ def write_ads_txt() -> None:
 
 
 def write_redirects() -> None:
+    # The Warhammer Survivors sub-site moved to its own domain (warhammersurvivors.com);
+    # redirect the old sub-paths so existing links and indexed URLs pass their ranking
+    # signal on. Only sub-sites with a registered apex are redirected — others still live
+    # here. Rules must precede the SPA 404 catch-all below, since Pages applies
+    # _redirects in order.
+    lines = []
+    if EXTRA_SITES_DIR.is_dir():
+        for slug_dir in sorted(p for p in EXTRA_SITES_DIR.iterdir() if p.is_dir()):
+            apex = MOVED_SITES.get(slug_dir.name)
+            if not apex:
+                continue
+            for index in sorted(slug_dir.rglob("index.html")):
+                parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
+                old = "/" + "/".join([slug_dir.name, *parts]) + ("/" if parts else "")
+                new = f"https://{apex}/" + "/".join(parts) + ("/" if parts else "")
+                lines.append(f"{old} {new} 301")
+    text = "\n".join(lines) + ("\n" if lines else "")
     # Override Cloudflare Pages SPA soft-404 (/* → index.html 200).
-    text = "/* /404.html 404\n"
-    (OUTPUT_DIR / "_redirects").write_text(text, encoding="utf-8")
-    print("wrote _redirects")
+    (OUTPUT_DIR / "_redirects").write_text(text + "/* /404.html 404\n", encoding="utf-8")
+    print("wrote _redirects", len(lines), "moved-page redirects")
 
 
 def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict]:
