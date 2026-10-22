@@ -6,3 +6,4 @@
 .dev.vars.*
 .wrangler/
 dist/
+warhammer-dist/
