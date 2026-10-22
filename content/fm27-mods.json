@@ -1,0 +1,47 @@
+{
+  "path": "/fm27-mods/",
+  "title": "FM27 Mods — Real Names, Logo & Face Packs",
+  "description": "FM27 mods: what lands in the first weeks after 10 November, which FM26 packs carry over, the install order that works, and the compatibility rules that break most installs.",
+  "h1": "FM27 mods",
+  "meta": "Football Manager 27 mods — what is version-locked, what carries over, and the install order that works.",
+  "body": "<p>No FM27 mods exist on 22 October 2026. Mods are built against a shipped build: the folder tree, the config format and — for anything touching the database — the save format itself. FM27 launches on 10 November, so this page is the compatibility map you need before the download links start appearing.</p>\n<h2>What \"mods\" means in Football Manager</h2>\n<p>Five different things get called a mod, and they age very differently:</p>\n<ul>\n  <li><strong>Real names and licensing fixes</strong> — restore real competition, club and award names. Database-level, so version-locked.</li>\n  <li><strong>Graphics packs</strong> — logos, kits and player faces. Image files plus a config file, so the least version-sensitive family.</li>\n  <li><strong>Skins</strong> — interface replacements, rebuilt whenever panels move. Covered on the <a href='../fm27-skins/'>FM27 skins page</a>.</li>\n  <li><strong>Data updates and editor files</strong> — transfer updates, custom leagues, edited databases. Locked to the game version that reads them.</li>\n  <li><strong>Tools</strong> — scouting and editing utilities that read a save file. They break when the save format changes, and they break hardest.</li>\n</ul>\n<h2>Why the first weeks after launch look like this</h2>\n<p>The FM26 download area on FM Scout carries around 690 files and is still being updated in 2026 — the FM26 real names fix still carried a March 2026 update and sits among the most-downloaded files in that area. That tells you where demand sits: names first, faces and logos next, tools last.</p>\n<p>Expect the same order for FM27. A real names fix cannot exist until someone can read the FM27 database, which means after the launch build or a late Launch Preview. Graphics packs can be assembled earlier, because most of the artwork is reused.</p>\n<h2>What carries over from FM26</h2>\n<ul>\n  <li><strong>Logos and kits:</strong> usually yes. Existing packs are image files, and guides to FM26 graphics describe earlier packs working after small adjustments — the adjustment being the folder layout and the config file, not the artwork.</li>\n  <li><strong>Faces:</strong> yes, with the same caveat. Season-specific face megapacks need a new season release before they are useful.</li>\n  <li><strong>Real names fixes:</strong> no. A fix written against the FM26 database does not patch the FM27 database.</li>\n  <li><strong>Editor files and custom databases:</strong> no. They are built for a specific game version and will not load cleanly into the next one.</li>\n  <li><strong>Skins:</strong> no, not without a rebuild.</li>\n  <li><strong>Tools:</strong> no, until the tool author ships an FM27 build.</li>\n</ul>\n<h2>Install order that avoids the usual failures</h2>\n<ol>\n  <li><strong>Launch the game once</strong> so it creates its user-data folder, then confirm the FM27 folder name inside Sports Interactive.</li>\n  <li><strong>Drop graphics into the graphics subfolder</strong>, one folder per pack, keeping the pack's internal folder structure intact.</li>\n  <li><strong>Check the config file</strong> — a pack without a valid config will show nothing even when every image is in the right place.</li>\n  <li><strong>Clear the cache</strong>, then reload the skin with caching off. Skipping this is the most common reason a correct install looks broken.</li>\n  <li><strong>Verify in-game</strong> on a club whose badge you know, before you install the next pack. One change at a time is the only way to find the thing that broke it.</li>\n</ol>\n<div class='note'>Back up the saves subfolder before installing anything that touches the database. Graphics are reversible; a half-applied data update is not.</div>\n<h2>The FM27 week-one checklist</h2>\n<ul>\n  <li><strong>Day one:</strong> nothing. Play the launch build and confirm what is actually missing — FM27 adds a fully licensed Arkema Première Ligue, and licensing changes shift what a names fix needs to cover.</li>\n  <li><strong>First week:</strong> logo pack, face pack, one skin — the three that are safe and reversible.</li>\n  <li><strong>After the first patch:</strong> real names fix and any editor data, once they are rebuilt against the shipped database.</li>\n  <li><strong>Never:</strong> a data update from a different game version, or an FM26 tool pointed at an FM27 save.</li>\n</ul>\n<h2>What this page will not do</h2>\n<p>No rehosting of other people's files. No \"FM27 mod\" label on an FM26 pack with a renamed title. Every entry will name the version it was built for and the date it was checked.</p>\n<h2>FM27 index pages</h2>\n<ul>\n  <li><a href='../fm27-wonderkids/'>FM27 wonderkids</a> — shortlist method and the PA bands worth watching.</li>\n  <li><a href='../fm27-tactics/'>FM27 tactics</a> — what Tactical Tweaks change and how a tactic gets listed.</li>\n  <li><a href='../fm27-skins/'>FM27 skins</a> — install path, cache rules, and what has to be rebuilt.</li>\n  <li><a href='../fm27/'>FM27 guide hub</a> — release dates and the update schedule for all four clusters.</li>\n</ul>\n<p>Site-wide: <a href='../guides/'>all guides</a> · <a href='../about/'>about this site</a>.</p>",
+  "sources": [
+    [
+      "FM Scout: Football Manager 2026 mods",
+      "https://www.fmscout.com/c-fm26-mods.html"
+    ],
+    [
+      "FM Scout: FM 2026 download area",
+      "https://www.fmscout.com/c-files26.html"
+    ],
+    [
+      "Where FM26 stores saves, skins and graphics",
+      "https://filepathgeek.com/posts/football-manager-26-data-location"
+    ],
+    [
+      "Graphics packs in Football Manager 26",
+      "https://footballgamingzone.com/football-manager/graphics-packs-in-football-manager-26-guide"
+    ],
+    [
+      "Arkema Première Ligue fully licensed in FM27",
+      "https://www.footballmanager.com/news/arkema-premiere-ligue-fully-licensed-football-manager-27"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "FM27",
+      "/fm27/"
+    ],
+    [
+      "Mods",
+      ""
+    ]
+  ],
+  "in_guides": false,
+  "order": 230
+}
