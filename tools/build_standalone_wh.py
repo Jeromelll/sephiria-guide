@@ -75,6 +75,17 @@ def main() -> int:
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
+    # Extra root files (Search Console verification tokens, ads.txt, …) ship as-is.
+    extras = ROOT / "extra_sites" / "_root_files"
+    if extras.is_dir():
+        for src in sorted(extras.rglob("*")):
+            if not src.is_file():
+                continue
+            dest = OUT / src.relative_to(extras)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dest)
+            print("copied", dest.relative_to(ROOT))
+
     urls: list[str] = []
     for index in sorted(SRC.rglob("index.html")):
         rel_dir = index.parent.relative_to(SRC)
