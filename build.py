@@ -108,8 +108,8 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
-  <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
+  <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={cfg["updated"]}" />
+  <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={cfg["updated"]}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
 </head>
 <body>
