@@ -101,6 +101,10 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <meta name="keywords" content="{cfg["seo_keywords"]}" />
   <link rel="canonical" href="{cfg["domain"]}{path}" />
   <meta property="og:image" content="{cfg["domain"]}/assets/img/capsule.jpg" />
+  <link rel="icon" href="{css_href(depth, "favicon.svg")}" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{css_href(depth, "favicon-32x32.png")}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{css_href(depth, "favicon-16x16.png")}" />
+  <link rel="apple-touch-icon" href="{css_href(depth, "apple-touch-icon.png")}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -440,7 +444,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     pages = load_pages(content_dir)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
-    for filename in ("login.html", "robots.txt"):
+    for filename in ("login.html", "robots.txt", "favicon.ico"):
         source = ROOT / filename
         if source.is_file():
             shutil.copy2(source, OUTPUT_DIR / filename)
