@@ -4,7 +4,7 @@
   "description": "Sephiria Artifact and Tablet guide: Side Bag rules, adjacency, and why tablet geometry beats raw rarity.",
   "h1": "Artifacts & Tablets",
   "meta": "Supports artifact / tablet searches; pairs with builds pages.",
-  "body": "<p>Artifacts and Tablets are the mid-run puzzle. Tablets buff geometry (lines, crosses, columns). An Artifact outside an active pattern wastes space.</p>\n<ul>\n  <li>Side Bag storage <strong>disables</strong> effects—use it as a bench, not a secret second board.</li>\n  <li>Adjacency / edge / “no neighbors” constraints force full reshuffles after bosses.</li>\n  <li>Mystic Pot can convert leftover Artifacts (same rarity, or feed two to climb a rarity)—handy for awkward drops.</li>\n</ul>",
+  "body": "<p>Artifacts and Tablets are the mid-run puzzle. Tablets buff geometry (lines, crosses, columns). An Artifact outside an active pattern wastes space.</p>\n<ul>\n  <li>Side Bag storage <strong>disables</strong> effects—use it as a bench, not a secret second board.</li>\n  <li>Adjacency / edge / “no neighbors” constraints force full reshuffles after bosses.</li>\n  <li>Mystic Pot can convert leftover Artifacts (same rarity, or feed two to climb a rarity)—handy for awkward drops.</li>\n</ul>\n\n<h2>Related Sephiria guides</h2>\n<ul><li><a href=\"../builds/\">Sephiria builds</a> &mdash; how Artifacts pair into finished archetypes</li><li><a href=\"../weapons/\">Weapons &amp; upgrades</a> &mdash; upgrade offers change what your Artifacts amplify</li><li><a href=\"../destiny-inscription/\">Destiny Inscription tree</a> &mdash; the permanent tree you spend sapphires on</li></ul>\n",
   "sources": [
     [
       "2UpSkill artifact grid",
