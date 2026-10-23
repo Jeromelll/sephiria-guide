@@ -96,6 +96,8 @@ def main() -> int:
     if assets.is_dir():
         shutil.copytree(assets, OUT / "assets")
         print("copied assets/")
+    if (SRC / "favicon.ico").is_file():
+        shutil.copy2(SRC / "favicon.ico", OUT / "favicon.ico")
 
     urls: list[str] = []
     for index in sorted(SRC.rglob("index.html")):
