@@ -13,16 +13,16 @@
   "footer_line": "Unofficial fan guides for {game_link} by {developer}. Not affiliated with the developer.",
   "footer_facts": "Facts checked against Steam, community guides, and cross-sourced videos. EA-era numbers are marked when used.",
   "theme": {
-    "bg": "#f7f1e8",
-    "bg_deep": "#ebe2d4",
-    "ink": "#1a2433",
-    "muted": "#5c6675",
-    "line": "#d4c7b4",
-    "accent": "#e85d04",
-    "accent_ink": "#9a3412",
-    "panel": "#fffaf3",
-    "shadow": "rgba(26, 36, 51, 0.08)",
-    "shadow_accent": "rgba(232, 93, 4, 0.18)"
+    "bg": "#2b2340",
+    "bg_deep": "#221b33",
+    "ink": "#f3ecdd",
+    "muted": "#b3a7c9",
+    "line": "#483e63",
+    "accent": "#f2a83c",
+    "accent_ink": "#ffc766",
+    "panel": "#352b52",
+    "shadow": "rgba(0, 0, 0, 0.38)",
+    "shadow_accent": "rgba(242, 168, 60, 0.22)"
   },
   "nav": [
     [

@@ -100,9 +100,10 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <meta name="description" content="{description}" />
   <meta name="keywords" content="{cfg["seo_keywords"]}" />
   <link rel="canonical" href="{cfg["domain"]}{path}" />
+  <meta property="og:image" content="{cfg["domain"]}/assets/img/capsule.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
@@ -223,6 +224,9 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
           <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
         </div>
       </div>
+    </div>
+    <div class="wrap">
+      <img class="hero-art" src="{css_href(0, "img/capsule.jpg")}" alt="Sephiria key art: the Bunnyville heroes at the tower gate" width="616" height="353" />
     </div>
   </section>
   <section class="section section--start">

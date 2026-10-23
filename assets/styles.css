@@ -9,8 +9,8 @@ body {
   font-weight: 400;
   color: var(--ink);
   background:
-    radial-gradient(1100px 520px at 8% -8%, rgba(255, 215, 176, 0.55) 0%, transparent 58%),
-    radial-gradient(800px 420px at 92% 4%, rgba(235, 200, 160, 0.35) 0%, transparent 50%),
+    radial-gradient(1100px 520px at 8% -8%, rgba(126, 96, 205, 0.30) 0%, transparent 58%),
+    radial-gradient(800px 420px at 92% 4%, rgba(242, 168, 60, 0.10) 0%, transparent 50%),
     var(--bg);
   line-height: 1.68;
   -webkit-font-smoothing: antialiased;
@@ -69,7 +69,7 @@ a:hover { color: var(--accent); }
   -webkit-backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 rgba(255, 250, 243, 0.6);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 .header-inner {
   display: flex;
@@ -79,7 +79,7 @@ a:hover { color: var(--accent); }
   padding: 0.9rem 0;
 }
 .brand {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: -0.025em;
@@ -127,7 +127,7 @@ a:hover { color: var(--accent); }
   text-transform: none;
 }
 .hero h1 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: clamp(2.35rem, 5.5vw, 3.65rem);
   line-height: 1.04;
   letter-spacing: -0.035em;
@@ -168,12 +168,12 @@ a:hover { color: var(--accent); }
 }
 .btn-primary {
   background: var(--accent);
-  color: #fff;
+  color: #2b1c05;
   box-shadow: 0 8px 22px var(--shadow-accent);
 }
 .btn-primary:hover {
-  background: #d34f00;
-  color: #fff;
+  background: #dd9626;
+  color: #2b1c05;
   transform: translateY(-1px);
   box-shadow: 0 10px 26px var(--shadow-accent);
 }
@@ -193,7 +193,7 @@ a:hover { color: var(--accent); }
 .section { padding: 2.75rem 0 3rem; }
 .section--start { padding-top: 2.4rem; }
 .section h2 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: 1.62rem;
   margin: 0 0 0.55rem;
   letter-spacing: -0.025em;
@@ -225,7 +225,7 @@ a:hover { color: var(--accent); }
   border-radius: 16px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset, 0 10px 28px var(--shadow);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 10px 28px var(--shadow);
   transition:
     border-color 0.22s ease,
     transform 0.22s ease,
@@ -242,7 +242,7 @@ a:hover { color: var(--accent); }
 }
 .start-link strong {
   display: block;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: 1.1rem;
   margin-bottom: 0.35rem;
   letter-spacing: -0.015em;
@@ -327,7 +327,7 @@ a:hover { color: var(--accent); }
 .site-footer a:hover { color: var(--accent); }
 
 .page-title {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: clamp(1.85rem, 4vw, 2.55rem);
   letter-spacing: -0.03em;
   margin: 0 0 0.55rem;
@@ -437,8 +437,21 @@ thead th {
   border-bottom: 2px solid var(--line);
   font-weight: 600;
 }
-tbody tr:nth-child(even) { background: rgba(26, 36, 51, 0.03); }
+tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
 @media (max-width: 640px) {
   table { font-size: 0.88rem; }
   th, td { padding: 0.45rem 0.5rem; }
+}
+
+/* Game-style pixel headings + hero key art. */
+.brand, .page-title, h1, h2, h3, .start-link strong { letter-spacing: 0.01em; }
+.hero-art {
+  display: block;
+  width: min(100%, 616px);
+  height: auto;
+  margin: 1.9rem auto 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 14px 34px var(--shadow);
+  image-rendering: pixelated;
 }
