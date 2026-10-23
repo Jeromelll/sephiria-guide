@@ -149,44 +149,52 @@ a:hover { color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.72rem 1.15rem;
-  border-radius: 999px;
+  padding: 0.68rem 1.1rem;
+  border-radius: 4px;
   text-decoration: none;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  border: 2px solid #191326;
+  box-shadow: 0 3px 0 #191326;
   transition:
-    background 0.22s ease,
-    border-color 0.22s ease,
-    color 0.22s ease,
-    transform 0.15s ease,
-    box-shadow 0.22s ease;
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
 }
 .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #191326;
+}
 .btn-primary {
   background: var(--accent);
   color: #2b1c05;
-  box-shadow: 0 8px 22px var(--shadow-accent);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.16),
+    0 3px 0 #191326;
 }
 .btn-primary:hover {
-  background: #dd9626;
+  background: #f7b955;
   color: #2b1c05;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 26px var(--shadow-accent);
 }
-.btn-primary:active { transform: translateY(0) scale(0.98); }
 .btn-ghost {
-  background: color-mix(in srgb, var(--panel) 75%, transparent);
-  border-color: var(--line);
+  background: #2e2545;
+  border-color: #191326;
   color: var(--ink);
 }
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--panel);
+  background: #352b52;
 }
 .btn-ghost:active { transform: scale(0.98); }
 
