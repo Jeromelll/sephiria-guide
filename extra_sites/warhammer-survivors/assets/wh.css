@@ -181,3 +181,24 @@ footer .fm{font:600 14px/1 var(--f-pixel);letter-spacing:.08em;text-transform:up
   .op-to{transform:rotate(90deg)}
   .armoury{gap:12px 18px}
 }
+
+/* content pages (2026-10-24): update stamp, pending tag, footer links, glossary, news log */
+.stamp{display:inline-block;margin:-8px 0 16px;padding:3px 9px;font:500 12.5px/1.4 var(--f-pixel);letter-spacing:.05em;
+  text-transform:uppercase;color:var(--gold);background:rgba(232,184,74,.08);border:1px solid var(--line2)}
+.pend{display:inline-block;padding:0 6px;font:600 12px/1.6 var(--f-pixel);letter-spacing:.04em;text-transform:uppercase;
+  color:#ffcf9a;background:rgba(255,122,26,.12);border:1px solid rgba(255,122,26,.45);white-space:nowrap}
+footer .flinks{line-height:1.9}
+footer .flinks b{font:600 12px/1 var(--f-pixel);letter-spacing:.08em;text-transform:uppercase;color:var(--brass);margin-right:4px}
+footer .flinks b+a{margin-left:2px}
+.gloss td:first-child{white-space:normal;min-width:120px}
+.gloss td:last-child{font-size:14px;white-space:nowrap}
+.newslog{display:grid;gap:16px;margin:16px 0 8px}
+.newsitem{background:var(--panel);padding:12px 16px 6px;border-left:var(--px) solid var(--blood);
+  box-shadow:0 0 0 2px #000,0 0 0 4px var(--line2),6px 6px 0 4px rgba(0,0,0,.55)}
+.newsitem .nd{margin:0 0 2px;font:500 12.5px/1.4 var(--f-pixel);letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.newsitem h3{margin:0 0 6px;text-transform:none;overflow-wrap:anywhere}
+.newsitem ul{margin:0 0 8px}
+@media (max-width:640px){
+  .gloss td:last-child{white-space:normal}
+  .gloss td:first-child{min-width:96px}
+}
