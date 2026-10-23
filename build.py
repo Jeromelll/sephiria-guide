@@ -7,6 +7,7 @@ config/site.json and content/*.json, not in this file.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import shutil
@@ -108,8 +109,8 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={cfg["updated"]}" />
-  <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={cfg["updated"]}" />
+  <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={THEME_VERSION}" />
+  <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={CSS_VERSION}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
 </head>
 <body>
@@ -439,8 +440,25 @@ def write_redirects() -> None:
     print("wrote _redirects", len(lines), "moved-page redirects")
 
 
+CSS_VERSION = ""
+THEME_VERSION = ""
+
+
+def compute_css_version() -> str:
+    """Content hash of styles.css — cache-bust key for stylesheet URLs."""
+    return hashlib.md5((ROOT / "assets" / "styles.css").read_bytes()).hexdigest()[:8]
+
+
+def compute_theme_version(cfg: dict) -> str:
+    """Content hash of the generated theme.css (config-driven colors)."""
+    return hashlib.md5(json.dumps(cfg["theme"], sort_keys=True).encode()).hexdigest()[:8]
+
+
 def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict]:
+    global CSS_VERSION, THEME_VERSION
     cfg = cfg or load_config()
+    CSS_VERSION = compute_css_version()
+    THEME_VERSION = compute_theme_version(cfg)
     pages = load_pages(content_dir)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
