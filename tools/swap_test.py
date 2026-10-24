@@ -35,16 +35,12 @@ def main() -> int:
     try:
         (tmp / "config").mkdir()
         (tmp / "content").mkdir()
-        (tmp / "assets").mkdir()
         (tmp / "config" / "site.json").write_text(
             json.dumps(swapped, ensure_ascii=False, indent=2), encoding="utf-8"
         )
         for src in (ROOT / "content").glob("*.json"):
             shutil.copy2(src, tmp / "content" / src.name)
-        shutil.copy2(ROOT / "assets" / "styles.css", tmp / "assets" / "styles.css")
-        shutil.copy2(ROOT / "assets" / "analytics.js", tmp / "assets" / "analytics.js")
-        shutil.copy2(ROOT / "assets" / "login.css", tmp / "assets" / "login.css")
-        shutil.copy2(ROOT / "assets" / "login.js", tmp / "assets" / "login.js")
+        shutil.copytree(ROOT / "assets", tmp / "assets")
         shutil.copy2(ROOT / "login.html", tmp / "login.html")
 
         orig_root = build.ROOT

@@ -11,6 +11,7 @@ import hashlib
 import json
 import subprocess
 import shutil
+from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -79,6 +80,9 @@ def write_theme(cfg: dict) -> None:
 
 
 def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str, jsonld: list | None = None) -> str:
+    is_home = path == "/"
+    home_style = ('\n  <link rel="stylesheet" href="assets/village.css?v=' +
+                  hashlib.md5((ROOT / "assets" / "village.css").read_bytes()).hexdigest()[:8] + '" />') if is_home else ""
     ld_html = "".join(
         f'\n  <script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>' for obj in (jsonld or [])
     )
@@ -111,9 +115,9 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={THEME_VERSION}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={CSS_VERSION}" />
-  <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
+  <script src="{css_href(depth, "analytics.js")}" defer></script>{home_style}{ld_html}
 </head>
-<body>
+<body{' class="village-home"' if is_home else ''}>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
@@ -153,6 +157,7 @@ def article(
     sources: list,
     *,
     show_stuck_prompt: bool = False,
+    media: dict | None = None,
 ) -> str:
     crumb_html = " / ".join(
         (f'<a href="{link(depth, href)}">{label}</a>' if href else label) for label, href in crumbs
@@ -166,6 +171,34 @@ def article(
       <ul>{src}</ul>
     </section>"""
     prompt_html = stuck_prompt(depth) if show_stuck_prompt else ""
+    if media:
+        cover, figure = media["cover"], media["illustration"]
+        figure_url = "../" * depth + figure["src"]
+        figure_width, figure_height = (1000, 500) if figure["src"].endswith(".svg") else (1920, 1080)
+        figure_html = f'''<figure class="article-figure">
+      <a href="{escape(figure_url, quote=True)}"><img src="{escape(figure_url, quote=True)}" alt="{escape(figure['alt'], quote=True)}" width="{figure_width}" height="{figure_height}" loading="lazy" decoding="async" /></a>
+      <figcaption>{escape(figure['caption'])}</figcaption>
+    </figure>'''
+        marker = figure.get("after")
+        if marker and marker in content:
+            content = content.replace(marker, marker + figure_html, 1)
+        else:
+            content = content.replace("</p>", "</p>" + figure_html, 1)
+        return f'''
+  <article class="guide-article">
+    <header class="article-hero">
+      <img src="{escape('../' * depth + cover['src'], quote=True)}" alt="{escape(cover['alt'], quote=True)}" width="1920" height="1080" fetchpriority="high" />
+      <div class="article-hero-copy">
+        <p class="breadcrumbs">{crumb_html}</p>
+        <h1 class="page-title">{title}</h1>
+      </div>
+    </header>
+    <p class="article-credit"><a href="{escape(cover['source'], quote=True)}">{escape(cover['caption'])}</a></p>
+    <div class="narrow article-body">
+      <p class="meta-line">{meta}</p>
+      {content}{prompt_html}{sources_html}
+    </div>
+  </article>'''
     return f"""
   <div class="narrow">
     <p class="breadcrumbs">{crumb_html}</p>
@@ -212,46 +245,49 @@ def guide_list(pages: list[dict], *, kind: str) -> str:
 
 
 def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
-    start = guide_list(pages, kind="home_start")
     also = guide_list(pages, kind="home_also")
-    # Start here before "what is" — visitors land with a job to do, not a wiki intro.
+    destinations = "\n".join(
+        f'''<a class="destination destination--{place['id']}" href="{place['path']}">
+          <span class="destination-art" aria-hidden="true"></span>
+          <span class="village-plaque"><strong>{place['title']}</strong><span>{place['description']}</span></span>
+          <span class="enter-hint" aria-hidden="true">Enter guide ↗</span>
+        </a>''' for place in home["village"]
+    )
     return f"""
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <p class="hero-kicker">{home["hero_kicker"]}</p>
-        <h1>{home["hero_h1"]}</h1>
-      </div>
-      <div class="hero-action">
-        <p class="lede">{home["lede"]}</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="{link(0, home["cta_path"])}">{home["cta_label"]}</a>
-          <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
-        </div>
-      </div>
+  <section class="village-intro">
+    <div>
+      <p class="village-kicker">{home["hero_kicker"]}</p>
+      <h1>{home["hero_h1"]}</h1>
+      <p>{home["village_intro"]}</p>
     </div>
-    <div class="wrap">
-      <img class="hero-art" src="{css_href(0, "img/capsule.jpg")}" alt="Sephiria key art: the Bunnyville heroes at the tower gate" width="616" height="353" />
-    </div>
+    <a class="village-party" href="/characters/">
+      <img src="assets/img/capsule.jpg" width="616" height="353" alt="The three animal characters together in official Sephiria artwork" />
+      <span>Meet the characters ↗</span>
+    </a>
   </section>
-  <section class="section section--start">
-    <div class="wrap">
-      <h2>Start here</h2>
-      <p class="section-lead">Four first-run paths — beginner first, then builds, weapons, and Destiny.</p>
-      <div class="grid-start">
-        {start}
-      </div>
+  <nav class="village-map" aria-label="Village guide destinations" id="village">
+    <img class="village-background" src="assets/img/village.png" width="1536" height="1024" alt="" fetchpriority="high" />
+    {destinations}
+    <div class="village-notice" role="group" aria-label="Village noticeboard">
+    <span class="notice-title">Village noticeboard</span>
+    <a href="/bosses/">Boss guides</a>
+    <a href="/multiplayer/">Co-op</a>
+    <a href="/secret-rooms/">Secret rooms</a>
     </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
+  </nav>
+  <aside class="village-welcome">
+    <img src="assets/img/capsule.jpg" width="616" height="353" alt="Official Sephiria artwork featuring all three characters" />
+    <div><strong>First time in the village?</strong><span>Pick a weapon, find a build, and make your first descent.</span></div>
+    <a href="{link(0, home["cta_path"])}">{home["cta_label"]} <span aria-hidden="true">↗</span></a>
+  </aside>
+  <section class="village-reading">
+    <div class="village-about">
       <h2>{home["what_h2"]}</h2>
       {home["what_html"]}
+      <a href="{cfg["links"]["steam"]}" rel="noopener">View the game on Steam</a>
     </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
-      <h2>Also covered</h2>
+    <div>
+      <h2>More to explore</h2>
       <div class="guide-list">
         {also}
       </div>
@@ -472,6 +508,8 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
             shutil.copy2(source, OUTPUT_DIR / filename)
     write_theme(cfg)
     by_path = {p["path"]: p for p in pages}
+    visuals_path = ROOT / "config" / "guide-visuals.json"
+    visuals = json.loads(visuals_path.read_text(encoding="utf-8")) if visuals_path.exists() else {}
 
     for page in pages:
         layout = page.get("layout", "article")
@@ -488,6 +526,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 f'<p>{page["intro"]}</p>\n{listing}',
                 page.get("sources") or [],
                 show_stuck_prompt=True,
+                media=visuals.get(page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
         else:
@@ -499,6 +538,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page.get("body") or "",
                 page.get("sources") or [],
                 show_stuck_prompt=(layout != "legal"),
+                media=visuals.get(page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
 

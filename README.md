@@ -14,8 +14,9 @@ Fan guides for the Steam roguelite **Sephiria** (Team Horay).
 ```bash
 python3 build.py
 python3 tools/check_seo_consistency.py   # 唯一 H1 / canonical / sitemap↔磁盘
+python3 tools/check_village.py      # 首页六个建筑入口与本地资源
 python3 tools/swap_test.py          # 换游戏名只改配置的验证
-python3 -m http.server 8765 --bind 127.0.0.1
+python3 -m http.server 8765 --bind 127.0.0.1 --directory dist
 # http://127.0.0.1:8765/
 ```
 

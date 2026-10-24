@@ -465,3 +465,28 @@ tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
   box-shadow: 0 14px 34px var(--shadow);
   image-rendering: pixelated;
 }
+
+/* Illustrated guides: official scene above, readable full-size diagrams in the text. */
+.guide-article { padding-top:1.5rem; }
+.article-hero { position:relative; width:min(100% - 2rem,1120px); margin:0 auto; overflow:hidden; border:3px solid #766775; background:#302c3b; }
+.article-hero>img { display:block; width:100%; height:clamp(280px,33vw,420px); object-fit:cover; image-rendering:pixelated; }
+.article-hero::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg,rgba(28,25,39,.95),rgba(28,25,39,.25) 75%,transparent); pointer-events:none; }
+.article-hero-copy { position:absolute; z-index:1; bottom:0; left:0; padding:1.5rem 2rem; max-width:950px; }
+.article-hero-copy .breadcrumbs { color:#eee5d3; margin:0 0 .75rem; }
+.article-hero-copy .breadcrumbs a { color:#eee5d3; }
+.article-hero-copy .page-title { margin:0; font-size:clamp(1.8rem,3.4vw,3rem); line-height:1.2; color:#f1e7d5; text-shadow:2px 3px #292532; }
+.article-credit { width:min(100% - 2rem,1120px); margin:.45rem auto 1.7rem; font:12px/1.5 Arial,sans-serif; color:#b9aec3; }
+.article-credit a { color:inherit; }
+.article-figure { margin:1.5rem 0 2rem; }
+.article-figure a { display:block; border:2px solid #756576; background:#302c3b; }
+.article-figure a:focus-visible { outline:3px solid #c8b79e; outline-offset:4px; }
+.article-figure img { display:block; width:100%; height:auto; }
+.article-figure figcaption { padding:.6rem 0 0; font:13px/1.6 Arial,sans-serif; color:#c1b6c9; }
+@media(max-width:640px) {
+ .guide-article { padding-top:1rem; }
+ .article-hero-copy { padding:1.2rem; }
+ .article-hero>img { height:310px; }
+ .article-hero-copy .page-title { font-size:1.9rem; }
+ .article-figure { margin:1rem 0 1.5rem; overflow-x:auto; }
+ .article-figure img { min-width:600px; }
+}

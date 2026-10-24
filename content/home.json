@@ -4,11 +4,50 @@
   "title": "Sephiria 1.0 Guide — Hard Mode, Destiny Tree, Builds",
   "description": "Just bought Sephiria 1.0? Unlock Hard Mode (Root’s Retreat), spend Destiny sapphires, then commit to one build. Short English pages with sources—not a wiki dump.",
   "hero_kicker": "Fan guides · Updated for Sephiria 1.0",
-  "hero_h1": "Sephiria 1.0 guide",
+  "hero_h1": "Your adventure starts here.",
   "lede": "Start with Hard Mode / Root’s Retreat, the Destiny Inscription tree, and one build. Each page is a single search question with sources—not AI filler.",
   "cta_label": "Start beginner guide",
   "cta_path": "/beginner-guide/",
   "what_h2": "What Sephiria is",
   "what_html": "<p>Sephiria is a top-down action roguelite from Team Horay (Dungreed). Full release <strong>July 31, 2026</strong>: six chapters, six weapon lines, Artifact + Tablet grid, co-op up to four. This site answers the first stuck moments—not a full wiki dump.</p>\n      <div class=\"note\">English-first P0 coverage. Patch-sensitive tips note when they come from older Steam Community guides.</div>",
-  "order": 0
+  "order": 0,
+  "village_intro": "Welcome to the Sephiria guide village. Choose a building to find your next guide.",
+  "village": [
+    {
+      "id": "inn",
+      "path": "/beginner-guide/",
+      "title": "Beginner Guide",
+      "description": "Your first steps into the tower"
+    },
+    {
+      "id": "tree",
+      "path": "/destiny-inscription/",
+      "title": "Destiny Inscription",
+      "description": "Talents & permanent upgrades"
+    },
+    {
+      "id": "smith",
+      "path": "/weapons/",
+      "title": "Weapons",
+      "description": "Find your weapon"
+    },
+    {
+      "id": "workshop",
+      "path": "/builds/",
+      "title": "Builds",
+      "description": "Put your loadout together"
+    },
+    {
+      "id": "fountain",
+      "path": "/wishing-fountain/",
+      "title": "Wishing Fountain",
+      "description": "Prepare before your next run"
+    },
+    {
+      "id": "tower",
+      "path": "/hard-mode/",
+      "title": "Hard Mode",
+      "description": "Unlock your next challenge"
+    }
+  ]
 }

@@ -1,0 +1,282 @@
+{
+  "/secret-rooms/": {
+    "cover": {
+      "src": "assets/img/official/shot_06.png",
+      "alt": "A character exploring a dungeon.",
+      "caption": "Official screenshot · Team Horay — A character exploring a dungeon.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/secret-rooms.svg",
+      "alt": "Look for a crack, strike it, then the opened room appears on the map. Guide schematic; not an in-game screenshot.",
+      "caption": "Find a cracked-wall room. Guide schematic.",
+      "after": "<h2>How to spot cracked walls</h2>"
+    }
+  },
+  "/hard-mode/": {
+    "cover": {
+      "src": "assets/img/official/shot_11.png",
+      "alt": "A dungeon route with branching nodes.",
+      "caption": "Official screenshot · Team Horay — A dungeon route with branching nodes.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/hard-mode.svg",
+      "alt": "The documented route is Chapter 2, then the village tree dialogue. Guide schematic; not an in-game screenshot.",
+      "caption": "Current Hard Mode unlock. Guide schematic.",
+      "after": "<h2>Current unlock (post Update 0.7.55)</h2>"
+    }
+  },
+  "/wishing-fountain/": {
+    "cover": {
+      "src": "assets/img/official/shot_10.png",
+      "alt": "A tutorial screen about acquiring an Artifact.",
+      "caption": "Official screenshot · Team Horay — A tutorial screen about acquiring an Artifact.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/wishing-fountain.svg",
+      "alt": "Unlock through Destiny New Events; selected Artifacts carry into the next run. Guide schematic; not an in-game screenshot.",
+      "caption": "Town Artifact picker. Guide schematic.",
+      "after": "<h2>What it does</h2>"
+    }
+  },
+  "/multiplayer/": {
+    "cover": {
+      "src": "assets/img/capsule.jpg",
+      "alt": "Three animal characters in official Sephiria key art.",
+      "caption": "Official Sephiria key art · Team Horay",
+      "source": "https://store.steampowered.com/app/2436940/Sephiria/"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/multiplayer.svg",
+      "alt": "The host creates the lobby after tutorial access; guests join by Steam invite. Guide schematic; not an in-game screenshot.",
+      "caption": "Open a Steam co-op lobby. Guide schematic.",
+      "after": "<h2>How to open a lobby (quick)</h2>"
+    }
+  },
+  "/weapons/": {
+    "cover": {
+      "src": "assets/img/official/shot_03.png",
+      "alt": "A close-range weapon swing in a dungeon.",
+      "caption": "Official screenshot · Team Horay — A close-range weapon swing in a dungeon.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/weapons.svg",
+      "alt": "The page compares six starting branches; Scythe is a Dagger conversion. Guide schematic; not an in-game screenshot.",
+      "caption": "Six weapon branches. Guide schematic.",
+      "after": "<h2>The six branches at a glance</h2>"
+    }
+  },
+  "/items/scythe/": {
+    "cover": {
+      "src": "assets/img/official/shot_09.png",
+      "alt": "An inventory tooltip for an ice-themed item.",
+      "caption": "Official screenshot · Team Horay — An inventory tooltip for an ice-themed item.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/items-scythe.svg",
+      "alt": "The page places this skill on the Dagger frost route, not a seventh starter branch. Guide schematic; not an in-game screenshot.",
+      "caption": "Blizzard Scythe evolution. Guide schematic.",
+      "after": "<h2>Blizzard Scythe path (Dagger)</h2>"
+    }
+  },
+  "/characters/": {
+    "cover": {
+      "src": "assets/img/capsule.jpg",
+      "alt": "Three animal characters in official Sephiria key art.",
+      "caption": "Official Sephiria key art · Team Horay",
+      "source": "https://store.steampowered.com/app/2436940/Sephiria/"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/characters.svg",
+      "alt": "One playable rabbit; costumes affect opening stats, while NPCs gate specific unlocks. Guide schematic; not an in-game screenshot.",
+      "caption": "Hero and village roles. Guide schematic.",
+      "after": "<h2>Who you play</h2>"
+    }
+  },
+  "/guides/": {
+    "cover": {
+      "src": "assets/img/official/shot_02.png",
+      "alt": "A rabbit on a cliff with a distant inverted tower.",
+      "caption": "Official screenshot · Team Horay — A rabbit on a cliff with a distant inverted tower.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/guides.svg",
+      "alt": "Use the wiki index to choose among the site’s existing guide groups. Guide schematic; not an in-game screenshot.",
+      "caption": "Guide topics. Guide schematic.",
+      "after": ""
+    }
+  },
+  "/bosses/": {
+    "cover": {
+      "src": "assets/img/official/shot_07.jpg",
+      "alt": "A library room in the dungeon.",
+      "caption": "Official screenshot · Team Horay — A library room in the dungeon.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/bosses.svg",
+      "alt": "Choose an existing boss page; pattern coverage is still being verified. Guide schematic; not an in-game screenshot.",
+      "caption": "Boss guide index. Guide schematic.",
+      "after": ""
+    }
+  },
+  "/bosses/erma/": {
+    "cover": {
+      "src": "assets/img/official/shot_07.jpg",
+      "alt": "A library room in the dungeon.",
+      "caption": "Official screenshot · Team Horay — A library room in the dungeon.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/bosses-erma.svg",
+      "alt": "Three phases; targetable parts and transition described in the guide. Guide schematic; not an in-game screenshot.",
+      "caption": "Erma encounter structure. Guide schematic.",
+      "after": "<h2>Fight structure (NamuWiki cross-check)</h2>"
+    }
+  },
+  "/builds/companion/": {
+    "cover": {
+      "src": "assets/img/official/shot_08.png",
+      "alt": "A Storm Cloud combo panel in the inventory.",
+      "caption": "Official screenshot · Team Horay — A Storm Cloud combo panel in the inventory.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/official/shot_08.png",
+      "alt": "Inventory screenshot with Companion listed in the combo panel.",
+      "caption": "The combo list includes Companion alongside other families. Official promotional screenshot · Team Horay.",
+      "after": "<h2>Core idea</h2>"
+    }
+  },
+  "/coop/": {
+    "cover": {
+      "src": "assets/img/capsule.jpg",
+      "alt": "Three animal characters in official Sephiria key art.",
+      "caption": "Official Sephiria key art · Team Horay",
+      "source": "https://store.steampowered.com/app/2436940/Sephiria/"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/coop.svg",
+      "alt": "Up to four players; item trade and revives are shared options, and enemy pressure scales. Guide schematic; not an in-game screenshot.",
+      "caption": "What co-op changes. Guide schematic.",
+      "after": "<h2>What changes in co-op</h2>"
+    }
+  },
+  "/builds/": {
+    "cover": {
+      "src": "assets/img/official/shot_08.png",
+      "alt": "A Storm Cloud combo panel in the inventory.",
+      "caption": "Official screenshot · Team Horay — A Storm Cloud combo panel in the inventory.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/official/shot_08.png",
+      "alt": "Inventory grid alongside the Storm Cloud combo panel.",
+      "caption": "Combo tags, Artifact levels and inventory placement work together. Official promotional screenshot · Team Horay; displayed values are version-specific.",
+      "after": "<h2>What actually makes a build work</h2>"
+    }
+  },
+  "/beginner-guide/": {
+    "cover": {
+      "src": "assets/img/official/shot_01.png",
+      "alt": "A rabbit character in the village.",
+      "caption": "Official screenshot · Team Horay — A rabbit character in the village.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/official/shot_11.png",
+      "alt": "Official route-selection screen showing three branching dungeon nodes.",
+      "caption": "Choose a floor node between encounters. Official screenshot · Team Horay.",
+      "after": "<h2>Core loop</h2>"
+    }
+  },
+  "/roots-retreat/": {
+    "cover": {
+      "src": "assets/img/official/shot_11.png",
+      "alt": "A dungeon route with branching nodes.",
+      "caption": "Official screenshot · Team Horay — A dungeon route with branching nodes.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/roots-retreat.svg",
+      "alt": "The name refers to Hard Mode stage achievements, not a separate village. Guide schematic; not an in-game screenshot.",
+      "caption": "Root’s Retreat is a stage ladder. Guide schematic.",
+      "after": "<h2>What Root’s Retreat actually is</h2>"
+    }
+  },
+  "/costumes/": {
+    "cover": {
+      "src": "assets/img/official/shot_01.png",
+      "alt": "A rabbit character in the village.",
+      "caption": "Official screenshot · Team Horay — A rabbit character in the village.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/costumes.svg",
+      "alt": "The cited v1.0.24 community roster counts 8 starting and 19 unlockable costumes. Guide schematic; not an in-game screenshot.",
+      "caption": "Costume roster snapshot. Guide schematic.",
+      "after": "<h2>How many costumes are there?</h2>"
+    }
+  },
+  "/bosses/final/": {
+    "cover": {
+      "src": "assets/img/official/shot_05.png",
+      "alt": "A close-range dungeon combat scene.",
+      "caption": "Official screenshot · Team Horay — A close-range dungeon combat scene.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/bosses-final.svg",
+      "alt": "The page documents multi-phase pressure and patch changes to readability. Guide schematic; not an in-game screenshot.",
+      "caption": "Read the fight carefully. Guide schematic.",
+      "after": ""
+    }
+  },
+  "/artifacts/": {
+    "cover": {
+      "src": "assets/img/official/shot_10.png",
+      "alt": "A tutorial screen about acquiring an Artifact.",
+      "caption": "Official screenshot · Team Horay — A tutorial screen about acquiring an Artifact.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/official/shot_10.png",
+      "alt": "Official Artifact acquisition tutorial with the inventory visible behind it.",
+      "caption": "The official tutorial introduces Artifacts as inventory-based effects. Official screenshot · Team Horay.",
+      "after": ""
+    }
+  },
+  "/wiki/": {
+    "cover": {
+      "src": "assets/img/official/shot_02.png",
+      "alt": "A rabbit on a cliff with a distant inverted tower.",
+      "caption": "Official screenshot · Team Horay — A rabbit on a cliff with a distant inverted tower.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/wiki.svg",
+      "alt": "The index groups the existing pages into progression, builds, characters, bosses and co-op. Guide schematic; not an in-game screenshot.",
+      "caption": "Browse by guide topic. Guide schematic.",
+      "after": "<h2>Start here</h2>"
+    }
+  },
+  "/destiny-inscription/": {
+    "cover": {
+      "src": "assets/img/official/shot_11.png",
+      "alt": "A dungeon route with branching nodes.",
+      "caption": "Official screenshot · Team Horay — A dungeon route with branching nodes.",
+      "source": "https://teamhoray.com/games/sephiria"
+    },
+    "illustration": {
+      "src": "assets/img/diagrams/destiny-inscription.svg",
+      "alt": "The guide describes these branches and the current Hard Mode dialogue route. Guide schematic; not an in-game screenshot.",
+      "caption": "Destiny tree at a glance. Guide schematic.",
+      "after": "<h2>How the tree is organized</h2>"
+    }
+  }
+}
