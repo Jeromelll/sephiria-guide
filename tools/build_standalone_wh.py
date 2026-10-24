@@ -26,6 +26,9 @@ PREFIX = "/warhammer-survivors/"
 
 
 def rewrite(html: str) -> str:
+    # This standalone build does not ship the parent site's login page or auth API.
+    # Remove only its inherited navigation entry; leave the source site untouched.
+    html = html.replace('<a class="login" href="/login.html">Log in</a>', "")
     # static assets (css/images) referenced by absolute sub-site path
     html = html.replace(f"{PREFIX}assets/", "/assets/")
     # canonical first (most specific), then internal links
@@ -119,6 +122,8 @@ def main() -> int:
     if assets.is_dir():
         shutil.copytree(assets, OUT / "assets")
         print("copied assets/")
+    if (SRC / "favicon.ico").is_file():
+        shutil.copy2(SRC / "favicon.ico", OUT / "favicon.ico")
 
     urls: list[str] = []
     for index in sorted(SRC.rglob("index.html")):

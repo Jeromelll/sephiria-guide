@@ -1,0 +1,43 @@
+{
+  "path": "/fm27-cheap-players/",
+  "title": "FM27 Cheap Players & Bargains — the Filters That Find Value",
+  "description": "FM27 cheap players: why no named bargain list is credible before the 10 November database ships, the filters that find value signings, and when our list lands.",
+  "h1": "FM27 cheap players &amp; bargains",
+  "meta": "Football Manager 27 bargains — method and filters first, named list when the database ships.",
+  "body": "<p>No one outside Sports Interactive has seen the FM27 player database. The game launches on 10 November 2026, and the first browsable build is the free Launch Preview from 29 October. Any page naming \"FM27 bargains\" today is recycling FM26 names or inventing them &mdash; prices, wages and even clubs move between editions.</p>\n<p>So this page does the part that can be done now: define what a bargain actually is in FM terms, and list the filters that will find them on day one.</p>\n<h2>What makes a player a bargain in FM</h2>\n<ul>\n  <li><strong>Price against current ability</strong> &mdash; a good deal is a player whose asking price is far below what his CA would cost on the open market.</li>\n  <li><strong>Wage-to-ability ratio</strong> &mdash; a cheap fee with an unaffordable wage is not a bargain; wages compound over a save.</li>\n  <li><strong>Contract situation</strong> &mdash; twelve months left, running down a deal, transfer-listed or unattached all push fees down.</li>\n  <li><strong>Release clauses</strong> &mdash; in many leagues a clause far below market value is the cheapest route to a starter.</li>\n  <li><strong>Resale</strong> &mdash; a young bargain you can sell on for profit funds the next one.</li>\n</ul>\n<h2>The filters to run in the Launch Preview</h2>\n<ul>\n  <li>Release clause smaller than player value.</li>\n  <li>Contracts expiring at the end of the first season (and the January window that follows).</li>\n  <li>Unattached and free-transfer pools, checked early.</li>\n  <li>Transfer-listed players at clubs that need the money.</li>\n  <li>Surplus squad players at wealthy clubs &mdash; rotation casualties sell cheap.</li>\n</ul>\n<p>These are the same five veins that produce value signings in every FM edition; only the names move.</p>\n<h2>When our named list lands</h2>\n<p>We will shortlist candidates during the Launch Preview (29 October to 3 November) and publish a named FM27 bargains list in launch week, with prices and wages checked in the shipped database and a version label on the page. Until then, the honest answer is the method above.</p>\n<h2>Related FM27 pages</h2>\n<ul>\n  <li><a href=\"../fm27-wonderkids/\">FM27 wonderkids</a> &mdash; young, high-potential players overlap heavily with bargains.</li>\n  <li><a href=\"../fm27-release-date/\">FM27 release date</a> &mdash; 10 November 2026, and the free Launch Preview window.</li>\n  <li><a href=\"../fm27/\">FM27 guides index</a> &mdash; all of our Football Manager 27 coverage.</li>\n</ul>",
+  "sources": [
+    [
+      "FM Scout: Football Manager 2026 wonderkids (prior-edition price/wage reference)",
+      "https://www.fmscout.com/a-football-manager-2026-wonderkids.html"
+    ],
+    [
+      "Play Football Manager 27 Launch Preview free",
+      "https://www.footballmanager.com/news/play-football-manager-27-launch-preview-free"
+    ],
+    [
+      "FM27 key features (Sports Interactive)",
+      "https://www.footballmanager.com/fm27/features"
+    ],
+    [
+      "Football Manager 27 on Steam",
+      "https://store.steampowered.com/app/4530370/Football_Manager_27"
+    ]
+  ],
+  "layout": "article",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "FM27",
+      "/fm27/"
+    ],
+    [
+      "Cheap players",
+      ""
+    ]
+  ],
+  "in_guides": false,
+  "order": 240
+}

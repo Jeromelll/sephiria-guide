@@ -3,16 +3,18 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+html { font-size: 17px; }
+
 body {
   margin: 0;
-  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-family: "Pixelify Sans", "Segoe UI", sans-serif;
   font-weight: 400;
   color: var(--ink);
   background:
-    radial-gradient(1100px 520px at 8% -8%, rgba(255, 215, 176, 0.55) 0%, transparent 58%),
-    radial-gradient(800px 420px at 92% 4%, rgba(235, 200, 160, 0.35) 0%, transparent 50%),
+    radial-gradient(1100px 520px at 8% -8%, rgba(126, 96, 205, 0.30) 0%, transparent 58%),
+    radial-gradient(800px 420px at 92% 4%, rgba(242, 168, 60, 0.10) 0%, transparent 50%),
     var(--bg);
-  line-height: 1.68;
+  line-height: 1.78;
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
@@ -69,7 +71,7 @@ a:hover { color: var(--accent); }
   -webkit-backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 0 rgba(255, 250, 243, 0.6);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 .header-inner {
   display: flex;
@@ -79,7 +81,7 @@ a:hover { color: var(--accent); }
   padding: 0.9rem 0;
 }
 .brand {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: -0.025em;
@@ -127,7 +129,7 @@ a:hover { color: var(--accent); }
   text-transform: none;
 }
 .hero h1 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: clamp(2.35rem, 5.5vw, 3.65rem);
   line-height: 1.04;
   letter-spacing: -0.035em;
@@ -149,51 +151,59 @@ a:hover { color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.72rem 1.15rem;
-  border-radius: 999px;
+  padding: 0.68rem 1.1rem;
+  border-radius: 4px;
   text-decoration: none;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  border: 2px solid #191326;
+  box-shadow: 0 3px 0 #191326;
   transition:
-    background 0.22s ease,
-    border-color 0.22s ease,
-    color 0.22s ease,
-    transform 0.15s ease,
-    box-shadow 0.22s ease;
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
 }
 .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #191326;
+}
 .btn-primary {
   background: var(--accent);
-  color: #fff;
-  box-shadow: 0 8px 22px var(--shadow-accent);
+  color: #2b1c05;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.30),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.16),
+    0 3px 0 #191326;
 }
 .btn-primary:hover {
-  background: #d34f00;
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 26px var(--shadow-accent);
+  background: #f7b955;
+  color: #2b1c05;
 }
-.btn-primary:active { transform: translateY(0) scale(0.98); }
 .btn-ghost {
-  background: color-mix(in srgb, var(--panel) 75%, transparent);
-  border-color: var(--line);
+  background: #2e2545;
+  border-color: #191326;
   color: var(--ink);
 }
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: var(--panel);
+  background: #352b52;
 }
 .btn-ghost:active { transform: scale(0.98); }
 
 .section { padding: 2.75rem 0 3rem; }
 .section--start { padding-top: 2.4rem; }
 .section h2 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: 1.62rem;
   margin: 0 0 0.55rem;
   letter-spacing: -0.025em;
@@ -225,7 +235,7 @@ a:hover { color: var(--accent); }
   border-radius: 16px;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset, 0 10px 28px var(--shadow);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 10px 28px var(--shadow);
   transition:
     border-color 0.22s ease,
     transform 0.22s ease,
@@ -242,7 +252,7 @@ a:hover { color: var(--accent); }
 }
 .start-link strong {
   display: block;
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: 1.1rem;
   margin-bottom: 0.35rem;
   letter-spacing: -0.015em;
@@ -327,7 +337,7 @@ a:hover { color: var(--accent); }
 .site-footer a:hover { color: var(--accent); }
 
 .page-title {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
   font-size: clamp(1.85rem, 4vw, 2.55rem);
   letter-spacing: -0.03em;
   margin: 0 0 0.55rem;
@@ -437,8 +447,21 @@ thead th {
   border-bottom: 2px solid var(--line);
   font-weight: 600;
 }
-tbody tr:nth-child(even) { background: rgba(26, 36, 51, 0.03); }
+tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
 @media (max-width: 640px) {
   table { font-size: 0.88rem; }
   th, td { padding: 0.45rem 0.5rem; }
+}
+
+/* Game-style pixel headings + hero key art. */
+.brand, .page-title, h1, h2, h3, .start-link strong { letter-spacing: 0.01em; }
+.hero-art {
+  display: block;
+  width: min(100%, 616px);
+  height: auto;
+  margin: 1.9rem auto 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 14px 34px var(--shadow);
+  image-rendering: pixelated;
 }

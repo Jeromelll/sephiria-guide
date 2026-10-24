@@ -7,6 +7,7 @@ config/site.json and content/*.json, not in this file.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import shutil
@@ -100,11 +101,16 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <meta name="description" content="{description}" />
   <meta name="keywords" content="{cfg["seo_keywords"]}" />
   <link rel="canonical" href="{cfg["domain"]}{path}" />
+  <meta property="og:image" content="{cfg["domain"]}/assets/img/capsule.jpg" />
+  <link rel="icon" href="{css_href(depth, "favicon.svg")}" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{css_href(depth, "favicon-32x32.png")}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{css_href(depth, "favicon-16x16.png")}" />
+  <link rel="apple-touch-icon" href="{css_href(depth, "apple-touch-icon.png")}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{css_href(depth, "theme.css")}" />
-  <link rel="stylesheet" href="{css_href(depth, "styles.css")}" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={THEME_VERSION}" />
+  <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={CSS_VERSION}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>{ld_html}
 </head>
 <body>
@@ -223,6 +229,9 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
           <a class="btn btn-ghost" href="{cfg["links"]["steam"]}" rel="noopener">Steam page</a>
         </div>
       </div>
+    </div>
+    <div class="wrap">
+      <img class="hero-art" src="{css_href(0, "img/capsule.jpg")}" alt="Sephiria key art: the Bunnyville heroes at the tower gate" width="616" height="353" />
     </div>
   </section>
   <section class="section section--start">
@@ -435,12 +444,29 @@ def write_redirects() -> None:
     print("wrote _redirects", len(lines), "moved-page redirects")
 
 
+CSS_VERSION = ""
+THEME_VERSION = ""
+
+
+def compute_css_version() -> str:
+    """Content hash of styles.css — cache-bust key for stylesheet URLs."""
+    return hashlib.md5((ROOT / "assets" / "styles.css").read_bytes()).hexdigest()[:8]
+
+
+def compute_theme_version(cfg: dict) -> str:
+    """Content hash of the generated theme.css (config-driven colors)."""
+    return hashlib.md5(json.dumps(cfg["theme"], sort_keys=True).encode()).hexdigest()[:8]
+
+
 def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict]:
+    global CSS_VERSION, THEME_VERSION
     cfg = cfg or load_config()
+    CSS_VERSION = compute_css_version()
+    THEME_VERSION = compute_theme_version(cfg)
     pages = load_pages(content_dir)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
-    for filename in ("login.html", "robots.txt"):
+    for filename in ("login.html", "robots.txt", "favicon.ico"):
         source = ROOT / filename
         if source.is_file():
             shutil.copy2(source, OUTPUT_DIR / filename)

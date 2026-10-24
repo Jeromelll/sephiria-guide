@@ -1,0 +1,547 @@
+{
+ "updated": "2026-10-24",
+ "build": "Demo build",
+ "entries": [
+  {
+   "id": "chainsword",
+   "name": "Chainsword",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Malum Caedo's starting weapon: horizontal serrated attacks that hit several enemies. The Steam page lists an 'Astartes Chainsword' in the arsenal (assumed to be the same weapon).",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
+   "confidence": "official",
+   "wielder": "Malum Caedo",
+   "evolves_to": "eviscerator-chainsword",
+   "image": "evolutions/chainsword.webp"
+  },
+  {
+   "id": "lasgun",
+   "name": "Lasgun",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Fires at the nearest enemy; levelling it adds Cadian squadmates. Taking it as another champion recruits Trooper Kozlowski.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
+   "confidence": "official",
+   "wielder": "Trooper Kozlowski",
+   "evolves_to": "meltagun",
+   "image": "evolutions/lasgun.webp",
+   "extra_sources": [
+    "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview"
+   ]
+  },
+  {
+   "id": "boltgun",
+   "name": "Boltgun",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Brother Luca's starting weapon, powerful enough to blast Termagants apart.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
+   "confidence": "official",
+   "wielder": "Brother Luca",
+   "evolves_to": "heavy-bolter"
+  },
+  {
+   "id": "whirlwind-battery",
+   "name": "Whirlwind Battery",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Rains missiles down from above (IGN hands-on). Officially evolves into Orbital Bombardment.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
+   "confidence": "official",
+   "wielder": "Pending launch",
+   "evolves_to": "orbital-bombardment",
+   "extra_sources": [
+    "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview"
+   ]
+  },
+  {
+   "id": "power-fists",
+   "name": "Power Fists",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Crushes xenos threats. Evolving it brings Marneus Calgar to your side, wielding the Gauntlets of Ultramar and firing bolter rounds with every attack.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
+   "confidence": "official",
+   "wielder": "Pending launch",
+   "evolves_to": "gauntlets-of-ultramar"
+  },
+  {
+   "id": "frag-grenade",
+   "name": "Frag Grenade",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "The Legend of Catachan's base weapon, hurled liberally. Frag Grenades also exist as a pick-up.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official",
+   "wielder": "The Legend of Catachan",
+   "evolves_to": "ripper-pistol"
+  },
+  {
+   "id": "heavy-bolter-fidelis",
+   "name": "Heavy Bolter Fidelis",
+   "faction": "40K",
+   "type": "Weapon",
+   "description": "Morvenn Vahl's weapon: sprays an arc of projectiles, with a chance to trigger a miracle that increases its rate of fire.",
+   "source_url": "https://blog.playstation.com/2026/10/06/warhammer-survivors-launches-november-10-new-characters-revealed/",
+   "confidence": "official",
+   "wielder": "Morvenn Vahl",
+   "evolves_to": "purgator-mirabilis"
+  },
+  {
+   "id": "tempest-axes",
+   "name": "Tempest Axes",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Neave Blacktalon's starting weapon in the October demo.",
+   "source_url": "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview",
+   "confidence": "press",
+   "wielder": "Neave Blacktalon",
+   "evolves_to": "whirlwind-axes"
+  },
+  {
+   "id": "grandblade",
+   "name": "Grandblade",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Sharynn Azurwrath's starting blade; levelling it up unleashes a huge circular swing.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
+   "confidence": "official",
+   "wielder": "Sharynn Azurwrath"
+  },
+  {
+   "id": "fyrestorm-greataxe",
+   "name": "Fyrestorm Greataxe",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Swings around the player in a brutal arc, gaining speed and strength and changing direction as you move. Stops once a certain amount of damage is dealt; standing idle reduces its damage.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1825727806704618",
+   "confidence": "official",
+   "wielder": "Pending launch",
+   "evolves_to": "zangrom-thaz"
+  },
+  {
+   "id": "brazier-staff",
+   "name": "Brazier Staff",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Ulgromthier's staff, firing arcing magma projectiles.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706690969",
+   "confidence": "official",
+   "wielder": "Ulgromthier",
+   "evolves_to": "master-of-runes"
+  },
+  {
+   "id": "rope-and-grapnel",
+   "name": "Rope and Grapnel",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Lyssa Revenya's tools: hooks fly in from random screen edges, hit points on the battlefield, damage enemies and drag away survivors; weaker foes are often killed instantly.",
+   "source_url": "https://blog.playstation.com/2026/10/06/warhammer-survivors-launches-november-10-new-characters-revealed/",
+   "confidence": "official",
+   "wielder": "Lyssa Revenya",
+   "evolves_to": "ghost-of-rhea",
+   "extra_sources": [
+    "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706690969"
+   ]
+  },
+  {
+   "id": "uskavar",
+   "name": "Uskavar the Sunderer",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Bastian Carthalos's weapon, pulverising enemies in specific close-range patterns.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114029178",
+   "confidence": "official",
+   "wielder": "Bastian Carthalos"
+  },
+  {
+   "id": "nebulous-sea-fog",
+   "name": "Nebulous Sea Fog",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Conjured by Lorai to draw foes in and damage them.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114029178",
+   "confidence": "official",
+   "wielder": "Lorai, Child of the Abyss",
+   "evolves_to": "aquatic-illusions"
+  },
+  {
+   "id": "boltstorm-pistol",
+   "name": "Boltstorm Pistol",
+   "faction": "AoS",
+   "type": "Weapon",
+   "description": "Age of Sigmar pistol listed in the October demo evolution report.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "wielder": "Pending launch",
+   "evolves_to": "typhoon-crossbow"
+  },
+  {
+   "id": "nuln-oil",
+   "name": "Nuln Oil",
+   "faction": "Cross",
+   "type": "Weapon",
+   "description": "Cross-universe weapon that douses foes in black wash. Survivors are slowed and become vulnerable to fire (the Oiled status), so it combos with Burning weapons.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1832700592786358",
+   "confidence": "official",
+   "wielder": "Pending launch",
+   "evolves_to": "mordant-earth",
+   "extra_sources": [
+    "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840310314339267"
+   ]
+  },
+  {
+   "id": "d6-dice",
+   "name": "D6 Dice",
+   "faction": "Cross",
+   "type": "Weapon",
+   "description": "Cross-universe weapon usable by both 40K and AoS characters. Large dice fly in from off-screen and explode depending on the number rolled (IGN hands-on).",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
+   "confidence": "official",
+   "wielder": "Pending launch",
+   "extra_sources": [
+    "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview"
+   ]
+  },
+  {
+   "id": "eviscerator-chainsword",
+   "name": "Eviscerator Chainsword",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Reported evolution of the Chainsword with the Tape Measure passive. Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "chainsword",
+   "requires": "tape-measure"
+  },
+  {
+   "id": "meltagun",
+   "name": "Meltagun",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Reported evolution of the Lasgun with the Gauntlet passive. Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "lasgun",
+   "requires": "gauntlet"
+  },
+  {
+   "id": "heavy-bolter",
+   "name": "Heavy Bolter",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Evolved Boltgun: a stream of unrelenting firepower against the toughest swarms and larger bioforms. Community report pairs it with Dice Cube.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
+   "confidence": "official",
+   "evolves_from": "boltgun",
+   "requires": "dice-cube",
+   "requires_conf": "community"
+  },
+  {
+   "id": "orbital-bombardment",
+   "name": "Orbital Bombardment",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Brings down barrages of voidship fire from above; the evolution of the Whirlwind Battery. Community report pairs it with Liquid Green Stuff.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
+   "confidence": "official",
+   "evolves_from": "whirlwind-battery",
+   "requires": "liquid-green-stuff",
+   "requires_conf": "community"
+  },
+  {
+   "id": "gauntlets-of-ultramar",
+   "name": "Gauntlets of Ultramar",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Power Fists evolution: Marneus Calgar joins you and unleashes a hail of bolter rounds with every attack.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
+   "confidence": "official",
+   "evolves_from": "power-fists",
+   "requires": "Pending launch"
+  },
+  {
+   "id": "ripper-pistol",
+   "name": "Ripper Pistol",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Officially an unlockable weapon for the Legend of Catachan. A community report lists it as the Frag Grenade + Bandolier evolution, granted as a bonus poisoned pistol rather than replacing the grenades.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706690969",
+   "confidence": "official",
+   "evolves_from": "frag-grenade",
+   "requires": "bandolier",
+   "requires_conf": "community",
+   "extra_sources": [
+    "https://whsurvivors.wiki/weapon-evolutions/"
+   ]
+  },
+  {
+   "id": "purgator-mirabilis",
+   "name": "Purgator Mirabilis",
+   "faction": "40K",
+   "type": "Evolution",
+   "description": "Fidelis evolution that unlocks the Paragon Missile Launcher: sporadic salvos of explosions on top of the bolter spray.",
+   "source_url": "https://blog.playstation.com/2026/10/06/warhammer-survivors-launches-november-10-new-characters-revealed/",
+   "confidence": "official",
+   "evolves_from": "heavy-bolter-fidelis",
+   "requires": "Pending launch"
+  },
+  {
+   "id": "whirlwind-axes",
+   "name": "Whirlwind Axes",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Lightning-infused axes. IGN evolved them from Tempest Axes by levelling the Sabaton passive. Listed on the Steam page.",
+   "source_url": "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview",
+   "confidence": "press",
+   "evolves_from": "tempest-axes",
+   "requires": "sabaton",
+   "extra_sources": [
+    "https://store.steampowered.com/app/3669620/Warhammer_Survivors/"
+   ]
+  },
+  {
+   "id": "zangrom-thaz",
+   "name": "Zangrom-Thaz",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Gotrek's axe, gained by evolving the Fyrestorm Greataxe; calls Gotrek to your side. Swings constantly, and speeds up as you charge into enemies.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1825727806704618",
+   "confidence": "official",
+   "evolves_from": "fyrestorm-greataxe",
+   "requires": "Pending launch"
+  },
+  {
+   "id": "ghost-of-rhea",
+   "name": "Ghost of Rhea",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Rope and Grapnel evolution: the screaming banshee spirit of Rhea soars across the battlefield and explodes into damaging ghostly fog. Community report pairs it with White Dwarf.",
+   "source_url": "https://blog.playstation.com/2026/10/06/warhammer-survivors-launches-november-10-new-characters-revealed/",
+   "confidence": "official",
+   "evolves_from": "rope-and-grapnel",
+   "requires": "white-dwarf",
+   "requires_conf": "community"
+  },
+  {
+   "id": "master-of-runes",
+   "name": "Master of Runes",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Reported evolution of the Brazier Staff with Liquid Green Stuff. Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "brazier-staff",
+   "requires": "liquid-green-stuff"
+  },
+  {
+   "id": "aquatic-illusions",
+   "name": "Aquatic Illusions",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Reported evolution of Nebulous Sea Fog with Bugman's Tankard (May demo list said Glue). Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "nebulous-sea-fog",
+   "requires": "bugmans-tankard"
+  },
+  {
+   "id": "typhoon-crossbow",
+   "name": "Typhoon Crossbow",
+   "faction": "AoS",
+   "type": "Evolution",
+   "description": "Reported evolution of the Boltstorm Pistol with Dice Cube. Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "boltstorm-pistol",
+   "requires": "dice-cube"
+  },
+  {
+   "id": "mordant-earth",
+   "name": "Mordant Earth",
+   "faction": "Cross",
+   "type": "Evolution",
+   "description": "Reported evolution of Nuln Oil with Hourglass, listed in both universes. Effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
+   "confidence": "community",
+   "evolves_from": "nuln-oil",
+   "requires": "hourglass"
+  },
+  {
+   "id": "sabaton",
+   "name": "Sabaton",
+   "faction": "AoS",
+   "type": "Passive",
+   "description": "Passive that makes your character faster; required for the Tempest Axes evolution in IGN's run.",
+   "source_url": "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview",
+   "confidence": "press",
+   "pairs_with": [
+    "tempest-axes"
+   ]
+  },
+  {
+   "id": "tape-measure",
+   "name": "Tape Measure",
+   "faction": "40K",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "chainsword"
+   ]
+  },
+  {
+   "id": "gauntlet",
+   "name": "Gauntlet",
+   "faction": "40K",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "lasgun"
+   ]
+  },
+  {
+   "id": "dice-cube",
+   "name": "Dice Cube",
+   "faction": "Cross",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "boltgun",
+    "boltstorm-pistol"
+   ]
+  },
+  {
+   "id": "liquid-green-stuff",
+   "name": "Liquid Green Stuff",
+   "faction": "Cross",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "whirlwind-battery",
+    "brazier-staff"
+   ]
+  },
+  {
+   "id": "bandolier",
+   "name": "Bandolier",
+   "faction": "40K",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "frag-grenade"
+   ]
+  },
+  {
+   "id": "white-dwarf",
+   "name": "White Dwarf",
+   "faction": "AoS",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "rope-and-grapnel"
+   ]
+  },
+  {
+   "id": "hourglass",
+   "name": "Hourglass",
+   "faction": "Cross",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "nuln-oil"
+   ]
+  },
+  {
+   "id": "bugmans-tankard",
+   "name": "Bugman's Tankard",
+   "faction": "AoS",
+   "type": "Passive",
+   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "source_url": "https://whsurvivors.wiki/power-ups/",
+   "confidence": "community",
+   "pairs_with": [
+    "nebulous-sea-fog"
+   ]
+  },
+  {
+   "id": "melta-bomb",
+   "name": "Melta-Bomb",
+   "faction": "40K",
+   "type": "Pick-up",
+   "description": "Powerful grenade pick-up: after a short delay it unleashes a blast of thermal energy, so you can kite mobs into its radius.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "blast-template",
+   "name": "Blast Template",
+   "faction": "40K",
+   "type": "Pick-up",
+   "description": "Lands on screen and triggers a massive explosion that destroys all enemies on screen; some enemies resist insta-kill effects.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "hellfire-ammo",
+   "name": "Hellfire Ammo",
+   "faction": "40K",
+   "type": "Pick-up",
+   "description": "Temporarily increases the damage of all ranged attacks and inflicts Poisoned.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "purple-sun",
+   "name": "Purple Sun of Shyish",
+   "faction": "AoS",
+   "type": "Pick-up",
+   "description": "Endless Spell that, once manifested, creates damaging zones that hit anything in its light — including you.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "gnashing-jaws",
+   "name": "Ravenak's Gnashing Jaws",
+   "faction": "AoS",
+   "type": "Pick-up",
+   "description": "Tethers to you and chomps nearby enemies as you move, dealing damage and applying Burning.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "suffocating-gravetide",
+   "name": "Suffocating Gravetide",
+   "faction": "AoS",
+   "type": "Pick-up",
+   "description": "Stuns all enemies caught, then sends them fleeing temporarily.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228662246",
+   "confidence": "official"
+  },
+  {
+   "id": "frenzon",
+   "name": "Frenzon",
+   "faction": "Unconfirmed",
+   "type": "Pick-up",
+   "description": "Grants the Berserk status, increasing the frequency of weapon attacks.",
+   "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840310314339267",
+   "confidence": "official",
+   "extra_sources": [
+    "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1832700592786358"
+   ]
+  }
+ ]
+}
