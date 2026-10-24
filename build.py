@@ -430,6 +430,10 @@ def write_redirects() -> None:
                 old = "/" + "/".join([slug_dir.name, *parts]) + "/"
                 new = f"https://{apex}/" + "/".join(parts) + ("/" if parts else "")
                 lines.append(f"{old} {new} 301")
+                if parts:
+                    # The old domain no longer serves these files, so Pages will not add the
+                    # trailing slash itself; map the bare form straight to the new URL (one hop).
+                    lines.append(f"{old.rstrip('/')} {new} 301")
                 if not parts:
                     # Pages normalises a bare sub-site path to its trailing-slash form
                     # before matching, so the root needs both variants.
