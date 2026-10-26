@@ -23,7 +23,7 @@ OUTPUT_DIR = ROOT / "dist"
 # numeric slot IDs from the AdSense console (created after the site is added).
 # Leave a slot blank to keep the container in the layout without calling
 # adsbygoogle.push — an unfilled unit then takes no space and throws no error.
-ADSENSE_CLIENT = "ca-pub-4027819746718681"
+ADSENSE_CLIENT = "ca-pub-8359621843582672"
 ADSENSE_SLOTS = {
     "after-lead": "",
     "before-related": "",
@@ -501,8 +501,8 @@ def write_404(cfg: dict) -> None:
 
 
 ADS_TXT = (
-    "# sephiria-guide.com — AdSense (ca-pub-4027819746718681)\n"
-    "google.com, pub-4027819746718681, DIRECT, f08c47fec0942fa0\n"
+    "# sephiria-guide.com — AdSense (ca-pub-8359621843582672)\n"
+    "google.com, pub-8359621843582672, DIRECT, f08c47fec0942fa0\n"
 )
 
 
