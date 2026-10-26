@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
 import shutil
 from html import escape
@@ -18,6 +19,16 @@ ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "site.json"
 CONTENT_DIR = ROOT / "content"
 OUTPUT_DIR = ROOT / "dist"
+# Same AdSense account as image2base64.com. Manual in-article units need
+# numeric slot IDs from the AdSense console (created after the site is added).
+# Leave a slot blank to keep the container in the layout without calling
+# adsbygoogle.push — an unfilled unit then takes no space and throws no error.
+ADSENSE_CLIENT = "ca-pub-4027819746718681"
+ADSENSE_SLOTS = {
+    "after-lead": "",
+    "before-related": "",
+}
+_RELATED_SPLIT = re.compile(r"(<h2>\s*Related\b|<p>\s*Related\s*:)", re.IGNORECASE)
 EXTRA_SITES_DIR = ROOT / "extra_sites"
 # Sub-sites that now live on their own apex domain. Keys are directory names under
 # extra_sites/; values are the apex they moved to.
@@ -116,6 +127,8 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={THEME_VERSION}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={CSS_VERSION}" />
   <script src="{css_href(depth, "analytics.js")}" defer></script>{home_style}{ld_html}
+  <!-- AdSense head snippet (inserted by adsense_prep) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>
 </head>
 <body{' class="village-home"' if is_home else ''}>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -136,9 +149,49 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
       <p class="other-games">Other games we cover: <a href="{link(depth, '/phantom-blade-zero/')}">Phantom Blade Zero</a> · <a href="{link(depth, '/warhammer-survivors/')}">Warhammer Survivors</a> · <a href="{link(depth, '/fm27/')}">Football Manager 27</a></p>
     </div>
   </footer>
+  <script>
+  (function () {{
+    var nodes = document.querySelectorAll("ins.adsbygoogle[data-ad-slot]");
+    for (var i = 0; i < nodes.length; i++) {{
+      (adsbygoogle = window.adsbygoogle || []).push({{}});
+    }}
+  }})();
+  </script>
 </body>
 </html>
 """
+
+
+def ad_slot_html(placement: str) -> str:
+    """In-flow in-article unit. Not sticky, not an overlay, not a popup."""
+    slot = ADSENSE_SLOTS.get(placement, "")
+    slot_attr = f'\n       data-ad-slot="{escape(slot, quote=True)}"' if slot else ""
+    return f'''<div class="ad-slot" data-ad-placement="{escape(placement, quote=True)}">
+  <ins class="adsbygoogle"
+       style="display:block;text-align:center;"
+       data-ad-client="{ADSENSE_CLIENT}"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-full-width-responsive="true"{slot_attr}></ins>
+</div>'''
+
+
+def insert_ad_slots(content: str) -> str:
+    """One unit after the opening paragraph, one before the Related block."""
+    lead = ad_slot_html("after-lead")
+    tail = ad_slot_html("before-related")
+    close = content.find("</p>")
+    if close == -1:
+        content = lead + content
+    else:
+        cut = close + len("</p>")
+        content = content[:cut] + "\n" + lead + content[cut:]
+    match = _RELATED_SPLIT.search(content)
+    if match:
+        content = content[: match.start()] + tail + "\n" + content[match.start() :]
+    else:
+        content = content + "\n" + tail
+    return content
 
 
 def stuck_prompt(depth: int) -> str:
@@ -157,6 +210,7 @@ def article(
     sources: list,
     *,
     show_stuck_prompt: bool = False,
+    show_ads: bool = False,
     media: dict | None = None,
 ) -> str:
     crumb_html = " / ".join(
@@ -184,6 +238,9 @@ def article(
             content = content.replace(marker, marker + figure_html, 1)
         else:
             content = content.replace("</p>", "</p>" + figure_html, 1)
+    if show_ads:
+        content = insert_ad_slots(content)
+    if media:
         return f'''
   <article class="guide-article">
     <header class="article-hero">
@@ -265,6 +322,9 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
       <span>Meet the characters ↗</span>
     </a>
   </section>
+  <div class="ad-slot-home">
+    {ad_slot_html("after-lead")}
+  </div>
   <nav class="village-map" aria-label="Village guide destinations" id="village">
     <img class="village-background" src="assets/img/village.png" width="1536" height="1024" alt="" fetchpriority="high" />
     {destinations}
@@ -287,6 +347,7 @@ def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
       <a href="{cfg["links"]["steam"]}" rel="noopener">View the game on Steam</a>
     </div>
     <div>
+      {ad_slot_html("before-related")}
       <h2>More to explore</h2>
       <div class="guide-list">
         {also}
@@ -439,12 +500,23 @@ def write_404(cfg: dict) -> None:
     print("wrote 404.html")
 
 
+ADS_TXT = (
+    "# sephiria-guide.com — AdSense (ca-pub-4027819746718681)\n"
+    "google.com, pub-4027819746718681, DIRECT, f08c47fec0942fa0\n"
+)
+
+
 def write_ads_txt() -> None:
-    # Plain text so SPA fallback cannot serve homepage HTML here.
-    text = (
-        "# sephiria-guide.com — no ad network authorized yet.\n"
-        "# When ads go live, publisher lines will be listed below.\n"
-    )
+    # Publish the repo-root ads.txt when it is present. The swap-test rebuild
+    # points ROOT at a temp tree that has no ads.txt, so fall back to the
+    # publisher line. Plain text so the SPA fallback cannot serve HTML here.
+    source = ROOT / "ads.txt"
+    if source.is_file():
+        text = source.read_text(encoding="utf-8")
+        if not text.endswith("\n"):
+            text += "\n"
+    else:
+        text = ADS_TXT
     (OUTPUT_DIR / "ads.txt").write_text(text, encoding="utf-8")
     print("wrote ads.txt")
 
@@ -533,6 +605,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 f'<p>{page["intro"]}</p>\n{listing}',
                 page.get("sources") or [],
                 show_stuck_prompt=True,
+                show_ads=True,
                 media=visuals.get(page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
@@ -545,6 +618,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 page.get("body") or "",
                 page.get("sources") or [],
                 show_stuck_prompt=(layout != "legal"),
+                show_ads=(layout != "legal"),
                 media=visuals.get(page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
