@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config" / "site.json"
 CONTENT_DIR = ROOT / "content"
 OUTPUT_DIR = ROOT / "dist"
-# Same AdSense account as image2base64.com. Manual in-article units need
+# AdSense account for sephiria-guide.com. Manual in-article units need
 # numeric slot IDs from the AdSense console (created after the site is added).
 # Leave a slot blank to keep the container in the layout without calling
 # adsbygoogle.push — an unfilled unit then takes no space and throws no error.
