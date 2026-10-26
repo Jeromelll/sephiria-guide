@@ -30,11 +30,13 @@ INDEXNOW_FILE = f"{INDEXNOW_KEY}.txt"
 
 
 def rewrite(html: str) -> str:
+    html = html.replace('<span class="fm">Warhammer Survivors Guide</span>', '<span class="fm">Warhammer Survivors Guide</span><span class="flinks"><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></span>')
     # This standalone build does not ship the parent site's login page or auth API.
     # Remove only its inherited navigation entry; leave the source site untouched.
     html = html.replace('<a class="login" href="/login.html">Log in</a>', "")
     # static assets (css/images) referenced by absolute sub-site path
     html = html.replace(f"{PREFIX}assets/", "/assets/")
+    html = html.replace('href="/assets/wh.css"', 'href="/assets/wh.css?v=20261026"')
     # canonical first (most specific), then internal links
     html = html.replace(f'href="{OLD_DOMAIN}"', f'href="{NEW_DOMAIN}"')
     html = html.replace(OLD_DOMAIN, NEW_DOMAIN)

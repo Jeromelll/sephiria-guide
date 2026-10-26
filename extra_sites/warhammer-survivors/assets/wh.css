@@ -202,3 +202,6 @@ footer .flinks b+a{margin-left:2px}
   .gloss td:last-child{white-space:normal}
   .gloss td:first-child{min-width:96px}
 }
+
+.table-scroll{overflow-x:auto;padding:6px 10px 10px;margin:12px -10px}
+.table-scroll table{min-width:620px;margin:0}
