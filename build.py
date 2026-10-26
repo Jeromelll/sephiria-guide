@@ -100,6 +100,7 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
 <html lang="{cfg["lang"]}">
 <head>
   <meta charset="utf-8" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8359621843582672" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
@@ -442,8 +443,7 @@ def write_404(cfg: dict) -> None:
 def write_ads_txt() -> None:
     # Plain text so SPA fallback cannot serve homepage HTML here.
     text = (
-        "# sephiria-guide.com — no ad network authorized yet.\n"
-        "# When ads go live, publisher lines will be listed below.\n"
+        "google.com, pub-8359621843582672, DIRECT, f08c47fec0942fa0\n"
     )
     (OUTPUT_DIR / "ads.txt").write_text(text, encoding="utf-8")
     print("wrote ads.txt")
