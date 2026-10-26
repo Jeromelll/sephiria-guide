@@ -502,7 +502,14 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     pages = load_pages(content_dir)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
-    for filename in ("login.html", "robots.txt", "favicon.ico"):
+    # Copied as-is, including the IndexNow key. It must land in dist/ so
+    # Pages serves /131fc577a3d44393b0a07c68875a1462.txt as text/plain.
+    for filename in (
+        "login.html",
+        "robots.txt",
+        "favicon.ico",
+        "131fc577a3d44393b0a07c68875a1462.txt",
+    ):
         source = ROOT / filename
         if source.is_file():
             shutil.copy2(source, OUTPUT_DIR / filename)
