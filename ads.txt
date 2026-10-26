@@ -1,2 +1,2 @@
-# sephiria-guide.com — no ad network authorized yet.
-# When ads go live, publisher lines will be listed below.
+# sephiria-guide.com — AdSense (ca-pub-8359621843582672)
+google.com, pub-8359621843582672, DIRECT, f08c47fec0942fa0

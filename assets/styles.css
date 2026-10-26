@@ -490,3 +490,27 @@ tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
  .article-figure { margin:1rem 0 1.5rem; overflow-x:auto; }
  .article-figure img { min-width:600px; }
 }
+
+/* In-flow AdSense units. Collapsed until a creative fills, so an empty
+   slot does not leave a blank card. Not sticky, not fixed, not a popup. */
+.ad-slot {
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+}
+.ad-slot:has(ins[data-ad-status="filled"]) {
+  margin: 1.15rem 0;
+}
+.ad-slot ins.adsbygoogle {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+.ad-slot-home {
+  width: min(100% - 2rem, var(--max));
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .ad-slot:has(ins[data-ad-status="filled"]) { margin: 1rem 0; }
+  .ad-slot-home { width: min(100% - 1.25rem, var(--max)); }
+}
