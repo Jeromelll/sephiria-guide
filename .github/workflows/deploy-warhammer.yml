@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'extra_sites/warhammer-survivors/**'
+      - 'extra_sites/_root_files/**'
       - 'tools/build_standalone_wh.py'
       - '.github/workflows/deploy-warhammer.yml'
   workflow_dispatch:

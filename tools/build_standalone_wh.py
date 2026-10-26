@@ -23,6 +23,10 @@ OUT = ROOT / "warhammer-dist"
 OLD_DOMAIN = "https://sephiria-guide.com/warhammer-survivors/"
 NEW_DOMAIN = "https://warhammersurvivors.com/"
 PREFIX = "/warhammer-survivors/"
+# Bing IndexNow key for the apex. Filename and body must match; the file is
+# published from extra_sites/_root_files/ (not the Sephiria dist).
+INDEXNOW_KEY = "ad0db49bd5c248469506a7c12efd28c6"
+INDEXNOW_FILE = f"{INDEXNOW_KEY}.txt"
 
 
 def rewrite(html: str) -> str:
@@ -91,8 +95,22 @@ def main() -> int:
                     target = target / "index.html"
                 if not target.is_file():
                     bad.append(f"{p.relative_to(OUT)} (broken link {ref})")
+        key_path = OUT / INDEXNOW_FILE
+        if not key_path.is_file():
+            bad.append(f"missing /{INDEXNOW_FILE} (IndexNow key must ship at site root)")
+        else:
+            body = key_path.read_text(encoding="utf-8")
+            if body not in (INDEXNOW_KEY, INDEXNOW_KEY + "\n"):
+                bad.append(f"/{INDEXNOW_FILE} body is not the IndexNow key")
+        headers = OUT / "_headers"
+        if not headers.is_file():
+            bad.append("missing _headers (IndexNow key needs text/plain)")
+        else:
+            header_text = headers.read_text(encoding="utf-8")
+            if f"/{INDEXNOW_FILE}" not in header_text or "text/plain" not in header_text:
+                bad.append(f"_headers does not pin text/plain for /{INDEXNOW_FILE}")
         if bad:
-            print("FAIL leftover sub-site references:")
+            print("FAIL:")
             for b in sorted(set(bad)):
                 print(" ", b)
             return 1
@@ -106,8 +124,11 @@ def main() -> int:
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    # Extra root files (Search Console verification tokens, ads.txt, …) ship as-is.
+    # Extra root files (Search Console verification tokens, ads.txt, IndexNow
+    # keys, …) ship as-is onto the Warhammer Pages root. Sephiria's build skips
+    # this directory, so these files are not published to sephiria-guide.com.
     extras = ROOT / "extra_sites" / "_root_files"
+    plain_text_roots: list[str] = []
     if extras.is_dir():
         for src in sorted(extras.rglob("*")):
             if not src.is_file():
@@ -116,6 +137,18 @@ def main() -> int:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dest)
             print("copied", dest.relative_to(ROOT))
+            # Unknown paths are HTML (404.html). A real .txt at the root is
+            # served as itself; pin text/plain so the catch-all cannot wrap it.
+            if src.parent == extras and src.suffix == ".txt":
+                plain_text_roots.append(src.name)
+    if INDEXNOW_FILE not in plain_text_roots:
+        print(f"FAIL: IndexNow key missing {extras / INDEXNOW_FILE}")
+        return 1
+    header_blocks = [
+        f"/{name}\n  Content-Type: text/plain; charset=utf-8" for name in plain_text_roots
+    ]
+    (OUT / "_headers").write_text("\n\n".join(header_blocks) + "\n", encoding="utf-8")
+    print("wrote _headers", len(plain_text_roots), "text/plain root files")
 
     # Theme assets (css, screenshots) ship as-is under /assets/.
     assets = SRC / "assets"
