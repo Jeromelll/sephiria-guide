@@ -24,8 +24,8 @@ FAC = {"40K": "Warhammer 40,000", "AoS": "Age of Sigmar", "Cross": "Cross-univer
 FAC_SHORT = {"40K": "40K", "AoS": "AoS", "Cross": "Both", "Unconfirmed": "?"}
 CONF = {"official": "Official", "press": "Press preview", "community": "Community · unconfirmed"}
 
-NAV = [("", "Overview"), ("demo/", "Demo"), ("guide/", "Beginner"), ("codex/", "Codex"),
-       ("characters/", "Characters"), ("weapon-evolutions/", "Evolutions"), ("stages/", "Stages"), ("tier-list/", "Tier List")]
+NAV = [("", "Overview"), ("demo/", "Demo"), ("guide/", "Guide"), ("codex/", "Codex"),
+       ("characters/", "Characters"), ("evolutions/", "Evolutions"), ("stages/", "Stages"), ("tier-list/", "Tier List")]
 
 SOURCES = [
     ("https://store.steampowered.com/app/3669620/Warhammer_Survivors/", "Steam store page (app 3669620)"),
