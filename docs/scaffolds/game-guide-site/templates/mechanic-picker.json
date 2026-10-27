@@ -1,0 +1,25 @@
+{
+  "path": "/town-picker/",
+  "layout": "article",
+  "title": "Example Game Town Picker — Pre-Run Relic Selection",
+  "description": "Example Game town picker: unlock it from the permanent-upgrade tree, choose relics for the next run, and how the capacity stat raises the cap.",
+  "h1": "Example Game Town Picker",
+  "meta": "Town pre-run relic picker. Capacity figures are community-reported; confirm the current cap in-game.",
+  "crumbs": [
+    ["Home", "/"],
+    ["Town Picker", ""]
+  ],
+  "in_guides": true,
+  "guides_label": "Town Picker",
+  "guides_em": "Pre-run relic selection",
+  "home_also": {
+    "title": "Town Picker",
+    "em": "Choose relics before the next run"
+  },
+  "order": 58,
+  "sources": [
+    ["Community talent notes (picker capacity)", "https://example.com/talent-notes"],
+    ["Official basic guide · new events", "https://example.com/basic-guide"]
+  ],
+  "body": "<p>The <strong>Example Game Town Picker</strong> is a <em>pre-run relic selector</em>. It is the object in town, separate from the in-run fountain whose effect changes with the water color.</p>\n<p>The same object is also searched as the <em>wish well</em> and the <em>relic fountain</em>. Those names point at the town picker on this page.</p>\n<h2>What it does</h2>\n<p>Once unlocked, you select relics in town and carry those picks into the next run. Treat it as the step after you have chosen a weapon family.</p>\n<h2>How you unlock it</h2>\n<p>Open it from <strong>New Events</strong> on the <a href=\"../permanent-upgrades/\">permanent upgrades</a> tree, the same early spends that unlock the wardrobe and extra weapons. See the <a href=\"../getting-started/\">getting started</a> page.</p>\n<h2>Capacity</h2>\n<ul>\n  <li>A community writeup reports a default capacity of <strong>4</strong>. Confirm the current value in-game.</li>\n  <li>The capacity stat adds slots at stated talent levels. Write the reported breakpoints here and tell the reader to match them to their own talent screen.</li>\n  <li>Higher rarity is reported to cost more capacity. Confirm the bars in the client.</li>\n</ul>\n<div class=\"note\">Keep the in-run fountain on its own page. That object can grant a resource or spawn a fight; it is a different interactable.</div>\n<p>Related: <a href=\"../builds/summon/\">Summon route</a> (pre-load that family) · <a href=\"../permanent-upgrades/\">Permanent upgrades</a> · <a href=\"../relics/\">Relics</a> · <a href=\"../builds/\">Builds</a>.</p>"
+}
