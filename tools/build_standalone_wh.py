@@ -41,6 +41,40 @@ LEGACY_BEGINNER_PATHS = (
     "/guide/beginner",
     "/guide/beginner/",
 )
+# Search Console 404s that are invented nests of real top-level slugs.
+# The last segment is the real page. Directory paths get both slash forms,
+# matching LEGACY_BEGINNER_PATHS. /login.html is a file, so one rule.
+LEGACY_NESTED_REDIRECTS = (
+    ("/demo/release-date", "/release-date/"),
+    ("/demo/release-date/", "/release-date/"),
+    ("/login.html", "/"),
+    ("/release-date/weapon-evolutions", "/weapon-evolutions/"),
+    ("/release-date/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/characters/tier-list", "/tier-list/"),
+    ("/characters/tier-list/", "/tier-list/"),
+    ("/characters/weapon-evolutions", "/weapon-evolutions/"),
+    ("/characters/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/stages/release-date", "/release-date/"),
+    ("/stages/release-date/", "/release-date/"),
+    ("/stages/characters", "/characters/"),
+    ("/stages/characters/", "/characters/"),
+    ("/characters/guide", "/guide/"),
+    ("/characters/guide/", "/guide/"),
+    ("/tier-list/weapon-evolutions", "/weapon-evolutions/"),
+    ("/tier-list/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/power-ups/demo", "/demo/"),
+    ("/power-ups/demo/", "/demo/"),
+    ("/weapon-evolutions/tier-list", "/tier-list/"),
+    ("/weapon-evolutions/tier-list/", "/tier-list/"),
+    ("/weapon-evolutions/characters", "/characters/"),
+    ("/weapon-evolutions/characters/", "/characters/"),
+    ("/power-ups/release-date", "/release-date/"),
+    ("/power-ups/release-date/", "/release-date/"),
+    ("/guide/weapon-evolutions", "/weapon-evolutions/"),
+    ("/guide/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/guide/tier-list", "/tier-list/"),
+    ("/guide/tier-list/", "/tier-list/"),
+)
 
 
 def redirects_file() -> str:
@@ -50,7 +84,8 @@ def redirects_file() -> str:
         "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301",
     ]
     lines.extend(f"{path} /guide/ 301" for path in LEGACY_BEGINNER_PATHS)
-    # Catch-all last so the specific beginner rules and the www host redirect win.
+    lines.extend(f"{src} {dest} 301" for src, dest in LEGACY_NESTED_REDIRECTS)
+    # Catch-all last so specific 301s and the www host redirect win.
     lines.append("/* /404.html 404")
     return "\n".join(lines) + "\n"
 
@@ -154,6 +189,14 @@ def main() -> int:
                     rule = f"{path} /guide/ 301"
                     if rule not in rules or rules.index(rule) > catch_at:
                         bad.append(f"_redirects missing {rule} before the 404 catch-all")
+                for src, dest in LEGACY_NESTED_REDIRECTS:
+                    rule = f"{src} {dest} 301"
+                    if rule not in rules or rules.index(rule) > catch_at:
+                        bad.append(f"_redirects missing {rule} before the 404 catch-all")
+                    parts = [p for p in dest.strip("/").split("/") if p]
+                    target = OUT.joinpath(*parts, "index.html") if parts else OUT / "index.html"
+                    if not target.is_file():
+                        bad.append(f"redirect target missing for {rule}")
         if bad:
             print("FAIL:")
             for b in sorted(set(bad)):
@@ -235,7 +278,7 @@ def main() -> int:
         encoding="utf-8",
     )
     # www → apex stays first so the 404 catch-all cannot swallow the host redirect.
-    # Legacy beginner paths are inserted before that catch-all.
+    # Legacy beginner paths and nested Search Console 404s are inserted before that catch-all.
     (OUT / "_redirects").write_text(redirects_file(), encoding="utf-8")
     print(f"wrote sitemap.xml ({len(urls)} urls), robots.txt, 404.html, _redirects")
     return 0
