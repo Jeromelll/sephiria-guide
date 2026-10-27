@@ -1,0 +1,26 @@
+{
+  "path": "/builds/summon/",
+  "layout": "article",
+  "title": "Example Game Summon Route — Pets, Turret, Relic Tags",
+  "description": "Example Game summon route: stack the summon-tagged relics, run the turret beside them, and put upgrade tokens on the summons.",
+  "h1": "Example Game Summon Route",
+  "meta": "For summon-build searches. One family; the overview of every theme stays on the builds hub.",
+  "crumbs": [
+    ["Home", "/"],
+    ["Builds", "/builds/"],
+    ["Summon", ""]
+  ],
+  "in_guides": true,
+  "guides_label": "Summon route",
+  "guides_em": "Pets and turret",
+  "home_also": {
+    "title": "Summon route",
+    "em": "One family: pets plus turret"
+  },
+  "order": 31,
+  "sources": [
+    ["Clear video: summon route", "https://example.com/summon-clear"],
+    ["Community build notes (commit to one family)", "https://example.com/first-build"]
+  ],
+  "body": "<p><strong>Example Game summon route</strong> stacks summon-tagged relics, runs the turret beside them, and spends upgrade tokens on the summons so they hold aggro. This page is that route. The <a href=\"../../builds/\">builds overview</a> lists every theme.</p>\n<h2>Core idea</h2>\n<ul>\n  <li>Prioritize the <strong>summon</strong> family early. Name the item tags your sources actually use.</li>\n  <li>The <strong>turret</strong> line plays as extra summons once the evolution lands.</li>\n  <li>Put tokens and buffs on the summons, not on a second damage tag.</li>\n  <li>Carry lines that persist gear between runs make the set much smoother. Name the real unlock.</li>\n</ul>\n<h2>First-floor checklist</h2>\n<ol>\n  <li>Pick a weapon family before the run (see <a href=\"../../weapons/\">weapons</a>).</li>\n  <li>Pre-load the <a href=\"../../town-picker/\">Town Picker</a> with summon-family relics once it is unlocked.</li>\n  <li>Take every summon-tag item on the first floor before a shiny off-theme drop.</li>\n  <li>Start the turret line as the second tag.</li>\n  <li>Spend tokens on summon damage or summon count.</li>\n</ol>\n<h2>Run habits</h2>\n<ul>\n  <li>Accept a secondary element only when it supports the turret. Keep the tag count tight.</li>\n  <li>In co-op the summons draw aggro so the party can play the mechanic.</li>\n  <li>After a boss, rebuild adjacency so summon pieces stay bonded.</li>\n</ul>\n<h2>Common mistakes</h2>\n<ul>\n  <li>Spreading early picks across several families. The summons come online when the family is stacked.</li>\n  <li>Buffing your own damage while the pets die. Tokens belong on the summons.</li>\n  <li>Skipping the carry unlock, then rebuilding the set every run.</li>\n</ul>\n<h2>Quick FAQ</h2>\n<p><strong>What counts as a summon item?</strong><br/>Anything your sources tag as spawning or buffing a summon. List the families, and leave exact ids to the journal when patches rename them.</p>\n<p><strong>Do the summons hold aggro?</strong><br/>State the community claim in one sentence and point at the clear video in Sources.</p>\n<p><strong>Does it carry into the harder mode?</strong><br/>Link the <a href=\"../../hard-mode/\">hard-mode page</a> for what changes, and keep that page’s rules off this one.</p>\n<div class=\"note\">Theme-level advice (“commit to one family”) can be stable while item ids move. Say so, and point at the journal plus the videos in Sources.</div>\n<p>Parent hub: <a href=\"../\">Builds overview</a>.</p>\n<h2>Related guides</h2>\n<ul>\n  <li><a href=\"../../builds/\">Builds overview</a> — every theme, including this one</li>\n  <li><a href=\"../../relics/\">Relics and tokens</a> — the grid this route uses</li>\n  <li><a href=\"../../co-op/\">Co-op</a> — running summons in a party</li>\n  <li><a href=\"../../town-picker/\">Town Picker</a> — pre-load the summon family</li>\n  <li><a href=\"../../hidden-rooms/\">Hidden rooms</a> — extra supplies during the run</li>\n</ul>"
+}
