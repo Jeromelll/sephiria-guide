@@ -27,6 +27,32 @@ PREFIX = "/warhammer-survivors/"
 # published from extra_sites/_root_files/ (not the Sephiria dist).
 INDEXNOW_KEY = "ad0db49bd5c248469506a7c12efd28c6"
 INDEXNOW_FILE = f"{INDEXNOW_KEY}.txt"
+# Nav says "Beginner" but the page has always been /guide/ on this apex.
+# Guessed legacy URLs still 404 in Search Console; 301 them before the catch-all.
+LEGACY_BEGINNER_PATHS = (
+    "/beginner",
+    "/beginner/",
+    "/beginner-guide",
+    "/beginner-guide/",
+    "/Beginner",
+    "/Beginner/",
+    "/guides/beginner",
+    "/guides/beginner/",
+    "/guide/beginner",
+    "/guide/beginner/",
+)
+
+
+def redirects_file() -> str:
+    """Cloudflare Pages _redirects. Pages applies rules in order."""
+    lines = [
+        "/index.html / 301",
+        "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301",
+    ]
+    lines.extend(f"{path} /guide/ 301" for path in LEGACY_BEGINNER_PATHS)
+    # Catch-all last so the specific beginner rules and the www host redirect win.
+    lines.append("/* /404.html 404")
+    return "\n".join(lines) + "\n"
 
 
 def rewrite(html: str) -> str:
@@ -109,6 +135,21 @@ def main() -> int:
             header_text = headers.read_text(encoding="utf-8")
             if f"/{INDEXNOW_FILE}" not in header_text or "text/plain" not in header_text:
                 bad.append(f"_headers does not pin text/plain for /{INDEXNOW_FILE}")
+        redirects = OUT / "_redirects"
+        expected_redirects = redirects_file()
+        if not redirects.is_file() or redirects.read_text(encoding="utf-8") != expected_redirects:
+            bad.append("_redirects missing legacy beginner 301s or existing rules changed")
+        else:
+            rules = expected_redirects.splitlines()
+            catch_all = "/* /404.html 404"
+            if not rules or rules[-1] != catch_all:
+                bad.append("_redirects catch-all is not the last rule")
+            else:
+                catch_at = rules.index(catch_all)
+                for path in LEGACY_BEGINNER_PATHS:
+                    rule = f"{path} /guide/ 301"
+                    if rule not in rules or rules.index(rule) > catch_at:
+                        bad.append(f"_redirects missing {rule} before the 404 catch-all")
         if bad:
             print("FAIL:")
             for b in sorted(set(bad)):
@@ -189,14 +230,9 @@ def main() -> int:
         ),
         encoding="utf-8",
     )
-    (OUT / "_redirects").write_text(
-        # www → apex first: Pages applies rules in order, so the SPA 404 catch-all
-        # below must not swallow the host redirect.
-        "/index.html / 301\n"
-        "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301\n"
-        "/* /404.html 404\n",
-        encoding="utf-8",
-    )
+    # www → apex stays first so the 404 catch-all cannot swallow the host redirect.
+    # Legacy beginner paths are inserted before that catch-all.
+    (OUT / "_redirects").write_text(redirects_file(), encoding="utf-8")
     print(f"wrote sitemap.xml ({len(urls)} urls), robots.txt, 404.html, _redirects")
     return 0
 
