@@ -93,7 +93,11 @@ def main() -> int:
         bad = []
         for p in OUT.rglob("*.html"):
             t = p.read_text(encoding="utf-8")
-            if PREFIX in t:
+            # External URLs can contain the same path segment (for example
+            # capydb.com/warhammer-survivors/). Only a leftover internal prefix
+            # means the rewrite missed a link.
+            internal = re.sub(r"https?://[^\"'\s<]+", "", t)
+            if PREFIX in internal:
                 bad.append(str(p.relative_to(OUT)))
             if "sephiria-guide.com" in t:
                 bad.append(f"{p.relative_to(OUT)} (sephiria ref)")
@@ -225,7 +229,7 @@ def main() -> int:
     notfound = (OUT / "index.html").read_text(encoding="utf-8")
     (OUT / "404.html").write_text(
         notfound.replace(
-            "<h1>Warhammer Survivors Guide — Characters, Weapons &amp; Evolutions</h1>",
+            "<h1>Warhammer Survivors: What It Is, Platforms, Price Status &amp; Release Date</h1>",
             "<h1>Page not found</h1>",
         ),
         encoding="utf-8",
