@@ -99,6 +99,68 @@ def url_to_file(url: str) -> Path | None:
     return candidate if candidate.is_file() else None
 
 
+LOCAL_REF = re.compile(r'(?:href|src)="([^"]+)"')
+# Sub-sites that moved to their own apex. build.py emits 301s for these paths, so a
+# link to them is live even though no file exists in dist/.
+EDGE_REDIRECT_PREFIXES = ("/warhammer-survivors/", "/warhammer-survivors")
+
+
+def _resolve_local_ref(page: Path, ref: str) -> Path | None:
+    """Map one href/src to the dist file it must resolve to, or None if not local."""
+    path = ref.split("#")[0].split("?")[0]
+    if path.startswith(("//", "/")):
+        target = SITE / path.lstrip("/")
+    else:
+        target = (page.parent / path).resolve()
+    if path.endswith("/") or path == "":
+        return target / "index.html"
+    if target.exists():
+        return target
+    if not target.suffix:
+        for cand in (target.with_suffix(".html"), target / "index.html"):
+            if cand.exists():
+                return cand
+    return target
+
+
+def check_local_links(pages: list[Path]) -> tuple[list[dict], list[dict]]:
+    """Every internal href/src in dist/ must resolve to a file that exists."""
+    fails: list[dict] = []
+    oks: list[dict] = []
+    for page in pages + ([SITE / "404.html"] if (SITE / "404.html").is_file() else []):
+        if not page.is_file():
+            continue
+        rel = page.relative_to(SITE).as_posix()
+        html = page.read_text(encoding="utf-8")
+        seen: set[str] = set()
+        for ref in LOCAL_REF.findall(html):
+            if ref.startswith(("http://", "https://", "mailto:", "tel:", "#", "data:")):
+                continue
+            if not ref.split("#")[0].split("?")[0]:
+                continue
+            if ref in seen:
+                continue
+            seen.add(ref)
+            target = _resolve_local_ref(page, ref)
+            if target is not None and SITE in target.parents:
+                site_path = "/" + target.relative_to(SITE).as_posix()
+                if site_path.startswith(EDGE_REDIRECT_PREFIXES):
+                    # Moved sub-site: served by an edge 301, not a file in dist/.
+                    continue
+            if target is not None and target.exists():
+                oks.append({"check": "local_link", "file": rel, "href": ref})
+            else:
+                fails.append(
+                    {
+                        "check": "local_link_broken",
+                        "file": rel,
+                        "href": ref,
+                        "detail": f"resolves to missing {target.relative_to(SITE).as_posix() if target and SITE in target.parents else target}",
+                    }
+                )
+    return fails, oks
+
+
 def parse_sitemap(path: Path) -> list[str]:
     text = path.read_text(encoding="utf-8")
     return re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", text)
@@ -289,6 +351,10 @@ def main() -> int:
                     "detail": "public page on disk but not in sitemap.xml",
                 }
             )
+
+    link_fails, link_oks = check_local_links(pages)
+    fails.extend(link_fails)
+    oks.extend(link_oks)
 
     report = {
         "site": ORIGIN,
