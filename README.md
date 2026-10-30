@@ -26,6 +26,8 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory dist
 
 Generated from `content/`. Current set includes home, guides hub, beginner, builds, companion, weapons, Destiny, Hard Mode, wishing fountain, artifacts, bosses (Erma / final), multiplayer, secret rooms, costumes, scythe.
 
+Next JSON + `build.py` guide site: [docs/scaffolds/game-guide-site/](docs/scaffolds/game-guide-site/) (item/mechanic pattern). Warhammer Survivors stays on its own static tree.
+
 ## Notes
 
 - Content is sourced from Steam + cross-checked guides/videos (no fabricated game facts).

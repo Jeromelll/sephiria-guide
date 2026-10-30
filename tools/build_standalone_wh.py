@@ -27,6 +27,67 @@ PREFIX = "/warhammer-survivors/"
 # published from extra_sites/_root_files/ (not the Sephiria dist).
 INDEXNOW_KEY = "ad0db49bd5c248469506a7c12efd28c6"
 INDEXNOW_FILE = f"{INDEXNOW_KEY}.txt"
+# Nav says "Beginner" but the page has always been /guide/ on this apex.
+# Guessed legacy URLs still 404 in Search Console; 301 them before the catch-all.
+LEGACY_BEGINNER_PATHS = (
+    "/beginner",
+    "/beginner/",
+    "/beginner-guide",
+    "/beginner-guide/",
+    "/Beginner",
+    "/Beginner/",
+    "/guides/beginner",
+    "/guides/beginner/",
+    "/guide/beginner",
+    "/guide/beginner/",
+)
+# Search Console 404s that are invented nests of real top-level slugs.
+# The last segment is the real page. Directory paths get both slash forms,
+# matching LEGACY_BEGINNER_PATHS. /login.html is a file, so one rule.
+LEGACY_NESTED_REDIRECTS = (
+    ("/demo/release-date", "/release-date/"),
+    ("/demo/release-date/", "/release-date/"),
+    ("/login.html", "/"),
+    ("/release-date/weapon-evolutions", "/weapon-evolutions/"),
+    ("/release-date/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/characters/tier-list", "/tier-list/"),
+    ("/characters/tier-list/", "/tier-list/"),
+    ("/characters/weapon-evolutions", "/weapon-evolutions/"),
+    ("/characters/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/stages/release-date", "/release-date/"),
+    ("/stages/release-date/", "/release-date/"),
+    ("/stages/characters", "/characters/"),
+    ("/stages/characters/", "/characters/"),
+    ("/characters/guide", "/guide/"),
+    ("/characters/guide/", "/guide/"),
+    ("/tier-list/weapon-evolutions", "/weapon-evolutions/"),
+    ("/tier-list/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/power-ups/demo", "/demo/"),
+    ("/power-ups/demo/", "/demo/"),
+    ("/weapon-evolutions/tier-list", "/tier-list/"),
+    ("/weapon-evolutions/tier-list/", "/tier-list/"),
+    ("/weapon-evolutions/characters", "/characters/"),
+    ("/weapon-evolutions/characters/", "/characters/"),
+    ("/power-ups/release-date", "/release-date/"),
+    ("/power-ups/release-date/", "/release-date/"),
+    ("/guide/weapon-evolutions", "/weapon-evolutions/"),
+    ("/guide/weapon-evolutions/", "/weapon-evolutions/"),
+    ("/guide/tier-list", "/tier-list/"),
+    ("/guide/tier-list/", "/tier-list/"),
+)
+
+
+def redirects_file() -> str:
+    """Cloudflare Pages _redirects. Pages applies rules in order."""
+    lines = [
+        "/index.html / 301",
+        "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301",
+    ]
+    lines.extend(f"{path} /guide/ 301" for path in LEGACY_BEGINNER_PATHS)
+    lines.extend(f"{src} {dest} 301" for src, dest in LEGACY_NESTED_REDIRECTS)
+    # Catch-all last so specific 301s and the www host redirect win.
+    lines.append("/* /404.html 404")
+    return "\n".join(lines) + "\n"
 
 
 def rewrite(html: str) -> str:
@@ -69,7 +130,11 @@ def main() -> int:
         bad = []
         for p in OUT.rglob("*.html"):
             t = p.read_text(encoding="utf-8")
-            if PREFIX in t:
+            # External URLs can contain the same path segment (for example
+            # capydb.com/warhammer-survivors/). Only a leftover internal prefix
+            # means the rewrite missed a link.
+            internal = re.sub(r"https?://[^\"'\s<]+", "", t)
+            if PREFIX in internal:
                 bad.append(str(p.relative_to(OUT)))
             if "sephiria-guide.com" in t:
                 bad.append(f"{p.relative_to(OUT)} (sephiria ref)")
@@ -111,6 +176,29 @@ def main() -> int:
             header_text = headers.read_text(encoding="utf-8")
             if f"/{INDEXNOW_FILE}" not in header_text or "text/plain" not in header_text:
                 bad.append(f"_headers does not pin text/plain for /{INDEXNOW_FILE}")
+        redirects = OUT / "_redirects"
+        expected_redirects = redirects_file()
+        if not redirects.is_file() or redirects.read_text(encoding="utf-8") != expected_redirects:
+            bad.append("_redirects missing legacy beginner 301s or existing rules changed")
+        else:
+            rules = expected_redirects.splitlines()
+            catch_all = "/* /404.html 404"
+            if not rules or rules[-1] != catch_all:
+                bad.append("_redirects catch-all is not the last rule")
+            else:
+                catch_at = rules.index(catch_all)
+                for path in LEGACY_BEGINNER_PATHS:
+                    rule = f"{path} /guide/ 301"
+                    if rule not in rules or rules.index(rule) > catch_at:
+                        bad.append(f"_redirects missing {rule} before the 404 catch-all")
+                for src, dest in LEGACY_NESTED_REDIRECTS:
+                    rule = f"{src} {dest} 301"
+                    if rule not in rules or rules.index(rule) > catch_at:
+                        bad.append(f"_redirects missing {rule} before the 404 catch-all")
+                    parts = [p for p in dest.strip("/").split("/") if p]
+                    target = OUT.joinpath(*parts, "index.html") if parts else OUT / "index.html"
+                    if not target.is_file():
+                        bad.append(f"redirect target missing for {rule}")
         if bad:
             print("FAIL:")
             for b in sorted(set(bad)):
@@ -186,19 +274,14 @@ def main() -> int:
     notfound = (OUT / "index.html").read_text(encoding="utf-8")
     (OUT / "404.html").write_text(
         notfound.replace(
-            "<h1>Warhammer Survivors Guide — Characters, Weapons &amp; Evolutions</h1>",
+            "<h1>Warhammer Survivors: What It Is, Platforms, Price Status &amp; Release Date</h1>",
             "<h1>Page not found</h1>",
         ),
         encoding="utf-8",
     )
-    (OUT / "_redirects").write_text(
-        # www → apex first: Pages applies rules in order, so the SPA 404 catch-all
-        # below must not swallow the host redirect.
-        "/index.html / 301\n"
-        "https://www.warhammersurvivors.com/* https://warhammersurvivors.com/:splat 301\n"
-        "/* /404.html 404\n",
-        encoding="utf-8",
-    )
+    # www → apex stays first so the 404 catch-all cannot swallow the host redirect.
+    # Legacy beginner paths and nested Search Console 404s are inserted before that catch-all.
+    (OUT / "_redirects").write_text(redirects_file(), encoding="utf-8")
     print(f"wrote sitemap.xml ({len(urls)} urls), robots.txt, 404.html, _redirects")
     return 0
 

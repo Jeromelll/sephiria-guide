@@ -1,0 +1,25 @@
+{
+  "path": "/hidden-rooms/",
+  "layout": "article",
+  "title": "Example Game Hidden Rooms — How to Find Cracked Walls",
+  "description": "Find Example Game hidden rooms by checking cracked walls, opening them with an attack, and confirming the room on your map.",
+  "h1": "Example Game Hidden Rooms",
+  "meta": "One procedure, plus the caveats in the cited guide. Placement and rewards can move between patches.",
+  "crumbs": [
+    ["Home", "/"],
+    ["Hidden rooms", ""]
+  ],
+  "in_guides": true,
+  "guides_label": "Hidden rooms",
+  "guides_em": "Cracked walls",
+  "home_also": {
+    "title": "Hidden rooms",
+    "em": "Cracked walls and what the map shows"
+  },
+  "order": 90,
+  "sources": [
+    ["Official basic guide · hidden room", "https://example.com/basic-guide"],
+    ["Player thread: where are the cracks?", "https://example.com/hidden-room-thread"]
+  ],
+  "body": "<p>Find <strong>Example Game hidden rooms</strong> by checking walls for a crack and striking it. That wall check is how the room opens. The find counts toward the exploration achievement the guide names.</p>\n<h2>How to spot the crack</h2>\n<ul>\n  <li>Scan walls for a <strong>small crack near the top</strong>. Sweep each corridor once.</li>\n  <li>Stand close and strike the crack. A notification confirms the find.</li>\n  <li>The room then appears on the map. The passage itself may stay undrawn.</li>\n</ul>\n<h2>What’s inside</h2>\n<p>Reported rewards include crafting materials, relics, and consumables. Name only the categories your sources agree on.</p>\n<h2>Does the map show them?</h2>\n<p>Only after you open one. The guide describes the map marker as the result of the find, so the search is by eye.</p>\n<h2>If you cannot find the entrance</h2>\n<ul>\n  <li><strong>The minimap is empty:</strong> look at the walls. The marker is not a clue you can follow beforehand.</li>\n  <li><strong>The crack is hard to see:</strong> check the upper edge, step closer, and strike. Use the notification as confirmation.</li>\n  <li><strong>The room is marked and no corridor is drawn:</strong> return to the wall you opened.</li>\n  <li><strong>You are following a second, crackless tip:</strong> give that one its own sentence and its own source. Keep it distinct from the cracked-wall procedure.</li>\n</ul>\n<h2>Quick FAQ</h2>\n<p><strong>How many hidden rooms are there?</strong><br/>The achievement records finding one. The cited guide does not set a fixed total.</p>\n<p><strong>Do they respawn?</strong><br/>The cited guide does not document respawn. Treat each crack as a find on that visit.</p>\n<div class=\"note\">Record the guide’s stated version in this note. Cracked-wall steps can stay stable while room placement and reward pools change. A second secret with a different tell stays labeled as a separate report.</div>\n<p>Related: <a href=\"../builds/summon/\">Summon route</a> · <a href=\"../town-picker/\">Town Picker</a> · <a href=\"../builds/\">Builds</a> · <a href=\"../guides/\">All guides</a>.</p>"
+}

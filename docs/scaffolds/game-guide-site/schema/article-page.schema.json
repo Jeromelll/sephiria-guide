@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/game-guide-article-page.schema.json",
+  "title": "Guide article page",
+  "description": "One content/*.json file for layout=article. Matches the fields build.py reads for item and mechanic pages. Unknown keys are allowed so a draft note can ride along; build.py only reads the keys below.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["path", "layout", "title", "description", "h1", "meta", "body"],
+  "properties": {
+    "path": {
+      "type": "string",
+      "pattern": "^/.+/$",
+      "description": "Public path with trailing slashes. Depth 1: /town-picker/. Depth 2: /builds/summon/. The filename may differ."
+    },
+    "layout": {
+      "const": "article"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Document <title>. Query phrase plus a differentiator."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "description": "Meta description. The answer to this URL's single intent."
+    },
+    "h1": {
+      "type": "string",
+      "minLength": 3,
+      "description": "The only visible H1. Do not repeat an h1 inside body."
+    },
+    "meta": {
+      "type": "string",
+      "description": "Status line printed under the H1."
+    },
+    "body": {
+      "type": "string",
+      "description": "HTML fragment. Opens with a <p> lead. Closes with a Related h2 or a paragraph that starts with 'Related:' so the before-related ad slot has a marker. Internal links are relative to path depth."
+    },
+    "crumbs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          { "type": "string" },
+          { "type": "string", "description": "Site path, or empty string on the current crumb." }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          { "type": "string", "description": "Visible source label." },
+          { "type": "string", "format": "uri", "description": "Absolute source URL." }
+        ],
+        "items": false,
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "in_guides": {
+      "type": "boolean",
+      "description": "true lists the page on the guides hub."
+    },
+    "guides_label": { "type": "string" },
+    "guides_em": { "type": "string" },
+    "home_also": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "em"],
+      "properties": {
+        "title": { "type": "string" },
+        "em": { "type": "string" }
+      },
+      "description": "Present only when the page should appear in the homepage More-to-explore list."
+    },
+    "order": {
+      "type": "integer",
+      "description": "Sort key shared with the guides hub and sitemap priority bands. Homepage uses 0."
+    },
+    "sitemap_exclude": {
+      "type": "boolean",
+      "description": "true omits the URL from sitemap.xml. Leave unset on indexable long-tail pages."
+    }
+  }
+}
