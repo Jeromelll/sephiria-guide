@@ -119,24 +119,10 @@
       "source": "https://teamhoray.com/games/sephiria"
     },
     "illustration": {
-      "src": "assets/img/diagrams/bosses.svg",
-      "alt": "Choose an existing boss page; pattern coverage is still being verified. Guide schematic; not an in-game screenshot.",
-      "caption": "Boss guide index. Guide schematic.",
-      "after": ""
-    }
-  },
-  "/bosses/erma/": {
-    "cover": {
-      "src": "assets/img/official/shot_07.jpg",
-      "alt": "A library room in the dungeon.",
-      "caption": "Official screenshot · Team Horay — A library room in the dungeon.",
-      "source": "https://teamhoray.com/games/sephiria"
-    },
-    "illustration": {
       "src": "assets/img/diagrams/bosses-erma.svg",
       "alt": "Three phases; targetable parts and transition described in the guide. Guide schematic; not an in-game screenshot.",
       "caption": "Erma encounter structure. Guide schematic.",
-      "after": "<h2>Fight structure (NamuWiki cross-check)</h2>"
+      "after": "<h3>Fight structure (NamuWiki cross-check)</h3>"
     }
   },
   "/builds/companion/": {
@@ -221,20 +207,6 @@
       "alt": "The cited v1.0.24 community roster counts 8 starting and 19 unlockable costumes. Guide schematic; not an in-game screenshot.",
       "caption": "Costume roster snapshot. Guide schematic.",
       "after": "<h2>How many costumes are there?</h2>"
-    }
-  },
-  "/bosses/final/": {
-    "cover": {
-      "src": "assets/img/official/shot_05.png",
-      "alt": "A close-range dungeon combat scene.",
-      "caption": "Official screenshot · Team Horay — A close-range dungeon combat scene.",
-      "source": "https://teamhoray.com/games/sephiria"
-    },
-    "illustration": {
-      "src": "assets/img/diagrams/bosses-final.svg",
-      "alt": "The page documents multi-phase pressure and patch changes to readability. Guide schematic; not an in-game screenshot.",
-      "caption": "Read the fight carefully. Guide schematic.",
-      "after": ""
     }
   },
   "/artifacts/": {

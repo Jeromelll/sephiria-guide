@@ -1,65 +1,69 @@
 {
-  "path": "/builds/",
-  "title": "Sephiria Builds: Weapon Paths and Artifact Pairings",
-  "description": "Plan a Sephiria run around a weapon path and Artifact family, including the Companion summoner route. Compare community-reported setups, practical pairing ideas, and patch changes.",
-  "h1": "Sephiria builds",
-  "meta": "Updated 26 October 2026. Community build notes with explicit version limits; check current item and upgrade descriptions in-game.",
-  "body": "<p>Plan a Sephiria run around a weapon path and one or two Artifact families. The combinations below are community reports, not official loadouts or a ranked tier list; item offers and patch changes can change the result.</p>\n<p>The summoner route is the <a href=\"../builds/companion/\">Companion build</a>: Companion-tagged pets, Ballista, and Tablets on summons.</p>\n<h2>What actually makes a build work</h2>\n<ul>\n  <li>Choose a weapon evolution and a combo family that support each other, then focus your Artifact picks around that plan.</li>\n  <li>Check the Journal before a run for unlocked weapon paths, Artifact effects, and combo tags.</li>\n  <li>After an Anvil or Tablet choice, check the live item description and whether its effect actually supports your route.</li>\n  <li>Use the Wishing Fountain for available pre-run Artifacts, but avoid making the whole plan depend on a Bond Artifact: Steam players report that Bond Artifacts are not offered there.</li>\n</ul>\n<h2>Community-reported setup names</h2>\n<p>The first seven names and paths below are retained from earlier community build references. Their current-version routes and claimed performance have not been independently verified; treat them as search leads and confirm each evolution in your Journal.</p>\n<table>\n  <thead><tr><th>Setup name</th><th>Reported weapon path</th><th>Use as a starting question</th></tr></thead>\n  <tbody>\n    <tr><td>Frozen Smelt</td><td>Dagger → Sleeping Frost → Frozen Smelt</td><td>Which Frost / Glacier effects support the current evolution?</td></tr>\n    <tr><td>Formless Dance</td><td>Staff → Throwing Spear → Formless Dance</td><td>Does the current evasion effect fit your weapon and Artifact offers?</td></tr>\n    <tr><td>Minigun</td><td>Heavy Crossbow → Unstable Lightning Mark → Minigun</td><td>Check the Crossbow's current reload and projectile effects.</td></tr>\n    <tr><td>Guardian Greatsword</td><td>Steel Greatsword line</td><td>Confirm which defensive and recovery effects are available in your run.</td></tr>\n    <tr><td>Biryuu Katana</td><td>Katana → Biryuu</td><td>Check the current parry and weapon effects before committing.</td></tr>\n    <tr><td>Creaking Spine</td><td>Steel Greatsword → Bone Mechanism Sword → Creaking Spine</td><td>Verify the evolution labels in the current Journal.</td></tr>\n    <tr><td>Infinite Elemental Bolt</td><td>Staff → Flame Staff → Elemental Fusion Staff</td><td>Check which elemental tags and Staff upgrades your save has unlocked.</td></tr>\n  </tbody>\n</table>\n<h2>Steam discussion routes to compare</h2>\n<table>\n  <thead><tr><th>Run direction</th><th>Weapon and Artifact pairing reported</th><th>Decision point</th></tr></thead>\n  <tbody>\n    <tr><td><a href=\"../builds/companion/\">Companion / summoner</a></td><td>A player report pairs Companion summons, including a Lightning Ballista interaction, with Sword &amp; Shield guarding and MP recovery.</td><td>Guarding consumes MP; only commit if your current run can sustain it. Treat reported clears as anecdotes.</td></tr>\n    <tr><td>Storm Cloud</td><td>A Steam player recommends the Long Sword path; another describes Storm Cloud with Magitech support.</td><td>Try this if you want damage to continue while you reposition; inspect the current combo tags and Tablet effects.</td></tr>\n    <tr><td>Solar Blade</td><td>Players recommend building around Solar Blade activations; Meteorite Earring is mentioned as a key Artifact.</td><td>Official 1.0.31 added Midday Whetstone and Meteorite Mirror; 1.0.33 fixed Solar Blade retrieval interactions. Compare current Journal descriptions.</td></tr>\n    <tr><td>Sword &amp; Shield: Blinding Silence</td><td>Official 1.0.31 upgrade: pair Blinding Silence with Thunder's Earring.</td><td>Using Special Attack: Cleave immediately activates Thunder's Earring; the upgrade also increases Lightning Damage and the artifact's attacks.</td></tr>\n    <tr><td>Sword &amp; Shield: Garden of Needle Ice</td><td>Official 1.0.31 upgrade: pair Garden of Needle Ice with Ice Vine.</td><td>When activated, Ice Vine orbits the player and no longer has a cooldown; the upgrade also increases Cold Damage.</td></tr>\n    <tr><td>Frost Relic</td><td>Community reports describe Oracle's Staff / Voluspa, Blizzard's Eve / Hammer, and Drifa Dagger / Compass placements.</td><td>Check which trigger route matches your unlocked weapon and available Artifact pool.</td></tr>\n    <tr><td>Crossbow Glacier</td><td>A Steam player reports Frost Veil with Glacier, Wind Song, and reload-supporting Crossbow Artifacts.</td><td>Use as a player route to test, not a guaranteed freeze setup.</td></tr>\n    <tr><td>Blizzard Scythe (legacy report)</td><td>An earlier community page reports a Dagger → Dormant Frost → Drifa route that evolves into Blizzard Scythe.</td><td>This path is retained from the existing video reference, not independently confirmed in current Steam notes; verify labels and unlocks in your Journal.</td></tr>\n  </tbody>\n</table>\n<h2>Artifact and Tablet pairings</h2>\n<p>Use the combo labels and Tablet effects visible in your current inventory to decide where an upgrade applies. Community discussions point to several broad pairings: Storm Cloud with Magitech, Solar Blade with Ember support, and Frost Relic with Lake-series effects. Exact placement, costs, and set thresholds should be checked against the current client.</p>\n<p><strong>Version correction:</strong> old community advice describes Sword &amp; Shield's Starlight as a reflect build. Official 1.0.31 notes changed Starlight so its counterattack uses Riposte Blade Fragment, launching toward the nearest enemy and piercing enemies in its path. Do not use the old reflect description as a current build recipe.</p>\n<h2>Costumes and Talents</h2>\n<p>Costumes change starting stats; choose one that supports the weapon route you want to practice. Talent access and reset notes are on the <a href=\"../destiny-inscription/\">Destiny Inscription</a> page. For the town Artifact picker, see <a href=\"../wishing-fountain/\">Wishing Fountain</a>.</p>\n<h2>Version notes</h2>\n<p>Steam's official update feed checked for this guide includes 1.0.33 (September 2026). The 1.0.31 update added weapon upgrades and Artifacts and changed several existing effects; 1.0.33 then corrected Solar Blade interactions and changed Master's Tsuba. Community setup posts linked below are dated August 2026 and may predate those changes. Verify all item names and effects in your current Journal before relying on a named route.</p>\n<p>Related: <a href=\"../weapons/\">weapons and upgrades</a> · <a href=\"../artifacts/\">Artifacts and Tablets</a> · <a href=\"../builds/companion/\">companion build</a> · <a href=\"../destiny-inscription/\">Destiny Inscription</a> · <a href=\"../wishing-fountain/\">Wishing Fountain</a> · <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
-  "sources": [
-    [
-      "Steam discussion: Any tips? (weapon-first planning, Storm Cloud, Solar Blade)",
-      "https://steamcommunity.com/app/2436940/discussions/0/592937421547744910/"
-    ],
-    [
-      "Steam discussion: So, Companions + Sword & Shield (player report)",
-      "https://steamcommunity.com/app/2436940/discussions/0/592937694876688617/"
-    ],
-    [
-      "Steam discussion: No resources, no meta builds accessible? What wins? (community route reports)",
-      "https://steamcommunity.com/app/2436940/discussions/0/591813437999298285/"
-    ],
-    [
-      "Steam discussion: What artifacts are worth going for? (Frost Relic routes)",
-      "https://steamcommunity.com/app/2436940/discussions/0/592938720043383383/"
-    ],
-    [
-      "Steam discussion: Favorite Weapon/Build (Crossbow Glacier route)",
-      "https://steamcommunity.com/app/2436940/discussions/0/592939008794834836/"
-    ],
-    [
-      "Steam discussion: Not sure if this is intended or not (Bond Artifacts and fountain)",
-      "https://steamcommunity.com/app/2436940/discussions/0/588434161796333248/"
-    ],
-    [
-      "Steam official update feed (1.0.31 and 1.0.33 notes)",
-      "https://steamcommunity.com/app/2436940/allnews/?l=english"
-    ],
-    [
-      "Earlier community route list (legacy names only)",
-      "https://sephiria.net/builds/"
-    ],
-    [
-      "Existing community Blizzard Scythe route video (legacy report; not independently verified)",
-      "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
-    ]
+ "path": "/builds/",
+ "title": "Sephiria Builds: Weapon Paths and Artifact Pairings",
+ "description": "Plan a Sephiria run around a weapon path and Artifact family, including the Companion summoner route. Compare community-reported setups, practical pairing ideas, and patch changes.",
+ "h1": "Sephiria builds",
+ "meta": "Updated 30 October 2026, including the 1.1.0 workshop beta. Community build notes carry explicit version limits; check current item and upgrade descriptions in-game.",
+ "body": "<p>Plan a Sephiria run around a weapon path and one or two Artifact families. The combinations below are community reports, not official loadouts or a ranked tier list; item offers and patch changes can change the result.</p>\n<p>The summoner route is the <a href=\"../builds/companion/\">Companion build</a>: Companion-tagged pets, Ballista, and Tablets on summons.</p>\n<h2>What actually makes a build work</h2>\n<ul>\n  <li>Choose a weapon evolution and a combo family that support each other, then focus your Artifact picks around that plan.</li>\n  <li>Check the Journal before a run for unlocked weapon paths, Artifact effects, and combo tags.</li>\n  <li>After an Anvil or Tablet choice, check the live item description and whether its effect actually supports your route.</li>\n  <li>Use the Wishing Fountain for available pre-run Artifacts, but avoid making the whole plan depend on a Bond Artifact: Steam players report that Bond Artifacts are not offered there.</li>\n</ul>\n<h2>Community-reported setup names</h2>\n<p>The first seven names and paths below are retained from earlier community build references. Their current-version routes and claimed performance have not been independently verified; treat them as search leads and confirm each evolution in your Journal.</p>\n<table>\n  <thead><tr><th>Setup name</th><th>Reported weapon path</th><th>Use as a starting question</th></tr></thead>\n  <tbody>\n    <tr><td>Frozen Smelt</td><td>Dagger → Sleeping Frost → Frozen Smelt</td><td>Which Frost / Glacier effects support the current evolution?</td></tr>\n    <tr><td>Formless Dance</td><td>Staff → Throwing Spear → Formless Dance</td><td>Does the current evasion effect fit your weapon and Artifact offers?</td></tr>\n    <tr><td>Minigun</td><td>Heavy Crossbow → Unstable Lightning Mark → Minigun</td><td>Check the Crossbow's current reload and projectile effects.</td></tr>\n    <tr><td>Guardian Greatsword</td><td>Steel Greatsword line</td><td>Confirm which defensive and recovery effects are available in your run.</td></tr>\n    <tr><td>Biryuu Katana</td><td>Katana → Biryuu</td><td>Check the current parry and weapon effects before committing.</td></tr>\n    <tr><td>Creaking Spine</td><td>Steel Greatsword → Bone Mechanism Sword → Creaking Spine</td><td>Verify the evolution labels in the current Journal.</td></tr>\n    <tr><td>Infinite Elemental Bolt</td><td>Staff → Flame Staff → Elemental Fusion Staff</td><td>Check which elemental tags and Staff upgrades your save has unlocked.</td></tr>\n  </tbody>\n</table>\n<h2>Steam discussion routes to compare</h2>\n<table>\n  <thead><tr><th>Run direction</th><th>Weapon and Artifact pairing reported</th><th>Decision point</th></tr></thead>\n  <tbody>\n    <tr><td><a href=\"../builds/companion/\">Companion / summoner</a></td><td>A player report pairs Companion summons, including a Lightning Ballista interaction, with Sword &amp; Shield guarding and MP recovery.</td><td>Guarding consumes MP; only commit if your current run can sustain it. Treat reported clears as anecdotes.</td></tr>\n    <tr><td>Storm Cloud</td><td>A Steam player recommends the Long Sword path; another describes Storm Cloud with Magitech support.</td><td>Try this if you want damage to continue while you reposition; inspect the current combo tags and Tablet effects.</td></tr>\n    <tr><td>Solar Blade</td><td>Players recommend building around Solar Blade activations; Meteorite Earring is mentioned as a key Artifact.</td><td>Official 1.0.31 added Midday Whetstone and Meteorite Mirror; 1.0.33 fixed Solar Blade retrieval interactions. Compare current Journal descriptions.</td></tr>\n    <tr><td>Sword &amp; Shield: Blinding Silence</td><td>Official 1.0.31 upgrade: pair Blinding Silence with Thunder's Earring.</td><td>Using Special Attack: Cleave immediately activates Thunder's Earring; the upgrade also increases Lightning Damage and the artifact's attacks.</td></tr>\n    <tr><td>Sword &amp; Shield: Garden of Needle Ice</td><td>Official 1.0.31 upgrade: pair Garden of Needle Ice with Ice Vine.</td><td>When activated, Ice Vine orbits the player and no longer has a cooldown; the upgrade also increases Cold Damage.</td></tr>\n    <tr><td>Frost Relic</td><td>Community reports describe Oracle's Staff / Voluspa, Blizzard's Eve / Hammer, and Drifa Dagger / Compass placements.</td><td>Check which trigger route matches your unlocked weapon and available Artifact pool.</td></tr>\n    <tr><td>Crossbow Glacier</td><td>A Steam player reports Frost Veil with Glacier, Wind Song, and reload-supporting Crossbow Artifacts.</td><td>Use as a player route to test, not a guaranteed freeze setup.</td></tr>\n    <tr><td>Blizzard Scythe (legacy report)</td><td>An earlier community page reports a Dagger → Dormant Frost → Drifa route that evolves into Blizzard Scythe.</td><td>This path is retained from the existing video reference, not independently confirmed in current Steam notes; verify labels and unlocks in your Journal.</td></tr>\n  </tbody>\n</table>\n<h2>Artifact and Tablet pairings</h2>\n<p>Use the combo labels and Tablet effects visible in your current inventory to decide where an upgrade applies. Community discussions point to several broad pairings: Storm Cloud with Magitech, Solar Blade with Ember support, and Frost Relic with Lake-series effects. Exact placement, costs, and set thresholds should be checked against the current client.</p>\n<p><strong>Version correction:</strong> old community advice describes Sword &amp; Shield's Starlight as a reflect build. Official 1.0.31 notes changed Starlight so its counterattack uses Riposte Blade Fragment, launching toward the nearest enemy and piercing enemies in its path. Do not use the old reflect description as a current build recipe.</p>\n<h2>Costumes and Talents</h2>\n<p>Costumes change starting stats; choose one that supports the weapon route you want to practice. Talent access and reset notes are on the <a href=\"../destiny-inscription/\">Destiny Inscription</a> page. For the town Artifact picker, see <a href=\"../wishing-fountain/\">Wishing Fountain</a>.</p>\n<h2>What the 1.1.0 beta changes for builds</h2>\n<p>The 1.1.0 update entered public beta on 29 October 2026 (Steam branch <em>workshop-beta</em>). It is a beta — anything in it may change before the official release — but three parts matter for build planning:</p>\n<ul>\n  <li><strong>Greatsword gains a new upgrade, Scattered Longing.</strong> Normal Attack builds Chain Slash stacks; Special Attack during the 2nd hit performs Double Slash; at 10 stacks the final hit becomes Space Slash (Physical 400% plus lingering damage). If it survives the beta, the Greatsword route gets a real combo engine.</li>\n  <li><strong>Two new Artifacts (Wagner's Glass Bottle, Compass of Breakthrough), two new Tablets (Growth, Reverberation), and a new Grimoire (Ice Storm)</strong> — grid-adjacency planning on the <a href=\"../artifacts/\">Artifacts and Tablets</a> page gets new options.</li>\n  <li><strong>Riposte Staff Fragment was re-valued</strong> (counter damage roughly halved at each rarity) and Distribution can now be rotated — existing guard/counter and grid routes need re-checking against the beta client.</li>\n</ul>\n<p>Run History (unlocked via Destiny Inscription, last 100 runs) also ships in this beta — useful for comparing your own routes instead of relying on montage videos.</p>\n<h2>Version notes</h2>\n<p>Steam's official update feed checked for this guide includes 1.0.33 (September 2026) and the 1.1.0 workshop beta (29 October 2026). The 1.0.31 update added weapon upgrades and Artifacts and changed several existing effects; 1.0.33 then corrected Solar Blade interactions and changed Master's Tsuba. Community setup posts linked below are dated August 2026 and may predate those changes. Verify all item names and effects in your current Journal before relying on a named route.</p>\n<p>Related: <a href=\"../weapons/\">weapons and upgrades</a> · <a href=\"../artifacts/\">Artifacts and Tablets</a> · <a href=\"../builds/companion/\">companion build</a> · <a href=\"../destiny-inscription/\">Destiny Inscription</a> · <a href=\"../wishing-fountain/\">Wishing Fountain</a> · <a href=\"../wiki/\">Sephiria wiki index</a>.</p>",
+ "sources": [
+  [
+   "Steam official 1.1.0 beta announcement (29 Oct 2026)",
+   "https://steamcommunity.com/app/2436940/allnews/"
   ],
-  "layout": "article",
-  "crumbs": [
-    [
-      "Home",
-      "/"
-    ],
-    [
-      "Builds",
-      ""
-    ]
+  [
+   "Steam discussion: Any tips? (weapon-first planning, Storm Cloud, Solar Blade)",
+   "https://steamcommunity.com/app/2436940/discussions/0/592937421547744910/"
   ],
-  "in_guides": true,
-  "guides_label": "Builds",
-  "guides_em": "Setups & pairings",
-  "home_start": {
-    "title": "Builds",
-    "em": "Commit to one or two combo tags."
-  },
-  "order": 30
+  [
+   "Steam discussion: So, Companions + Sword & Shield (player report)",
+   "https://steamcommunity.com/app/2436940/discussions/0/592937694876688617/"
+  ],
+  [
+   "Steam discussion: No resources, no meta builds accessible? What wins? (community route reports)",
+   "https://steamcommunity.com/app/2436940/discussions/0/591813437999298285/"
+  ],
+  [
+   "Steam discussion: What artifacts are worth going for? (Frost Relic routes)",
+   "https://steamcommunity.com/app/2436940/discussions/0/592938720043383383/"
+  ],
+  [
+   "Steam discussion: Favorite Weapon/Build (Crossbow Glacier route)",
+   "https://steamcommunity.com/app/2436940/discussions/0/592939008794834836/"
+  ],
+  [
+   "Steam discussion: Not sure if this is intended or not (Bond Artifacts and fountain)",
+   "https://steamcommunity.com/app/2436940/discussions/0/588434161796333248/"
+  ],
+  [
+   "Steam official update feed (1.0.31 and 1.0.33 notes)",
+   "https://steamcommunity.com/app/2436940/allnews/?l=english"
+  ],
+  [
+   "Earlier community route list (legacy names only)",
+   "https://sephiria.net/builds/"
+  ],
+  [
+   "Existing community Blizzard Scythe route video (legacy report; not independently verified)",
+   "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
+  ]
+ ],
+ "layout": "article",
+ "crumbs": [
+  [
+   "Home",
+   "/"
+  ],
+  [
+   "Builds",
+   ""
+  ]
+ ],
+ "in_guides": true,
+ "guides_label": "Builds",
+ "guides_em": "Setups & pairings",
+ "home_start": {
+  "title": "Builds",
+  "em": "Commit to one or two combo tags."
+ },
+ "order": 30
 }

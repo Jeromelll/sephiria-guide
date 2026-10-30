@@ -522,12 +522,21 @@ def write_ads_txt() -> None:
 
 
 def write_redirects() -> None:
-    # The Warhammer Survivors sub-site moved to its own domain (warhammersurvivors.com);
+    # The Warhammer Survivors sub-site moved to its own apex (warhammersurvivors.com);
     # redirect the old sub-paths so existing links and indexed URLs pass their ranking
     # signal on. Only sub-sites with a registered apex are redirected — others still live
     # here. Rules must precede the SPA 404 catch-all below, since Pages applies
     # _redirects in order.
     lines = []
+    # Same-site pages that were merged into another page (old path -> new anchor).
+    # Keeps indexed URLs and inbound links flowing to the surviving page.
+    for old, new in {
+        "/bosses/erma/": "/bosses/#erma",
+        "/bosses/erma": "/bosses/#erma",
+        "/bosses/final/": "/bosses/#final",
+        "/bosses/final": "/bosses/#final",
+    }.items():
+        lines.append(f"{old} {new} 301")
     if EXTRA_SITES_DIR.is_dir():
         for slug_dir in sorted(p for p in EXTRA_SITES_DIR.iterdir() if p.is_dir()):
             apex = MOVED_SITES.get(slug_dir.name)
