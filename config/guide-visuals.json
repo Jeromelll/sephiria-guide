@@ -181,20 +181,6 @@
       "after": "<h2>Core loop</h2>"
     }
   },
-  "/roots-retreat/": {
-    "cover": {
-      "src": "assets/img/official/shot_11.png",
-      "alt": "A dungeon route with branching nodes.",
-      "caption": "Official screenshot · Team Horay — A dungeon route with branching nodes.",
-      "source": "https://teamhoray.com/games/sephiria"
-    },
-    "illustration": {
-      "src": "assets/img/diagrams/roots-retreat.svg",
-      "alt": "The name refers to Hard Mode stage achievements, not a separate village. Guide schematic; not an in-game screenshot.",
-      "caption": "Root’s Retreat is a stage ladder. Guide schematic.",
-      "after": "<h2>What Root’s Retreat actually is</h2>"
-    }
-  },
   "/costumes/": {
     "cover": {
       "src": "assets/img/official/shot_01.png",
@@ -221,20 +207,6 @@
       "alt": "Official Artifact acquisition tutorial with the inventory visible behind it.",
       "caption": "The official tutorial introduces Artifacts as inventory-based effects. Official screenshot · Team Horay.",
       "after": ""
-    }
-  },
-  "/wiki/": {
-    "cover": {
-      "src": "assets/img/official/shot_02.png",
-      "alt": "A rabbit on a cliff with a distant inverted tower.",
-      "caption": "Official screenshot · Team Horay — A rabbit on a cliff with a distant inverted tower.",
-      "source": "https://teamhoray.com/games/sephiria"
-    },
-    "illustration": {
-      "src": "assets/img/diagrams/wiki.svg",
-      "alt": "The index groups the existing pages into progression, builds, characters, bosses and co-op. Guide schematic; not an in-game screenshot.",
-      "caption": "Browse by guide topic. Guide schematic.",
-      "after": "<h2>Start here</h2>"
     }
   },
   "/destiny-inscription/": {
