@@ -74,6 +74,10 @@ LEGACY_NESTED_REDIRECTS = (
     ("/guide/weapon-evolutions/", "/weapon-evolutions/"),
     ("/guide/tier-list", "/tier-list/"),
     ("/guide/tier-list/", "/tier-list/"),
+    # 2026-11-02: demo-pairing table merged into the apex weapon-evolutions page;
+    # one topic, one page.
+    ("/evolutions/weapon-evolutions", "/weapon-evolutions/"),
+    ("/evolutions/weapon-evolutions/", "/weapon-evolutions/"),
 )
 
 
