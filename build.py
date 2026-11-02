@@ -531,6 +531,10 @@ def write_redirects() -> None:
     # Same-site pages that were merged into another page (old path -> new anchor).
     # Keeps indexed URLs and inbound links flowing to the surviving page.
     for old, new in {
+        "/roots-retreat/": "/hard-mode/",
+        "/roots-retreat": "/hard-mode/",
+        "/wiki/": "/guides/",
+        "/wiki": "/guides/",
         "/bosses/erma/": "/bosses/#erma",
         "/bosses/erma": "/bosses/#erma",
         "/bosses/final/": "/bosses/#final",
