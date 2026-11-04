@@ -107,6 +107,17 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
         .replace("{game_link}", game_link)
         .replace("{developer}", cfg["developer"])
     )
+    # Homepage only: the village nav hides the FM27 item, so the footer hub
+    # link is the visible path. One compact line reaches the three topic pages.
+    fm27_home_links = ""
+    if is_home:
+        fm27_home_links = (
+            f'\n      <p class="other-games">FM27 guides: '
+            f'<a href="{link(depth, "/fm27/")}">guide hub</a> · '
+            f'<a href="{link(depth, "/fm27-skins/")}">skins</a> · '
+            f'<a href="{link(depth, "/fm27-mods/")}">mods</a> · '
+            f'<a href="{link(depth, "/fm27-tactics/")}">tactics</a></p>'
+        )
     return f"""<!DOCTYPE html>
 <html lang="{cfg["lang"]}">
 <head>
@@ -146,7 +157,7 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
       <p>{footer_line}</p>
       <p>{cfg["footer_facts"]}</p>
       <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/multiplayer/')}">Co-op</a> · <a href="{link(depth, '/bosses/')}">Bosses</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
-      <p class="other-games">Other games we cover: <a href="{link(depth, '/phantom-blade-zero/')}">Phantom Blade Zero</a> · <a href="{link(depth, '/warhammer-survivors/')}">Warhammer Survivors</a> · <a href="{link(depth, '/fm27/')}">Football Manager 27</a></p>
+      <p class="other-games">Other games we cover: <a href="{link(depth, '/phantom-blade-zero/')}">Phantom Blade Zero</a> · <a href="{link(depth, '/warhammer-survivors/')}">Warhammer Survivors</a> · <a href="{link(depth, '/fm27/')}">Football Manager 27</a></p>{fm27_home_links}
     </div>
   </footer>
   <script>
