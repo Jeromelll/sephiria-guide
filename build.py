@@ -34,6 +34,25 @@ EXTRA_SITES_DIR = ROOT / "extra_sites"
 # extra_sites/; values are the apex they moved to.
 MOVED_SITES = {"warhammer-survivors": "warhammersurvivors.com"}
 
+# Legacy sub-sites kept reachable for old links but hidden from search and the
+# sitemap: they belong to other games and dilute this domain's topic signal.
+EXTRA_SITES_NOINDEX = {"phantom-blade-zero", "shrek-2-remastered"}
+
+
+def _inject_noindex(path: Path) -> None:
+    """Add a robots noindex meta to a copied static page, once."""
+    if not path.is_file():
+        return
+    html = path.read_text(encoding="utf-8")
+    if 'content="noindex' in html:
+        return
+    tag = '<meta name="robots" content="noindex,follow" />'
+    if "</head>" in html:
+        html = html.replace("</head>", f"  {tag}\n</head>", 1)
+    else:
+        html = tag + html
+    path.write_text(html, encoding="utf-8")
+
 
 def load_config(path: Path = CONFIG_PATH) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -90,7 +109,7 @@ def write_theme(cfg: dict) -> None:
     (OUTPUT_DIR / "assets" / "theme.css").write_text(css, encoding="utf-8")
 
 
-def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str, jsonld: list | None = None) -> str:
+def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str, jsonld: list | None = None, noindex: bool = False) -> str:
     is_home = path == "/"
     home_style = ('\n  <link rel="stylesheet" href="assets/village.css?v=' +
                   hashlib.md5((ROOT / "assets" / "village.css").read_bytes()).hexdigest()[:8] + '" />') if is_home else ""
@@ -107,24 +126,17 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
         .replace("{game_link}", game_link)
         .replace("{developer}", cfg["developer"])
     )
-    # Homepage only: the village nav hides the FM27 item, so the footer hub
-    # link is the visible path. One compact line reaches the three topic pages.
+    # Topic purity: the site covers Sephiria only. FM27 pages stay reachable
+    # for old links but are noindexed and kept out of nav, home and sitemap.
     fm27_home_links = ""
-    if is_home:
-        fm27_home_links = (
-            f'\n      <p class="other-games">FM27 guides: '
-            f'<a href="{link(depth, "/fm27/")}">guide hub</a> · '
-            f'<a href="{link(depth, "/fm27-skins/")}">skins</a> · '
-            f'<a href="{link(depth, "/fm27-mods/")}">mods</a> · '
-            f'<a href="{link(depth, "/fm27-tactics/")}">tactics</a></p>'
-        )
+    robots_meta = '\n  <meta name="robots" content="noindex,follow" />' if noindex else ""
     return f"""<!DOCTYPE html>
 <html lang="{cfg["lang"]}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
-  <meta name="description" content="{description}" />
+  <meta name="description" content="{description}" />{robots_meta}
   <meta name="keywords" content="{cfg["seo_keywords"]}" />
   <link rel="canonical" href="{cfg["domain"]}{path}" />
   <meta property="og:image" content="{cfg["domain"]}/assets/img/capsule.jpg" />
@@ -157,7 +169,7 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
       <p>{footer_line}</p>
       <p>{cfg["footer_facts"]}</p>
       <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/multiplayer/')}">Co-op</a> · <a href="{link(depth, '/bosses/')}">Bosses</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
-      <p class="other-games">Other games we cover: <a href="{link(depth, '/phantom-blade-zero/')}">Phantom Blade Zero</a> · <a href="{link(depth, '/warhammer-survivors/')}">Warhammer Survivors</a> · <a href="{link(depth, '/fm27/')}">Football Manager 27</a></p>{fm27_home_links}
+      <p class="other-games">Also see: <a href="https://warhammersurvivors.com/">Warhammer Survivors guide</a></p>{fm27_home_links}
     </div>
   </footer>
   <script>
@@ -424,9 +436,9 @@ def write_llms_txt(cfg: dict, pages: list[dict]) -> None:
     print("wrote llms.txt")
 
 
-def write_page(cfg: dict, path: str, title: str, description: str, body: str, jsonld: list | None = None) -> None:
+def write_page(cfg: dict, path: str, title: str, description: str, body: str, jsonld: list | None = None, noindex: bool = False) -> None:
     depth = depth_of(path)
-    html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body, jsonld=jsonld)
+    html = shell(cfg, title=title, description=description, depth=depth, path=path, body=body, jsonld=jsonld, noindex=noindex)
     out = OUTPUT_DIR / ("index.html" if path == "/" else Path(path.strip("/")) / "index.html")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
@@ -455,9 +467,13 @@ def write_extra_sites(cfg: dict) -> list[dict]:
             print(f"extra site {slug}: moved to {MOVED_SITES[slug]}, not copied")
             continue
         shutil.copytree(slug_dir, OUTPUT_DIR / slug, dirs_exist_ok=True)
+        noindex = slug in EXTRA_SITES_NOINDEX
         for index in sorted(slug_dir.rglob("index.html")):
             parts = [p for p in index.parent.relative_to(slug_dir).parts if p not in ("", ".")]
             path = "/" + "/".join([slug, *parts]) + "/"
+            if noindex:
+                _inject_noindex(OUTPUT_DIR / slug / index.relative_to(slug_dir))
+                continue
             extra.append({"path": path, "lastmod": cfg.get("updated", "")})
     print("extra sites:", len(extra), "pages")
     return extra
@@ -617,7 +633,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     for page in pages:
         layout = page.get("layout", "article")
         if layout == "home":
-            write_page(cfg, page["path"], page["title"], page["description"], home_body(page, pages, cfg), page_jsonld(cfg, page))
+            write_page(cfg, page["path"], page["title"], page["description"], home_body(page, pages, cfg), page_jsonld(cfg, page), noindex=bool(page.get("noindex")))
         elif layout == "hub":
             kind = page.get("hub", "guides")
             listing = f'<div class="guide-list">\n  {guide_list(pages, kind=kind)}\n</div>'
@@ -632,7 +648,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 show_ads=True,
                 media=visuals.get(page["path"]),
             )
-            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
+            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page), noindex=bool(page.get("noindex")))
         else:
             body = article(
                 depth_of(page["path"]),
@@ -645,7 +661,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 show_ads=(layout != "legal"),
                 media=visuals.get(page["path"]),
             )
-            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page))
+            write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page), noindex=bool(page.get("noindex")))
 
     extra = write_extra_sites(cfg)
     write_sitemap(cfg, pages, extra)

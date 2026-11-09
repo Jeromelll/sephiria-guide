@@ -6,13 +6,40 @@
   "meta": "Updated 30 October 2026 · Launch Preview · Published estimates; transfer negotiations not tested.",
   "body": "<p><strong>Thomas Müller</strong> and <strong>Rui Araki</strong> are two FM27 names to investigate at different budgets: an experienced attacking option with a published fee estimate below £1m, and a young goalkeeper with an estimated £3m–£4m cost. Neither is a guaranteed signing or an automatic bargain for every club.</p>\n<p>These figures come from the players’ <strong>sortitoutsi FM27 database profiles, read on 30 October 2026</strong>. The pages do not give a numeric game patch and warn that early FM27 guides may be inaccurate. Costs are website estimates, not negotiated offers or results from our own save.</p>\n<h2>First FM27 bargain candidates</h2>\n<table>\n<thead><tr><th>Player</th><th>Age in source</th><th>Club / position</th><th>Estimated fee in source</th><th>Contract expiry</th></tr></thead>\n<tbody>\n<tr><td><a href='https://sortitoutsi.net/football-manager-2027/person/35011448/thomas-muller'>Thomas Müller</a></td><td>36</td><td>Vancouver Whitecaps FC · M/AM RC, ST</td><td>£647k headline; £588k–£705k range</td><td>30 June 2027</td></tr>\n<tr><td><a href='https://sortitoutsi.net/football-manager-2027/person/2000447273/rui-araki'>Rui Araki</a></td><td>18</td><td>Gamba Osaka · GK</td><td>£3m headline; £3m–£4m range</td><td>30 June 2028</td></tr>\n</tbody></table>\n<p><strong>Müller:</strong> investigate if you need an experienced attacking player and can meet the contract terms. The source’s wage field is £74k, so the low estimated transfer fee alone is not enough to call him cheap overall. At 36, assess the immediate role and contract length rather than relying on resale.</p>\n<p><strong>Araki:</strong> investigate for a longer-term goalkeeper slot. The profile lists a £957k value but an estimated £3m–£4m purchase cost: those are different fields. Do not budget on the displayed value alone. His FM27 profile and FM Scout’s 29 October wonderkid list agree on age, club and position.</p>\n<p>The source’s wage fields are £74k for Müller and £357 for Araki, but the retrieved profiles do not specify the pay period. We therefore do not label these as weekly wages or use them to calculate an annual bill. Confirm the period and the player’s requested contract in your own game.</p>\n<h2>Calculate the cost before calling a player a bargain</h2>\n<p>For the period you plan to keep the player, add <strong>transfer fee + signing and agent fees + wages over that period + expected bonuses</strong>. Keep guaranteed instalments and conditional add-ons separate. A low up-front fee can still consume more of your budget than a higher-fee player with lower wage demands.</p>\n<ol>\n<li><strong>Get a scouting report.</strong> Check the player’s current suitability for the position and role you need.</li>\n<li><strong>Request actual terms.</strong> Compare the seller’s asking price with the published estimate; they need not match.</li>\n<li><strong>Check the contract period.</strong> Read wages in the unit shown in your settings, then include bonuses and intermediary fees.</li>\n<li><strong>Check registration and eligibility.</strong> Work permits, foreign-player limits and squad rules can prevent an otherwise affordable signing.</li>\n<li><strong>Compare an alternative.</strong> Look at one loan or unattached player for the same role before committing.</li>\n</ol>\n<h2>Filters for finding more value in the Preview</h2>\n<ul>\n<li>Contracts expiring at the end of your first season; check the rules governing when you can approach the player.</li>\n<li>Transfer-listed and loan-listed players whose clubs have surplus depth in your target position.</li>\n<li>Unattached players, with signing fees and wage demands included in the comparison.</li>\n<li>Release clauses below the asking price, after confirming that the clause applies to your club.</li>\n<li>Young players at smaller clubs who can get minutes in your squad rather than sit behind established starters.</li>\n</ul>\n<h2>Preview data and availability</h2>\n<p>The free Preview runs from <strong>29 October, 18:00 GMT, to 3 November, 18:00 GMT</strong>. Paid Preview access then continues for eligible pre-purchasers and Game Pass subscribers until the 10 November launch. Sports Interactive warns that Preview data may change. Record your build and database before comparing prices between saves.</p>\n<p>These first candidates replace the old pre-Preview placeholder. Transfer availability, requested wages, work permits and completed deals remain unverified by this site; no fixed publication date substitutes for those checks.</p>\n<h2>Related FM27 guides</h2>\n<ul>\n<li><a href='../fm27-wonderkids/'>FM27 wonderkids</a> — the first sourced young-player candidates.</li>\n<li><a href='../fm27-release-date/'>FM27 release date and Preview access</a> — the full access timeline.</li>\n<li><a href='../fm27/'>FM27 guide hub</a> — all Football Manager 27 coverage.</li>\n</ul>",
   "sources": [
-    ["sortitoutsi: Thomas Müller FM27 profile (read 30 October 2026; estimated cost)", "https://sortitoutsi.net/football-manager-2027/person/35011448/thomas-muller"],
-    ["sortitoutsi: Rui Araki FM27 profile (read 30 October 2026; estimated cost)", "https://sortitoutsi.net/football-manager-2027/person/2000447273/rui-araki"],
-    ["FM Scout: FM2027 wonderkids, Revision 1 (29 October 2026)", "https://www.fmscout.com/a-football-manager-2027-wonderkids.html"],
-    ["Sports Interactive: Launch Preview access and provisional-data notice", "https://www.footballmanager.com/news/play-football-manager-27-launch-preview-free"]
+    [
+      "sortitoutsi: Thomas Müller FM27 profile (read 30 October 2026; estimated cost)",
+      "https://sortitoutsi.net/football-manager-2027/person/35011448/thomas-muller"
+    ],
+    [
+      "sortitoutsi: Rui Araki FM27 profile (read 30 October 2026; estimated cost)",
+      "https://sortitoutsi.net/football-manager-2027/person/2000447273/rui-araki"
+    ],
+    [
+      "FM Scout: FM2027 wonderkids, Revision 1 (29 October 2026)",
+      "https://www.fmscout.com/a-football-manager-2027-wonderkids.html"
+    ],
+    [
+      "Sports Interactive: Launch Preview access and provisional-data notice",
+      "https://www.footballmanager.com/news/play-football-manager-27-launch-preview-free"
+    ]
   ],
   "layout": "article",
-  "crumbs": [["Home", "/"], ["FM27", "/fm27/"], ["Cheap players", ""]],
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "FM27",
+      "/fm27/"
+    ],
+    [
+      "Cheap players",
+      ""
+    ]
+  ],
   "in_guides": false,
-  "order": 240
+  "order": 240,
+  "noindex": true,
+  "sitemap_exclude": true
 }

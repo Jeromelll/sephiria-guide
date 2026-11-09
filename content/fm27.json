@@ -35,5 +35,7 @@
     ]
   ],
   "in_guides": false,
-  "order": 190
+  "order": 190,
+  "noindex": true,
+  "sitemap_exclude": true
 }
