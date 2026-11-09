@@ -566,6 +566,10 @@ def write_redirects() -> None:
         "/bosses/erma": "/bosses/#erma",
         "/bosses/final/": "/bosses/#final",
         "/bosses/final": "/bosses/#final",
+        # /items/ was never a page; the scythe explainer lives at /items/scythe/.
+        # Point the bare directory at the weapons hub so old links stop 404ing.
+        "/items/": "/weapons/",
+        "/items": "/weapons/",
     }.items():
         lines.append(f"{old} {new} 301")
     if EXTRA_SITES_DIR.is_dir():
@@ -586,6 +590,28 @@ def write_redirects() -> None:
                     # Pages normalises a bare sub-site path to its trailing-slash form
                     # before matching, so the root needs both variants.
                     lines.append(f"/{slug_dir.name} {new} 301")
+    # Pages deleted from a sub-site before it moved to its own apex are gone from
+    # disk, so the rglob above cannot see them. Keep their inbound links flowing
+    # to the surviving page instead of letting Google re-crawl a 404.
+    for old, new in {
+        "/warhammer-survivors/evolutions/weapon-evolutions": "https://warhammersurvivors.com/weapon-evolutions/",
+        "/warhammer-survivors/guide/tier-list": "https://warhammersurvivors.com/tier-list/",
+        "/warhammer-survivors/weapon-evolutions/tier-list": "https://warhammersurvivors.com/tier-list/",
+        "/warhammer-survivors/demo/tier-list": "https://warhammersurvivors.com/tier-list/",
+        "/warhammer-survivors/characters/tier-list": "https://warhammersurvivors.com/tier-list/",
+        "/warhammer-survivors/characters/tier-list/hard-mode": "https://warhammersurvivors.com/tier-list/",
+        "/warhammer-survivors/beginner-guide": "https://warhammersurvivors.com/guide/",
+        "/warhammer-survivors/bosses": "https://warhammersurvivors.com/characters/",
+        "/warhammer-survivors/walkthrough": "https://warhammersurvivors.com/guide/",
+    }.items():
+        lines.append(f"{old}/ {new} 301")
+        lines.append(f"{old} {new} 301")
+    # Static assets and root files that used to live under the sub-site path.
+    # A splat keeps every one of them working without listing each file.
+    lines.append("/warhammer-survivors/assets/* https://warhammersurvivors.com/assets/:splat 301")
+    lines.append("/warhammer-survivors/assets/ https://warhammersurvivors.com/assets/ 301")
+    lines.append("/warhammer-survivors/sitemap.xml https://warhammersurvivors.com/sitemap.xml 301")
+    lines.append("/warhammer-survivors/robots.txt https://warhammersurvivors.com/robots.txt 301")
     text = "\n".join(lines) + ("\n" if lines else "")
     # Override Cloudflare Pages SPA soft-404 (/* → index.html 200).
     (OUTPUT_DIR / "_redirects").write_text(text + "/* /404.html 404\n", encoding="utf-8")

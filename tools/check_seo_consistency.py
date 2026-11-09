@@ -37,6 +37,7 @@ class HeadParser(HTMLParser):
         self.canonical: str | None = None
         self.title: str | None = None
         self.description: str | None = None
+        self.robots: str | None = None
         self._in_title = False
         self._title_buf = ""
 
@@ -48,6 +49,8 @@ class HeadParser(HTMLParser):
             self.canonical = d.get("href") or None
         elif tag == "meta" and d.get("name", "").lower() == "description":
             self.description = d.get("content") or ""
+        elif tag == "meta" and d.get("name", "").lower() == "robots":
+            self.robots = (d.get("content") or "").lower()
         elif tag == "title":
             self._in_title = True
             self._title_buf = ""
@@ -188,6 +191,14 @@ def main() -> int:
 
     pages = iter_pages()
     page_urls = {file_to_url(p): p for p in pages}
+    # Pages that ask crawlers to skip them (noindex) are intentionally kept out
+    # of sitemap.xml. Track them so the sitemap<->disk check does not fail them.
+    noindex_urls: set[str] = set()
+    for p in pages:
+        head = HeadParser()
+        head.feed(p.read_text(encoding="utf-8"))
+        if head.robots and "noindex" in head.robots:
+            noindex_urls.add(file_to_url(p))
 
     for rel in ("login.html", "assets/login.css", "assets/login.js"):
         path = SITE / rel
@@ -342,6 +353,20 @@ def main() -> int:
             oks.append({"check": "sitemap_has_file", "url": loc, "file": f.relative_to(SITE).as_posix()})
 
     for url, path in page_urls.items():
+        if url in noindex_urls:
+            # Deliberately excluded from the sitemap; confirm it is not listed.
+            if in_sitemap(url):
+                fails.append(
+                    {
+                        "check": "sitemap_has_noindex_page",
+                        "file": path.relative_to(SITE).as_posix(),
+                        "url": url,
+                        "detail": "noindex page must not be in sitemap.xml",
+                    }
+                )
+            else:
+                oks.append({"check": "sitemap_excludes_noindex", "file": path.relative_to(SITE).as_posix(), "url": url})
+            continue
         if not in_sitemap(url):
             fails.append(
                 {
