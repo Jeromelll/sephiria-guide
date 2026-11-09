@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="'Alegreya Sans', 'Helvetica Neue', Arial, sans-serif">
+  <rect width="1000" height="520" fill="#faf7f2"/>
+  <text x="20" y="44" font-size="26" font-weight="700" fill="#1c1b19">Six weapon branches, one tradeoff each</text>
+  <text x="20" y="66" font-size="15" fill="#6b6560">Sephiria 1.0 · every branch has its own upgrade pool</text>
+  <rect x="20" y="80" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="38" y="114" font-size="19" font-weight="700" fill="#1c1b19">Sword &amp; Shield</text>
+  <text x="38" y="140" font-size="14" fill="#7a4b2a">Defensive close melee</text>
+  <line x1="38" y1="156" x2="312" y2="156" stroke="#d8d2c8"/>
+  <text x="38" y="182" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="38" y="202" font-size="14" fill="#1c1b19">First runs, pattern learning</text>
+  <text x="38" y="232" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="38" y="252" font-size="14" fill="#1c1b19">Short reach</text>
+  <rect x="350" y="80" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="368" y="114" font-size="19" font-weight="700" fill="#1c1b19">Greatsword</text>
+  <text x="368" y="140" font-size="14" fill="#7a4b2a">Heavy, wide melee</text>
+  <line x1="368" y1="156" x2="642" y2="156" stroke="#d8d2c8"/>
+  <text x="368" y="182" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="368" y="202" font-size="14" fill="#1c1b19">Creating space, clearing groups</text>
+  <text x="368" y="232" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="368" y="252" font-size="14" fill="#1c1b19">Long commitment per swing</text>
+  <rect x="680" y="80" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="698" y="114" font-size="19" font-weight="700" fill="#1c1b19">Dagger</text>
+  <text x="698" y="140" font-size="14" fill="#7a4b2a">Fast reaction melee</text>
+  <line x1="698" y1="156" x2="972" y2="156" stroke="#d8d2c8"/>
+  <text x="698" y="182" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="698" y="202" font-size="14" fill="#1c1b19">Precise counters, bosses</text>
+  <text x="698" y="232" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="698" y="252" font-size="14" fill="#1c1b19">Extremely short reach</text>
+  <rect x="20" y="300" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="38" y="334" font-size="19" font-weight="700" fill="#1c1b19">Crossbow</text>
+  <text x="38" y="360" font-size="14" fill="#7a4b2a">Ranged positioning</text>
+  <line x1="38" y1="376" x2="312" y2="376" stroke="#d8d2c8"/>
+  <text x="38" y="402" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="38" y="422" font-size="14" fill="#1c1b19">Kiting, safe damage</text>
+  <text x="38" y="452" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="38" y="472" font-size="14" fill="#1c1b19">Reload discipline</text>
+  <rect x="350" y="300" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="368" y="334" font-size="19" font-weight="700" fill="#1c1b19">Katana</text>
+  <text x="368" y="360" font-size="14" fill="#7a4b2a">Aggressive melee</text>
+  <line x1="368" y1="376" x2="642" y2="376" stroke="#d8d2c8"/>
+  <text x="368" y="402" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="368" y="422" font-size="14" fill="#1c1b19">High ceiling once parry timing lands</text>
+  <text x="368" y="452" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="368" y="472" font-size="14" fill="#1c1b19">Steeper mastery curve</text>
+  <rect x="680" y="300" width="310" height="200" rx="10" fill="#ffffff" stroke="#d8d2c8"/>
+  <text x="698" y="334" font-size="19" font-weight="700" fill="#1c1b19">Staff / Quarterstaff</text>
+  <text x="698" y="360" font-size="14" fill="#7a4b2a">Versatile caster</text>
+  <line x1="698" y1="376" x2="972" y2="376" stroke="#d8d2c8"/>
+  <text x="698" y="402" font-size="12" fill="#6b6560">BEST FIT</text>
+  <text x="698" y="422" font-size="14" fill="#1c1b19">Flexible damage at most ranges</text>
+  <text x="698" y="452" font-size="12" fill="#6b6560">TRADEOFF</text>
+  <text x="698" y="472" font-size="14" fill="#1c1b19">Needs upgrade support to scale</text>
+</svg>

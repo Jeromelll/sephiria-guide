@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" font-family="'Alegreya Sans', 'Helvetica Neue', Arial, sans-serif">
+  <rect width="1000" height="380" fill="#faf7f2"/>
+  <text x="20" y="40" font-size="24" font-weight="700" fill="#1c1b19">Platform coverage</text>
+  <text x="20" y="62" font-size="14" fill="#6b6560">Filled = confirmed by the developer or store page · half = announced to follow · blank = not announced</text>
+  <text x="319.0" y="88" font-size="12" fill="#6b6560" text-anchor="middle">PC</text>
+  <text x="437.0" y="88" font-size="12" fill="#6b6560" text-anchor="middle">PS5</text>
+  <text x="555.0" y="88" font-size="12" fill="#6b6560" text-anchor="middle">Xbox</text>
+  <text x="673.0" y="88" font-size="12" fill="#6b6560" text-anchor="middle">Switch</text>
+  <text x="791.0" y="88" font-size="12" fill="#6b6560" text-anchor="middle">Mobile</text>
+  <text x="20" y="128" font-size="14" fill="#1c1b19">Warhammer Survivors</text>
+  <rect x="276" y="108" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="394" y="108" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="512" y="108" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="630" y="108" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="748" y="108" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <text x="20" y="172" font-size="14" fill="#1c1b19">Boltgun II</text>
+  <rect x="276" y="152" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="394" y="152" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="512" y="152" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="630" y="152" width="86" height="28" rx="6" fill="none" stroke="#7a4b2a"/>
+  <text x="673.0" y="172" font-size="12" fill="#7a4b2a" text-anchor="middle">to follow</text>
+  <rect x="748" y="152" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="791.0" y="172" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+  <text x="20" y="216" font-size="14" fill="#1c1b19">Dawn of War IV</text>
+  <rect x="276" y="196" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="394" y="196" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="512" y="196" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="630" y="196" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="748" y="196" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <text x="20" y="260" font-size="14" fill="#1c1b19">Total War: WH40k</text>
+  <rect x="276" y="240" width="86" height="28" rx="6" fill="#7a4b2a"/>
+  <rect x="394" y="240" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="512" y="240" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="630" y="240" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <rect x="748" y="240" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8"/>
+  <text x="20" y="304" font-size="14" fill="#1c1b19">Space Marine 3</text>
+  <rect x="276" y="284" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="319.0" y="304" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+  <rect x="394" y="284" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="437.0" y="304" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+  <rect x="512" y="284" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="555.0" y="304" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+  <rect x="630" y="284" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="673.0" y="304" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+  <rect x="748" y="284" width="86" height="28" rx="6" fill="none" stroke="#d8d2c8" stroke-dasharray="4 3"/>
+  <text x="791.0" y="304" font-size="12" fill="#6b6560" text-anchor="middle">TBA</text>
+</svg>

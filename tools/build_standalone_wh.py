@@ -23,6 +23,8 @@ OUT = ROOT / "warhammer-dist"
 OLD_DOMAIN = "https://sephiria-guide.com/warhammer-survivors/"
 NEW_DOMAIN = "https://warhammersurvivors.com/"
 PREFIX = "/warhammer-survivors/"
+# AdSense publisher id for this site (account: ads@be-winner.com).
+ADSENSE_CLIENT = "ca-pub-8359621843582672"
 # Bing IndexNow key for the apex. Filename and body must match; the file is
 # published from extra_sites/_root_files/ (not the Sephiria dist).
 INDEXNOW_KEY = "ad0db49bd5c248469506a7c12efd28c6"
@@ -96,6 +98,14 @@ def redirects_file() -> str:
 
 def rewrite(html: str) -> str:
     html = html.replace('<span class="fm">Warhammer Survivors Guide</span>', '<span class="fm">Warhammer Survivors Guide</span><span class="flinks"><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></span>')
+    # AdSense: one head snippet for every page, injected here so the source
+    # sub-site stays free of a hard-coded publisher id.
+    if ADSENSE_CLIENT and "pagead2.googlesyndication.com" not in html:
+        snippet = (
+            f'  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}" />\n'
+            f'  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>\n'
+        )
+        html = html.replace("</head>", snippet + "</head>", 1)
     # This standalone build does not ship the parent site's login page or auth API.
     # Remove only its inherited navigation entry; leave the source site untouched.
     html = html.replace('<a class="login" href="/login.html">Log in</a>', "")

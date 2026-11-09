@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="400" viewBox="0 0 1000 400" font-family="'Alegreya Sans', 'Helvetica Neue', Arial, sans-serif">
+  <rect width="1000" height="400" fill="#faf7f2"/>
+  <text x="20" y="40" font-size="24" font-weight="700" fill="#1c1b19">Announced Warhammer releases</text>
+  <text x="20" y="62" font-size="14" fill="#6b6560">Checked 9 November 2026 · only officially dated titles are placed on the axis</text>
+  <line x1="210" y1="120" x2="210" y2="295" stroke="#d8d2c8"/>
+  <text x="210" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Aug</text>
+  <line x1="285" y1="120" x2="285" y2="295" stroke="#d8d2c8"/>
+  <text x="285" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Sep</text>
+  <line x1="360" y1="120" x2="360" y2="295" stroke="#d8d2c8"/>
+  <text x="360" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Oct</text>
+  <line x1="435" y1="120" x2="435" y2="295" stroke="#d8d2c8"/>
+  <text x="435" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Nov</text>
+  <line x1="510" y1="120" x2="510" y2="295" stroke="#d8d2c8"/>
+  <text x="510" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Dec</text>
+  <line x1="585" y1="120" x2="585" y2="295" stroke="#d8d2c8"/>
+  <text x="585" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Jan</text>
+  <line x1="660" y1="120" x2="660" y2="295" stroke="#d8d2c8"/>
+  <text x="660" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Feb</text>
+  <line x1="735" y1="120" x2="735" y2="295" stroke="#d8d2c8"/>
+  <text x="735" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Mar</text>
+  <line x1="810" y1="120" x2="810" y2="295" stroke="#d8d2c8"/>
+  <text x="810" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Apr</text>
+  <line x1="885" y1="120" x2="885" y2="295" stroke="#d8d2c8"/>
+  <text x="885" y="112" font-size="12" fill="#6b6560" text-anchor="middle">May</text>
+  <line x1="960" y1="120" x2="960" y2="295" stroke="#d8d2c8"/>
+  <text x="960" y="112" font-size="12" fill="#6b6560" text-anchor="middle">Jun</text>
+  <text x="200" y="145" font-size="14" fill="#1c1b19" text-anchor="end">Boltgun II</text>
+  <circle cx="360" cy="140" r="7" fill="#7a4b2a"/>
+  <text x="372" y="145" font-size="13" fill="#6b6560">released 14 Oct 2026</text>
+  <text x="200" y="175" font-size="14" fill="#1c1b19" text-anchor="end">Warhammer Survivors</text>
+  <circle cx="435" cy="170" r="7" fill="#7a4b2a"/>
+  <text x="447" y="175" font-size="13" fill="#6b6560">10 Nov 2026</text>
+  <text x="200" y="205" font-size="14" fill="#1c1b19" text-anchor="end">Dawn of War IV</text>
+  <circle cx="510" cy="200" r="7" fill="#7a4b2a"/>
+  <text x="522" y="205" font-size="13" fill="#6b6560">3 Dec 2026</text>
+  <text x="200" y="235" font-size="14" fill="#1c1b19" text-anchor="end">Total War: WH40k</text>
+  <circle cx="585" cy="230" r="7" fill="#7a4b2a"/>
+  <text x="597" y="235" font-size="13" fill="#6b6560">2027 window</text>
+  <text x="200" y="265" font-size="14" fill="#1c1b19" text-anchor="end">Space Marine 3</text>
+  <text x="216" y="265" font-size="13" fill="#6b6560">—  no date</text>
+</svg>
