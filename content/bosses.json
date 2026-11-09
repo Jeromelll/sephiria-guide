@@ -1,53 +1,53 @@
 {
- "path": "/bosses/",
- "layout": "article",
- "title": "Sephiria Bosses — Erma & Final Boss (Qliphoth) Guide",
- "description": "Sephiria boss guide: Erma the Mad Scientist phases, golem hitboxes and laser dodges, plus final-boss (Qliphoth line) notes with Steam patch cross-checks.",
- "h1": "Sephiria bosses",
- "meta": "Erma (Mad Scientist) fight notes and final-boss notes for version 1.0, with sources. Covers sephiria bosses / sephiria erma / sephiria final boss searches.",
- "body": "<p>Two fights on this page: <a href=\"#erma\">Erma, the Mad Scientist</a> (the first wall most runs hit) and the <a href=\"#final\">final boss</a> (Qliphoth line). Pattern notes are community-reported and cross-checked where possible; patch-tuned numbers should be verified in your client.</p>\n<h2 id=\"erma\">Erma, the Mad Scientist — Floor 3 / library line</h2>\n<p><strong>Erma</strong> is the Floor 3 / library-line boss (Steam achievement “This Is Not Stalking”). From Chapter 2 onward she can be replaced by Pantaxis, Guardian of the Library.</p>\n<h3>Fight structure (NamuWiki cross-check)</h3>\n<ul>\n  <li>About <strong>three phases</strong> involving a golem Erma pilots.</li>\n  <li>Golem head and hands have <strong>separate hitboxes</strong>—wide attacks that clip multiple parts deal more effective damage.</li>\n  <li>When golem HP depletes, Erma becomes targetable; deplete her HP to advance phases.</li>\n</ul>\n<h3>Key pattern note — dual lasers</h3>\n<p>Hands park top/bottom and scrape lasers across the arena while the head sprays. The clean dodge is to <strong>dash in the moment both lasers overlap and move the same direction</strong> (speeds are unequal). If tanky, sitting in the safer band and eating minimal chip can be better than panicking.</p>\n<h3>Weaknesses</h3>\n<ul>\n  <li>AoE that hits multiple parts.</li>\n  <li>Status effects applied to any part count for the whole (freeze on a hand freezes the head; burns scale hard).</li>\n  <li>High-damage runs often just delete the head first when full AoE is awkward.</li>\n</ul>\n<h2 id=\"final\">Final boss — the Qliphoth line</h2>\n<p>The story climax sits in the late chapters around the <strong>Qliphoth</strong> fight line. Steam patches after 1.0 explicitly tuned final-boss readability (bullet density, warning indicators, Hard Mode clear flags).</p>\n<ul>\n  <li>Expect multi-phase pressure; community clear videos often melt phases with stacked burn/frost/scythe setups.</li>\n  <li>Use official patch notes when something “feels wrong”—several patterns were hotfix-adjusted in mid-August patches.</li>\n</ul>\n<h2>Related Sephiria guides</h2>\n<ul><li><a href=\"../builds/\">Sephiria builds</a> &mdash; setups that handle these fights</li><li><a href=\"../hard-mode/\">Hard Mode unlock</a> &mdash; what the final boss gates</li><li><a href=\"../weapons/\">Weapons &amp; upgrades</a> &mdash; weapon branches worth bringing</li><li><a href=\"../guides/\">Guide index</a> &mdash; every guide on one page</li></ul>",
- "crumbs": [
-  [
-   "Home",
-   "/"
+  "path": "/bosses/",
+  "layout": "article",
+  "title": "Sephiria Bosses — Erma & Final Boss (Qliphoth) Guide",
+  "description": "Sephiria boss guide: Erma the Mad Scientist phases, golem hitboxes and laser dodges, plus final-boss (Qliphoth line) notes with Steam patch cross-checks.",
+  "h1": "Sephiria bosses",
+  "meta": "Erma (Mad Scientist) fight notes and final-boss notes for version 1.0, with sources. Covers sephiria bosses / sephiria erma / sephiria final boss searches.",
+  "body": "<p>Two fights on this page: <a href=\"#erma\">Erma, the Mad Scientist</a> (the first wall most runs hit) and the <a href=\"#final\">final boss</a> (Qliphoth line). Pattern notes are community-reported and cross-checked where possible; patch-tuned numbers should be verified in your client.</p>\n<table>\n<tr><th>Fight</th><th>Where</th><th>Structure</th><th>Signature pattern</th><th>What answers it</th></tr>\n<tr><td><strong>Erma, the Mad Scientist</strong></td><td>Floor 3, library line · Steam achievement “This Is Not Stalking”</td><td>About three phases; she pilots a golem whose head and hands are separate hitboxes</td><td>Hands park top and bottom and scrape lasers while the head sprays; the two lasers move at different speeds</td><td>Wide AoE that clips several parts; any status applied to a part counts for the whole; high-damage runs delete the head first</td></tr>\n<tr><td><strong>Pantaxis, Guardian of the Library</strong></td><td>Floor 3, from Chapter 2 onward — can replace Erma</td><td>Alternate occupant of the same slot, not an extra fight</td><td>Not covered in the notes below yet</td><td>Same slot rules apply; treat any Erma habit as untested here</td></tr>\n<tr><td><strong>Qliphoth line</strong></td><td>Late chapters, story climax</td><td>Multi-stage; patch-tuned numbers move between builds</td><td>Covered in its own section below</td><td>Verify timings in your own client after a patch</td></tr>\n</table>\n<p class=\"table-note\">What this table is: a side-by-side of the two fights on this page plus the one that shares Erma’s slot, built only from the notes already published below and their cited sources — not from a fresh playthrough. Rows marked “not covered yet” are honest gaps, not summaries.</p>\n<h2 id=\"erma\">Erma, the Mad Scientist — Floor 3 / library line</h2>\n<p><strong>Erma</strong> is the Floor 3 / library-line boss (Steam achievement “This Is Not Stalking”). From Chapter 2 onward she can be replaced by Pantaxis, Guardian of the Library.</p>\n<h3>Fight structure (NamuWiki cross-check)</h3>\n<ul>\n  <li>About <strong>three phases</strong> involving a golem Erma pilots.</li>\n  <li>Golem head and hands have <strong>separate hitboxes</strong>—wide attacks that clip multiple parts deal more effective damage.</li>\n  <li>When golem HP depletes, Erma becomes targetable; deplete her HP to advance phases.</li>\n</ul>\n<h3>Key pattern note — dual lasers</h3>\n<p>Hands park top/bottom and scrape lasers across the arena while the head sprays. The clean dodge is to <strong>dash in the moment both lasers overlap and move the same direction</strong> (speeds are unequal). If tanky, sitting in the safer band and eating minimal chip can be better than panicking.</p>\n<h3>Weaknesses</h3>\n<ul>\n  <li>AoE that hits multiple parts.</li>\n  <li>Status effects applied to any part count for the whole (freeze on a hand freezes the head; burns scale hard).</li>\n  <li>High-damage runs often just delete the head first when full AoE is awkward.</li>\n</ul>\n<h2 id=\"final\">Final boss — the Qliphoth line</h2>\n<p>The story climax sits in the late chapters around the <strong>Qliphoth</strong> fight line. Steam patches after 1.0 explicitly tuned final-boss readability (bullet density, warning indicators, Hard Mode clear flags).</p>\n<ul>\n  <li>Expect multi-phase pressure; community clear videos often melt phases with stacked burn/frost/scythe setups.</li>\n  <li>Use official patch notes when something “feels wrong”—several patterns were hotfix-adjusted in mid-August patches.</li>\n</ul>\n<h2>Related Sephiria guides</h2>\n<ul><li><a href=\"../builds/\">Sephiria builds</a> &mdash; setups that handle these fights</li><li><a href=\"../hard-mode/\">Hard Mode unlock</a> &mdash; what the final boss gates</li><li><a href=\"../weapons/\">Weapons &amp; upgrades</a> &mdash; weapon branches worth bringing</li><li><a href=\"../guides/\">Guide index</a> &mdash; every guide on one page</li></ul>",
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Bosses",
+      ""
+    ]
   ],
-  [
-   "Bosses",
-   ""
-  ]
- ],
- "sources": [
-  [
-   "NamuWiki Boss · Erma",
-   "https://en.namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A6%AC%EC%95%84/%EB%B3%B4%EC%8A%A4"
+  "sources": [
+    [
+      "NamuWiki Boss · Erma",
+      "https://en.namu.wiki/w/%EC%84%B8%ED%94%BC%EB%A6%AC%EC%95%84/%EB%B3%B4%EC%8A%A4"
+    ],
+    [
+      "YT run with Erma fight",
+      "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
+    ],
+    [
+      "YT All Bosses (EA) @ Erma",
+      "https://www.youtube.com/watch?v=xC9ofSpci8U"
+    ],
+    [
+      "YT Library replacement boss short",
+      "https://www.youtube.com/watch?v=iRqqwRa-bTk"
+    ],
+    [
+      "grindnstrat bosses guide",
+      "https://grindnstrat.com/sephiria-1-0-bosses-guide/"
+    ],
+    [
+      "Steam allnews / patches",
+      "https://steamcommunity.com/app/2436940/allnews/"
+    ],
+    [
+      "YT final boss hard mode",
+      "https://www.youtube.com/watch?v=R7rdy_owfbo"
+    ]
   ],
-  [
-   "YT run with Erma fight",
-   "https://www.youtube.com/watch?v=sQ_oYpLXZ4s"
-  ],
-  [
-   "YT All Bosses (EA) @ Erma",
-   "https://www.youtube.com/watch?v=xC9ofSpci8U"
-  ],
-  [
-   "YT Library replacement boss short",
-   "https://www.youtube.com/watch?v=iRqqwRa-bTk"
-  ],
-  [
-   "grindnstrat bosses guide",
-   "https://grindnstrat.com/sephiria-1-0-bosses-guide/"
-  ],
-  [
-   "Steam allnews / patches",
-   "https://steamcommunity.com/app/2436940/allnews/"
-  ],
-  [
-   "YT final boss hard mode",
-   "https://www.youtube.com/watch?v=R7rdy_owfbo"
-  ]
- ],
- "order": 70,
- "in_guides": true,
- "guides_label": "Bosses",
- "guides_em": "Erma · Final boss · Qliphoth"
+  "order": 70,
+  "in_guides": true,
+  "guides_label": "Bosses",
+  "guides_em": "Erma · Final boss · Qliphoth"
 }
