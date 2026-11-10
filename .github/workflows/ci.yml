@@ -27,7 +27,7 @@ jobs:
 
       - name: No Sephiria changes
         if: steps.scope.outputs.run != 'true'
-        run: echo "sephiria-pr stays green: this pull request does not change Sephiria paths."
+        run: echo "sephiria-pr stays green. This pull request does not change Sephiria paths."
 
       - uses: actions/setup-python@v5
         if: steps.scope.outputs.run == 'true'
@@ -61,7 +61,7 @@ jobs:
 
       - name: No Warhammer changes
         if: steps.scope.outputs.run != 'true'
-        run: echo "warhammer-pr stays green: this pull request does not change Warhammer paths."
+        run: echo "warhammer-pr stays green. This pull request does not change Warhammer paths."
 
       - uses: actions/setup-python@v5
         if: steps.scope.outputs.run == 'true'
