@@ -4,10 +4,19 @@
   "title": "Contact — Sephiria Guide",
   "description": "Contact sephiria-guide.com for corrections, questions, or advertising inquiries.",
   "h1": "Contact",
-  "meta": "Unofficial fan guide · Not affiliated with Team Horay",
-  "body": "<p>Email: <a href=\"mailto:jeromell@be-winner.com\">jeromell@be-winner.com</a></p>\n<p>For guide corrections, include the page URL, the sentence that needs review, and the suggested fix. Prefer sources we can re-check (Steam, patch notes, dated community guides).</p>\n<p>Advertising or partnership inquiries can use the same address. This site does not display third-party ads yet.</p>\n<p>See also <a href=\"../about/\">About</a>, <a href=\"../privacy/\">Privacy</a>, and <a href=\"../editorial-policy/\">Editorial policy</a>.</p>",
+  "meta": "Unofficial fan guide · Not affiliated with Team Horay · Last updated: 2026-11-10",
+  "body": "<p>Email: <a href=\"mailto:jeromell@be-winner.com\">jeromell@be-winner.com</a>. This is a one-person fan site, so the same address handles corrections, questions about a page, and anything else worth passing on.</p>\n<h2>What to write about</h2>\n<ul>\n  <li><strong>Corrections.</strong> Include the page URL, the sentence that needs review, what you saw in-game instead, and a source that can be re-checked — a patch note, a Steam post, a dated guide or a screenshot of the current menu.</li>\n  <li><strong>Numbers that look wrong.</strong> Fountain capacity, rarity costs, stage counts and upgrade values are the usual suspects. Say which build you are on, because a number that is wrong today may have been right in 1.0.</li>\n  <li><strong>Broken links and dead pages.</strong> A 404, a link that lands on the wrong guide, or an image that no longer loads is worth a short mail with the URL you started from.</li>\n  <li><strong>Steps that no longer work.</strong> If an unlock route or menu path has changed, the exact wording of what you see now is more useful than a description of what failed.</li>\n  <li><strong>Questions the site does not answer.</strong> A specific question with the page you expected to find is a useful signal for what to write next.</li>\n</ul>\n<h2>What to expect</h2>\n<p>Mail is read by one person, on a best-effort basis. There is no ticket system and no response-time promise; most corrections are handled in batches when pages are next revised. If a fix checks out, the page is edited and, where it carries one, its last-checked line moves to the new date. If a report cannot be verified, the page keeps its hedge rather than switching to an unconfirmed claim.</p>\n<p>If you need an answer to keep playing tonight, the in-game Journal and the Steam discussions will usually be faster than waiting for a site update. The Journal is also the place where the item and upgrade text matches your build.</p>\n<h2>What is out of scope</h2>\n<ul>\n  <li>Cheats, trainers, save editing, mod installation and piracy. None of it is supported or linked here.</li>\n  <li>Account problems: refunds, bans, cloud saves and purchase issues are handled by Steam Support, not by this site.</li>\n  <li>Requests to play a run, carry a lobby or review a build for you.</li>\n  <li>Advertising placements, paid links, sponsored posts and link exchanges. Ads on the guide pages are served by Google AdSense; placements are not for sale, and no payment changes what a page says.</li>\n</ul>\n<h2>How email is handled</h2>\n<p>Messages go to the address above and are used to reply or to fix a page. There is no newsletter and no mailing list, so nothing is signed up on your behalf. If a correction leads to an edit, the change may be described on the page in general terms; your name is not attached unless you ask for it. Anything about sign-in data, including a request to delete an account record, goes to the same address and is covered by the <a href=\"../privacy/\">privacy policy</a>.</p>\n<p>Before writing, check the page’s Sources list and version line. A figure that disagrees with an older guide is often two different builds rather than an error, and the <a href=\"../editorial-policy/\">editorial policy</a> explains how that is handled.</p>\n<p>See also <a href=\"../about/\">About</a>, <a href=\"../privacy/\">Privacy</a>, and <a href=\"../editorial-policy/\">Editorial policy</a>.</p>\n",
   "sources": [],
-  "crumbs": [["Home", "/"], ["Contact", ""]],
+  "crumbs": [
+    [
+      "Home",
+      "/"
+    ],
+    [
+      "Contact",
+      ""
+    ]
+  ],
   "in_guides": false,
   "order": 920
 }
