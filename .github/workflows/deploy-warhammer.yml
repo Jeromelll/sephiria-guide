@@ -27,21 +27,28 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Build standalone site
-        run: python3 tools/build_standalone_wh.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-      - name: Verify no sub-site leftovers
-        run: python3 tools/build_standalone_wh.py --check
+      - name: Syntax, build, and tests
+        run: bash tools/ci_warhammer.sh
 
       - name: Deploy to Cloudflare Pages
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        # Production only, and only after the local checks above.
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.ref == 'refs/heads/main' }}
         run: |
           npx wrangler@4.129.0 pages project create warhammer-survivors --production-branch=main 2>&1 | tee /tmp/create.log || true
           grep -qiE "already exists|already taken" /tmp/create.log && echo "project exists, continuing"
           npx wrangler@4.129.0 pages deploy warhammer-dist --project-name warhammer-survivors --commit-dirty=true
 
+      - name: Probe production after deploy
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.ref == 'refs/heads/main' }}
+        timeout-minutes: 10
+        run: python3 tools/probe_live.py --site warhammer
+
       - name: Bind custom domain
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.ref == 'refs/heads/main' }}
         run: |
           for d in warhammersurvivors.com www.warhammersurvivors.com; do
             echo "=== binding $d ==="
