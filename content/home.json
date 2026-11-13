@@ -1,53 +1,65 @@
 {
   "path": "/",
   "layout": "home",
-  "title": "Sephiria 1.0 Guide — Hard Mode, Destiny Tree, Builds",
-  "description": "Just bought Sephiria 1.0? Unlock Hard Mode (Root’s Retreat), spend Destiny sapphires, then commit to one build. Short English pages with sources—not a wiki dump.",
-  "hero_kicker": "Fan guides · Post-launch, updated 9 November 2026",
-  "hero_h1": "Your adventure starts here.",
-  "lede": "Start with Hard Mode / Root’s Retreat, the Destiny Inscription tree, and one build. Each page is a single search question with sources—not AI filler.",
-  "cta_label": "Start beginner guide",
-  "cta_path": "/beginner-guide/",
-  "what_h2": "What Sephiria is",
-  "what_html": "<p>Sephiria is a top-down action roguelite from Team Horay (Dungreed). It left Early Access with the <strong>1.0 release on July 31, 2026</strong>; the public build is on the 1.0.x line and a 1.1 workshop beta runs on Steam's beta branch. Six chapters, six weapon lines, Artifact + Tablet grid, co-op up to four. This site answers the first stuck moments—not a full wiki dump.</p>\n      <div class=\"note\">English-first P0 coverage. Patch-sensitive tips note when they come from older Steam Community guides.</div>",
-  "order": 0,
-  "village_intro": "Welcome to the Sephiria guide village. Choose a building to find your next guide.",
-  "village": [
+  "title": "Game guides: Football Manager 27 and Sephiria",
+  "description": "Two fan guides on one domain. Football Manager 27: mods, skins, logo packs, tactics and the 10 November release. Sephiria: Hard Mode, Destiny Inscription, builds and weapons. Each page answers one question and lists its sources.",
+  "hero_kicker": "Fan guides · Football Manager 27 and Sephiria · updated 13 November 2026",
+  "hero_h1": "Two games. Pick the one you are stuck in.",
+  "lede": "Football Manager 27 shipped on 10 November 2026, so its pages now describe the released game rather than the Launch Preview. The Sephiria pages follow the 1.0.33 public build. Every page answers one search question and lists the sources it was checked against.",
+  "search_placeholder": "e.g. real name fix, Hard Mode, fountain capacity",
+  "games": [
     {
-      "id": "inn",
-      "path": "/beginner-guide/",
-      "title": "Beginner Guide",
-      "description": "Your first steps into the tower"
+      "id": "fm27",
+      "name": "Football Manager 27",
+      "path": "/fm27/",
+      "kicker": "Released 10 November 2026 · PC, Mac, console, mobile",
+      "lede": "Install a real-name fix or a skin without breaking the game, check a community tactic before you import it, and see which young players are worth scouting in your own save.",
+      "all_label": "All FM27 guides",
+      "top": [
+        {
+          "title": "FM27 tactics",
+          "em": "Check a community download before importing it",
+          "path": "/fm27-tactics/"
+        },
+        {
+          "title": "FM27 skins",
+          "em": "Releases, platform paths, patch recovery",
+          "path": "/fm27-skins/"
+        },
+        {
+          "title": "FM27 mods",
+          "em": "Real-name fix, facepacks, logos, kits",
+          "path": "/fm27-mods/"
+        }
+      ]
     },
     {
-      "id": "tree",
-      "path": "/destiny-inscription/",
-      "title": "Destiny Inscription",
-      "description": "Talents & permanent upgrades"
-    },
-    {
-      "id": "smith",
-      "path": "/weapons/",
-      "title": "Weapons",
-      "description": "Find your weapon"
-    },
-    {
-      "id": "workshop",
-      "path": "/builds/",
-      "title": "Builds",
-      "description": "Put your loadout together"
-    },
-    {
-      "id": "fountain",
-      "path": "/wishing-fountain/",
-      "title": "Wishing Fountain",
-      "description": "Prepare before your next run"
-    },
-    {
-      "id": "tower",
-      "path": "/hard-mode/",
-      "title": "Hard Mode",
-      "description": "Unlock your next challenge"
+      "id": "sephiria",
+      "name": "Sephiria",
+      "path": "/guides/",
+      "kicker": "Team Horay · 1.0.33 public build",
+      "lede": "Hard Mode is a village conversation rather than a sapphire purchase, the fountain is a pre-run picker rather than the dungeon one, and the scythe is a Dagger conversion rather than a seventh weapon.",
+      "all_label": "All Sephiria guides",
+      "top": [
+        {
+          "title": "Wishing Fountain",
+          "em": "Pre-run Artifact picks and what the bar holds",
+          "path": "/wishing-fountain/"
+        },
+        {
+          "title": "Companion build",
+          "em": "The summoner route, start to boss",
+          "path": "/builds/companion/"
+        },
+        {
+          "title": "Bosses",
+          "em": "Erma phases and the final-boss notes",
+          "path": "/bosses/"
+        }
+      ]
     }
-  ]
+  ],
+  "what_h2": "What this site is",
+  "what_html": "<p>Two unofficial guide sections share this domain. The Football Manager 27 section covers mods, skins, logo packs, player databases, tactics and the release timeline. The Sephiria section covers Hard Mode, the Destiny Inscription tree, builds, weapons, bosses and co-op.</p><p>Both are written by one person and checked against the publisher's own pages, Steam posts and dated community guides. Pages that depend on a game build say which build they describe, and a page that cannot settle a question says so rather than filling the gap. Files are never hosted here: mod, skin and pack pages link to the maintainer's own download page, because that is where the current version and installation notes live.</p>",
+  "order": 0
 }

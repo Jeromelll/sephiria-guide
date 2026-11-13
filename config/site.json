@@ -8,7 +8,7 @@
   "kicker": "Sephiria 1.1 fan guide",
   "developer": "Team Horay",
   "developer_note": "also known for Dungreed",
-  "updated": "2026-11-09",
+  "updated": "2026-11-13",
   "seo_keywords": "sephiria, sephiria wiki, sephiria builds, sephiria weapons, destiny inscription",
   "footer_line": "Unofficial fan guides for {game_link} by {developer}. Not affiliated with the developer.",
   "footer_facts": "Facts checked against Steam, community guides, and cross-sourced videos. EA-era numbers are marked when used.",
@@ -24,39 +24,80 @@
     "shadow": "rgba(0, 0, 0, 0.38)",
     "shadow_accent": "rgba(242, 168, 60, 0.22)"
   },
+  "sections": {
+    "root": {
+      "brand": ["Game", "Guides"],
+      "nav": [
+        ["Football Manager 27", "/fm27/"],
+        ["Sephiria", "/guides/"],
+        ["About", "/about/"],
+        ["Contact", "/contact/"]
+      ],
+      "footer_links": [
+        ["All guides", "/guides/"],
+        ["About", "/about/"],
+        ["Privacy", "/privacy/"],
+        ["Contact", "/contact/"],
+        ["Editorial", "/editorial-policy/"]
+      ]
+    },
+    "sephiria": {
+      "brand": ["Sephiria", "Guide"],
+      "game_name": "Sephiria",
+      "developer": "Team Horay",
+      "steam": "https://store.steampowered.com/app/2436940/Sephiria/",
+      "nav": [
+        ["Guides", "/guides/"],
+        ["Beginner", "/beginner-guide/"],
+        ["Hard Mode", "/hard-mode/"],
+        ["Fountain", "/wishing-fountain/"],
+        ["Destiny", "/destiny-inscription/"],
+        ["Builds", "/builds/"],
+        ["Weapons", "/weapons/"]
+      ],
+      "footer_links": [
+        ["All guides", "/guides/"],
+        ["Co-op", "/multiplayer/"],
+        ["Bosses", "/bosses/"],
+        ["About", "/about/"],
+        ["Privacy", "/privacy/"],
+        ["Contact", "/contact/"],
+        ["Editorial", "/editorial-policy/"]
+      ]
+    },
+    "fm27": {
+      "brand": ["FM27", "Guide"],
+      "game_name": "Football Manager 27",
+      "developer": "Sports Interactive",
+      "steam": "https://store.steampowered.com/app/4530370/Football_Manager_27/",
+      "nav": [
+        ["Overview", "/fm27/"],
+        ["Mods", "/fm27-mods/"],
+        ["Skins", "/fm27-skins/"],
+        ["Tactics", "/fm27-tactics/"],
+        ["Wonderkids", "/fm27-wonderkids/"],
+        ["Logo packs", "/fm27-logo-pack/"],
+        ["Release", "/fm27-release-date/"]
+      ],
+      "footer_links": [
+        ["FM27 overview", "/fm27/"],
+        ["Install-path checker", "/fm27-install-check/"],
+        ["Mods", "/fm27-mods/"],
+        ["About", "/about/"],
+        ["Privacy", "/privacy/"],
+        ["Contact", "/contact/"],
+        ["Editorial", "/editorial-policy/"]
+      ]
+    }
+  },
   "nav": [
-    [
-      "Guides",
-      "/guides/"
-    ],
-    [
-      "Beginner",
-      "/beginner-guide/"
-    ],
-    [
-      "Hard Mode",
-      "/hard-mode/"
-    ],
-    [
-      "Fountain",
-      "/wishing-fountain/"
-    ],
-    [
-      "Destiny",
-      "/destiny-inscription/"
-    ],
-    [
-      "Builds",
-      "/builds/"
-    ],
-    [
-      "Weapons",
-      "/weapons/"
-    ],
-    [
-      "Log in",
-      "/login.html"
-    ]
+    ["Guides", "/guides/"],
+    ["Beginner", "/beginner-guide/"],
+    ["Hard Mode", "/hard-mode/"],
+    ["Fountain", "/wishing-fountain/"],
+    ["Destiny", "/destiny-inscription/"],
+    ["Builds", "/builds/"],
+    ["Weapons", "/weapons/"]
   ],
   "links": {
     "steam": "https://store.steampowered.com/app/2436940/Sephiria/",

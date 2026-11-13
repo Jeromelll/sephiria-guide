@@ -520,3 +520,189 @@ tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
 .fig img { display: block; width: 100%; height: auto; border: 1px solid var(--line, #d8d2c8); border-radius: 8px; background: #faf7f2; }
 .fig figcaption { margin-top: 10px; font-size: 0.92em; line-height: 1.5; color: #6b6560; }
 .fig figcaption b { color: #1c1b19; }
+
+/* ---------------------------------------------------------------------------
+   Portal home (2026-11-13). Replaces the illustrated "village" landing page:
+   the first screen asks which game you are here for and shows the three pages
+   each game is actually read most, plus a client-side search over every page.
+   --------------------------------------------------------------------------- */
+.portal-hero {
+  padding: 3.2rem 0 2.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.portal-hero .wrap { width: min(100% - 2rem, var(--wide)); margin: 0 auto; }
+.portal-hero h1 {
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
+  font-size: clamp(2.1rem, 4.6vw, 3.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.7rem;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.portal-hero .lede {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 1.4rem;
+  line-height: 1.65;
+}
+
+.portal-search { max-width: 34rem; }
+.portal-search label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-ink);
+  margin-bottom: 0.4rem;
+}
+.portal-search input[type="search"] {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.portal-search input[type="search"]::placeholder { color: var(--muted); }
+.portal-search input[type="search"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+.search-results { margin: 0.9rem 0 0; max-height: 22rem; overflow-y: auto; }
+.search-empty {
+  margin: 0.8rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.portal-games { padding: 2.4rem 0 1rem; }
+.portal-grid {
+  width: min(100% - 2rem, var(--wide));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+}
+.portal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.5rem 1.4rem 1.3rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 12px 30px var(--shadow);
+}
+.portal-card--fm27 { border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+.portal-card--sephiria { border-color: color-mix(in srgb, #8f7ad6 40%, var(--line)); }
+.portal-card-kicker {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.portal-card h2 {
+  margin: 0;
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+}
+.portal-card h2 a { color: var(--ink); text-decoration: none; }
+.portal-card h2 a:hover { color: var(--accent); }
+.portal-card-lede {
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 46ch;
+}
+.portal-card .guide-list a { padding: 0.75rem 0.9rem; }
+.portal-card-all { margin: 0.4rem 0 0; font-size: 0.92rem; }
+.portal-card-all a { text-decoration: none; }
+
+.portal-about {
+  width: min(100% - 2rem, var(--wide));
+  margin: 2.2rem auto 3rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--line);
+}
+.portal-about h2 {
+  font-family: "Pixelify Sans", "Source Sans 3", sans-serif;
+  font-size: 1.3rem;
+  margin: 0 0 0.8rem;
+}
+.portal-about p { margin: 0 0 0.9rem; max-width: 68ch; color: var(--muted); line-height: 1.7; }
+
+@media (max-width: 780px) {
+  .portal-grid { grid-template-columns: 1fr; }
+  .portal-hero { padding: 2.2rem 0 1.6rem; }
+}
+
+/* Interactive install-path checker (/fm27-install-check/). Pure client-side:
+   the selects drive a data object in the page's own script, and the same
+   information is printed as a table underneath for no-JS readers. */
+.tool {
+  margin: 1.6rem 0 2rem;
+  padding: 1.2rem 1.25rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  border-radius: 14px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+.tool-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.9rem;
+}
+.tool-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.tool-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink);
+}
+.tool-field select {
+  font: inherit;
+  font-size: 0.98rem;
+  padding: 0.55rem 0.6rem;
+  color: var(--ink);
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.tool-field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.tool-out {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--line);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.tool-out p { margin: 0 0 0.6rem; max-width: 70ch; }
+.tool-out-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.tool-out-path code {
+  display: inline-block;
+  padding: 0.45rem 0.6rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.tool-out-caveat { color: var(--muted); }

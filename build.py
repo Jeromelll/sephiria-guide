@@ -109,27 +109,45 @@ def write_theme(cfg: dict) -> None:
     (OUTPUT_DIR / "assets" / "theme.css").write_text(css, encoding="utf-8")
 
 
+def section_of(cfg: dict, path: str) -> dict:
+    """Which game chrome a page belongs to.
+
+    "/" is the shared portal; /fm27/* is the Football Manager 27 section; every
+    other page is Sephiria. Each section carries its own brand, nav and footer
+    so an FM27 reader never has to pass through Sephiria wording.
+    """
+    sections = cfg.get("sections") or {}
+    root = sections.get("root") or {}
+    if path == "/":
+        return {**root, "key": "root"}
+    if path.startswith("/fm27"):
+        sec = sections.get("fm27") or {}
+        return {**sec, "key": "fm27"}
+    sec = sections.get("sephiria") or {}
+    return {**sec, "key": "sephiria"}
+
+
 def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, body: str, jsonld: list | None = None, noindex: bool = False) -> str:
     is_home = path == "/"
-    home_style = ('\n  <link rel="stylesheet" href="assets/village.css?v=' +
-                  hashlib.md5((ROOT / "assets" / "village.css").read_bytes()).hexdigest()[:8] + '" />') if is_home else ""
     ld_html = "".join(
         f'\n  <script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>' for obj in (jsonld or [])
     )
+    sec = section_of(cfg, path)
     nav_html = []
-    for label, href in cfg["nav"]:
+    for label, href in sec.get("nav") or cfg["nav"]:
         current = ' aria-current="page"' if href.rstrip("/") == path.rstrip("/") else ""
         nav_html.append(f'<a href="{link(depth, href)}"{current}>{label}</a>')
-    game_link = f'<a href="{cfg["links"]["steam"]}">{cfg["game_name"]}</a>'
-    footer_line = (
-        cfg["footer_line"]
-        .replace("{game_link}", game_link)
-        .replace("{developer}", cfg["developer"])
+    brand_name, brand_suffix = sec.get("brand") or [cfg["brand_name"], cfg["brand_suffix"]]
+    game_name = sec.get("game_name") or cfg["game_name"]
+    developer = sec.get("developer") or cfg["developer"]
+    steam = sec.get("steam") or cfg["links"]["steam"]
+    game_link = f'<a href="{steam}">{game_name}</a>'
+    footer_line = cfg["footer_line"].replace("{game_link}", game_link).replace("{developer}", developer)
+    footer_nav = " · ".join(
+        f'<a href="{link(depth, href)}">{label}</a>' for label, href in (sec.get("footer_links") or [])
     )
-    # Topic purity: the site covers Sephiria only. FM27 pages stay reachable
-    # for old links but are noindexed and kept out of nav, home and sitemap.
-    fm27_home_links = ""
     robots_meta = '\n  <meta name="robots" content="noindex,follow" />' if noindex else ""
+    portal_script = '\n  <script src="assets/portal.js" defer></script>' if is_home else ""
     return f"""<!DOCTYPE html>
 <html lang="{cfg["lang"]}">
 <head>
@@ -149,15 +167,15 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{css_href(depth, "theme.css")}?v={THEME_VERSION}" />
   <link rel="stylesheet" href="{css_href(depth, "styles.css")}?v={CSS_VERSION}" />
-  <script src="{css_href(depth, "analytics.js")}" defer></script>{home_style}{ld_html}
+  <script src="{css_href(depth, "analytics.js")}" defer></script>{portal_script}{ld_html}
   <!-- AdSense head snippet (inserted by adsense_prep) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>
 </head>
-<body{' class="village-home"' if is_home else ''}>
+<body{' class="home-portal"' if is_home else ''}>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="{link(depth, '/')}">{cfg["brand_name"]} <span>{cfg["brand_suffix"]}</span></a>
+      <a class="brand" href="{link(depth, '/')}">{brand_name} <span>{brand_suffix}</span></a>
       <nav class="nav" aria-label="Primary">{''.join(nav_html)}</nav>
     </div>
   </header>
@@ -168,8 +186,8 @@ def shell(cfg: dict, *, title: str, description: str, depth: int, path: str, bod
     <div class="narrow">
       <p>{footer_line}</p>
       <p>{cfg["footer_facts"]}</p>
-      <p><a href="{link(depth, '/guides/')}">All guides</a> · <a href="{link(depth, '/multiplayer/')}">Co-op</a> · <a href="{link(depth, '/bosses/')}">Bosses</a> · <a href="{link(depth, '/about/')}">About</a> · <a href="{link(depth, '/privacy/')}">Privacy</a> · <a href="{link(depth, '/contact/')}">Contact</a> · <a href="{link(depth, '/editorial-policy/')}">Editorial</a> · Updated {cfg["updated"]}</p>
-      <p class="other-games">Also see: <a href="https://warhammersurvivors.com/">Warhammer Survivors guide</a></p>{fm27_home_links}
+      <p>{footer_nav} · Updated {cfg["updated"]}</p>
+      <p class="other-games">Also see: <a href="https://warhammersurvivors.com/">Warhammer Survivors guide</a></p>
     </div>
   </footer>
   <script>
@@ -217,11 +235,16 @@ def insert_ad_slots(content: str) -> str:
     return content
 
 
-def stuck_prompt(depth: int) -> str:
-    """Light post-read ask — high-intent moment, same idea as Zigpoll's one question."""
+def stuck_prompt(depth: int, section: dict | None = None) -> str:
+    """Light post-read ask — high-intent moment, same idea as Zigpoll's one question.
+
+    The wording is section-aware: an FM27 reader is asked about FM27 steps, not
+    about Hard Mode or Destiny sapphires.
+    """
     contact = link(depth, "/contact/")
+    topic = (section or {}).get("stuck_topic") or "the step that failed"
     return f"""
-    <p class="stuck-prompt">Still stuck? Tell us which step failed — Hard Mode tree / Scythe Drifa / Destiny sapphires — via <a href="{contact}">contact</a>.</p>"""
+    <p class="stuck-prompt">Still stuck? Tell us {topic} via <a href="{contact}">contact</a>.</p>"""
 
 
 def article(
@@ -235,6 +258,7 @@ def article(
     show_stuck_prompt: bool = False,
     show_ads: bool = False,
     media: dict | None = None,
+    section: dict | None = None,
 ) -> str:
     crumb_html = " / ".join(
         (f'<a href="{link(depth, href)}">{label}</a>' if href else label) for label, href in crumbs
@@ -247,7 +271,7 @@ def article(
       <h2>Sources</h2>
       <ul>{src}</ul>
     </section>"""
-    prompt_html = stuck_prompt(depth) if show_stuck_prompt else ""
+    prompt_html = stuck_prompt(depth, section) if show_stuck_prompt else ""
     if media:
         cover, figure = media["cover"], media["illustration"]
         figure_url = "../" * depth + figure["src"]
@@ -325,59 +349,70 @@ def guide_list(pages: list[dict], *, kind: str) -> str:
 
 
 def home_body(home: dict, pages: list[dict], cfg: dict) -> str:
-    also = guide_list(pages, kind="home_also")
-    destinations = "\n".join(
-        f'''<a class="destination destination--{place['id']}" href="{place['path']}">
-          <span class="destination-art" aria-hidden="true"></span>
-          <span class="village-plaque"><strong>{place['title']}</strong><span>{place['description']}</span></span>
-          <span class="enter-hint" aria-hidden="true">Enter guide ↗</span>
-        </a>''' for place in home["village"]
-    )
+    """Portal home: two game entries, three most-read guides each, plus a search box.
+
+    Replaces the old illustrated "village" landing page. The village map asked a
+    first-time visitor to decode a metaphor before choosing a page; this asks the
+    only question they can answer — which game are you here for — and then offers
+    the three pages each game actually gets read most.
+    """
+    cards = []
+    for game in home["games"]:
+        links = "\n".join(
+            f'<a href="{g["path"]}"><strong>{g["title"]}</strong><em>{g["em"]}</em></a>'
+            for g in game["top"]
+        )
+        cards.append(f'''
+      <article class="portal-card portal-card--{game["id"]}">
+        <p class="portal-card-kicker">{game["kicker"]}</p>
+        <h2><a href="{game["path"]}">{game["name"]}</a></h2>
+        <p class="portal-card-lede">{game["lede"]}</p>
+        <div class="guide-list">
+          {links}
+        </div>
+        <p class="portal-card-all"><a href="{game["path"]}">{game["all_label"]} <span aria-hidden="true">↗</span></a></p>
+      </article>''')
     return f"""
-  <section class="village-intro">
-    <div>
-      <p class="village-kicker">{home["hero_kicker"]}</p>
+  <section class="portal-hero">
+    <div class="wrap">
+      <p class="hero-kicker">{home["hero_kicker"]}</p>
       <h1>{home["hero_h1"]}</h1>
-      <p>{home["village_intro"]}</p>
-    </div>
-    <a class="village-party" href="/characters/">
-      <img src="assets/img/capsule.jpg" width="616" height="353" alt="The three animal characters together in official Sephiria artwork" />
-      <span>Meet the characters ↗</span>
-    </a>
-  </section>
-  <div class="ad-slot-home">
-    {ad_slot_html("after-lead")}
-  </div>
-  <nav class="village-map" aria-label="Village guide destinations" id="village">
-    <img class="village-background" src="assets/img/village.png" width="1536" height="1024" alt="" fetchpriority="high" />
-    {destinations}
-    <div class="village-notice" role="group" aria-label="Village noticeboard">
-    <span class="notice-title">Village noticeboard</span>
-    <a href="/bosses/">Boss guides</a>
-    <a href="/multiplayer/">Co-op</a>
-    <a href="/secret-rooms/">Secret rooms</a>
-    </div>
-  </nav>
-  <aside class="village-welcome">
-    <img src="assets/img/capsule.jpg" width="616" height="353" alt="Official Sephiria artwork featuring all three characters" />
-    <div><strong>First time in the village?</strong><span>Pick a weapon, find a build, and make your first descent.</span></div>
-    <a href="{link(0, home["cta_path"])}">{home["cta_label"]} <span aria-hidden="true">↗</span></a>
-  </aside>
-  <section class="village-reading">
-    <div class="village-about">
-      <h2>{home["what_h2"]}</h2>
-      {home["what_html"]}
-      <a href="{cfg["links"]["steam"]}" rel="noopener">View the game on Steam</a>
-    </div>
-    <div>
-      {ad_slot_html("before-related")}
-      <h2>More to explore</h2>
-      <div class="guide-list">
-        {also}
+      <p class="lede">{home["lede"]}</p>
+      <div class="portal-search">
+        <label for="guide-search">Find a page</label>
+        <input id="guide-search" type="search" placeholder="{home["search_placeholder"]}" autocomplete="off" spellcheck="false" />
+        <ul id="guide-search-results" class="guide-list search-results" hidden></ul>
+        <p id="guide-search-empty" class="search-empty" hidden>No page matches that yet. Try a shorter word, or browse one of the two game entries below.</p>
       </div>
     </div>
   </section>
+  <section class="portal-games" aria-label="Choose a game">
+    <div class="wrap portal-grid">{''.join(cards)}
+    </div>
+  </section>
+  <section class="wrap portal-about">
+    <h2>{home["what_h2"]}</h2>
+    {home["what_html"]}
+  </section>
 """
+
+
+def write_search_index(pages: list[dict], cfg: dict) -> None:
+    """Client-side guide search data. Title + description + path, nothing more."""
+    rows = []
+    for p in pages:
+        if p.get("layout") in ("legal", "home") or p.get("noindex"):
+            continue
+        rows.append({
+            "t": p.get("h1") or p.get("title", ""),
+            "d": p.get("description", ""),
+            "p": p["path"],
+        })
+    rows.sort(key=lambda r: r["t"].lower())
+    (OUTPUT_DIR / "assets" / "search-index.json").write_text(
+        json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print("wrote assets/search-index.json", len(rows), "entries")
 
 
 def git_lastmod(rel: str) -> str | None:
@@ -397,6 +432,9 @@ def page_lastmod(cfg: dict, page: dict) -> str:
 def page_jsonld(cfg: dict, page: dict) -> list:
     """Structured data built only from fields already on the page (no invented facts)."""
     domain = cfg["domain"]
+    sec = section_of(cfg, page["path"])
+    game_name = sec.get("game_name") or cfg["game_name"]
+    steam = sec.get("steam") or cfg["links"]["steam"]
     org = {"@type": "Organization", "name": cfg["site_name"], "url": domain + "/"}
     url = domain + page["path"]
     layout = page.get("layout", "article")
@@ -419,15 +457,16 @@ def page_jsonld(cfg: dict, page: dict) -> list:
             "url": url, "mainEntityOfPage": url, "inLanguage": cfg["lang"],
             "dateModified": page_lastmod(cfg, page),
             "author": org, "publisher": org,
-            "about": {"@type": "VideoGame", "name": cfg["game_name"], "url": cfg["links"]["steam"]},
+            "about": {"@type": "VideoGame", "name": game_name, "url": steam},
         })
     return out
 
 
 def write_llms_txt(cfg: dict, pages: list[dict]) -> None:
     lines = [f"# {cfg['site_name']}", "",
-             f"> Unofficial fan guides for {cfg['game_name']} by {cfg['developer']} ({cfg['links']['steam']}). "
-             "Not affiliated with the developer.", "", "## Guides"]
+             f"> Unofficial fan guides for {cfg['game_name']} by {cfg['developer']} "
+             f"({cfg['links']['steam']}), plus a separate Football Manager 27 section. "
+             "Not affiliated with either developer.", "", "## Guides"]
     for p in pages:
         if p.get("sitemap_exclude") or p.get("layout") == "legal":
             continue
@@ -638,12 +677,15 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     CSS_VERSION = compute_css_version()
     THEME_VERSION = compute_theme_version(cfg)
     pages = load_pages(content_dir)
+    # dist/ is a build artifact: wipe it so a page that was deleted from content/
+    # cannot linger and get deployed (login.html did exactly that on 2026-11-13).
+    if OUTPUT_DIR.exists():
+        shutil.rmtree(OUTPUT_DIR)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copytree(ROOT / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
     # Copied as-is, including the IndexNow key. It must land in dist/ so
     # Pages serves /131fc577a3d44393b0a07c68875a1462.txt as text/plain.
     for filename in (
-        "login.html",
         "robots.txt",
         "favicon.ico",
         "131fc577a3d44393b0a07c68875a1462.txt",
@@ -673,6 +715,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 show_stuck_prompt=True,
                 show_ads=True,
                 media=visuals.get(page["path"]),
+                section=section_of(cfg, page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page), noindex=bool(page.get("noindex")))
         else:
@@ -686,6 +729,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
                 show_stuck_prompt=(layout != "legal"),
                 show_ads=(layout != "legal"),
                 media=visuals.get(page["path"]),
+                section=section_of(cfg, page["path"]),
             )
             write_page(cfg, page["path"], page["title"], page["description"], body, page_jsonld(cfg, page), noindex=bool(page.get("noindex")))
 
@@ -694,6 +738,7 @@ def build(cfg: dict | None = None, content_dir: Path = CONTENT_DIR) -> list[dict
     write_404(cfg)
     write_ads_txt()
     write_llms_txt(cfg, pages)
+    write_search_index(pages, cfg)
     write_redirects()
     return pages
 
