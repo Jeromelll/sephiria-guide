@@ -113,8 +113,10 @@ def section_of(cfg: dict, path: str) -> dict:
     """Which game chrome a page belongs to.
 
     "/" is the shared portal; /fm27/* is the Football Manager 27 section; every
-    other page is Sephiria. Each section carries its own brand, nav and footer
-    so an FM27 reader never has to pass through Sephiria wording.
+    other page is Sephiria. Root and FM27 carry their own brand, nav and footer
+    so an FM27 reader never has to pass through Sephiria wording. The Sephiria
+    section omits brand so shell() uses top-level brand_name / brand_suffix;
+    a hardcoded sections.sephiria.brand would survive a config-only rebrand.
     """
     sections = cfg.get("sections") or {}
     root = sections.get("root") or {}
