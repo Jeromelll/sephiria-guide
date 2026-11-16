@@ -27,6 +27,14 @@ def main() -> int:
             "seo_keywords": "gelum, gelum wiki, gelum builds",
         }
     )
+    # Section chrome reads its brand from config.sections, so a config-only
+    # rebrand has to swap these too; otherwise /guides/ keeps the old brand in
+    # the header and the leftover scan below reports a false failure.
+    for sec in (swapped.get("sections") or {}).values():
+        if "brand" in sec:
+            sec["brand"] = ["Gelum", "Guide"]
+        if "game_name" in sec:
+            sec["game_name"] = "Gelum"
     swapped["links"]["steam"] = "https://store.steampowered.com/app/0000000/Gelum/"
     swapped["theme"]["accent"] = "#0f766e"
     swapped["theme"]["accent_ink"] = "#115e59"
