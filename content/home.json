@@ -1,38 +1,13 @@
 {
   "path": "/",
   "layout": "home",
-  "title": "Game guides: Football Manager 27 and Sephiria",
-  "description": "Two fan guides on one domain. Football Manager 27: mods, skins, logo packs, tactics and the 10 November release. Sephiria: Hard Mode, Destiny Inscription, builds and weapons. Each page answers one question and lists its sources.",
-  "hero_kicker": "Fan guides · Football Manager 27 and Sephiria · updated 13 November 2026",
-  "hero_h1": "Two games. Pick the one you are stuck in.",
-  "lede": "Football Manager 27 shipped on 10 November 2026, so its pages now describe the released game rather than the Launch Preview. The Sephiria pages follow the 1.0.33 public build. Every page answers one search question and lists the sources it was checked against.",
-  "search_placeholder": "e.g. real name fix, Hard Mode, fountain capacity",
+  "title": "Sephiria Guide — Hard Mode, Destiny Tree, Builds",
+  "description": "Unofficial Sephiria fan guides. Hard Mode unlock, Destiny Inscription tree, builds, weapons, bosses, co-op. Updated for the 1.0.33 public build.",
+  "hero_kicker": "Fan guides · Sephiria · updated 13 November 2026",
+  "hero_h1": "Sephiria guides for the 1.0 build",
+  "lede": "Sephiria is a 2D action roguelite by Team Horay. These guides cover Hard Mode, the Destiny Inscription tree, builds, weapons, bosses and co-op, checked against the 1.0.33 public build. Every page answers one question and lists its sources.",
+  "search_placeholder": "e.g. Hard Mode, fountain capacity, scythe",
   "games": [
-    {
-      "id": "fm27",
-      "name": "Football Manager 27",
-      "path": "/fm27/",
-      "kicker": "Released 10 November 2026 · PC, Mac, console, mobile",
-      "lede": "Install a real-name fix or a skin without breaking the game, check a community tactic before you import it, and see which young players are worth scouting in your own save.",
-      "all_label": "All FM27 guides",
-      "top": [
-        {
-          "title": "FM27 tactics",
-          "em": "Check a community download before importing it",
-          "path": "/fm27-tactics/"
-        },
-        {
-          "title": "FM27 skins",
-          "em": "Releases, platform paths, patch recovery",
-          "path": "/fm27-skins/"
-        },
-        {
-          "title": "FM27 mods",
-          "em": "Real-name fix, facepacks, logos, kits",
-          "path": "/fm27-mods/"
-        }
-      ]
-    },
     {
       "id": "sephiria",
       "name": "Sephiria",
@@ -55,11 +30,71 @@
           "title": "Bosses",
           "em": "Erma phases and the final-boss notes",
           "path": "/bosses/"
+        },
+        {
+          "title": "Hard Mode",
+          "em": "Unlock via the village tree after Chapter 2",
+          "path": "/hard-mode/"
+        },
+        {
+          "title": "Destiny Inscription",
+          "em": "Tree, prerequisites, sapphires",
+          "path": "/destiny-inscription/"
+        },
+        {
+          "title": "Weapons",
+          "em": "Six branches and evolution routes",
+          "path": "/weapons/"
+        },
+        {
+          "title": "Beginner guide",
+          "em": "First-run priorities and combat habits",
+          "path": "/beginner-guide/"
+        },
+        {
+          "title": "Builds",
+          "em": "Weapon path and Artifact family",
+          "path": "/builds/"
+        },
+        {
+          "title": "Secret Rooms",
+          "em": "Cracked walls and map confirmation",
+          "path": "/secret-rooms/"
+        },
+        {
+          "title": "Multiplayer / co-op",
+          "em": "Four-player lobbies and party builds",
+          "path": "/multiplayer/"
+        },
+        {
+          "title": "Costumes",
+          "em": "27-skin roster and unlocks",
+          "path": "/costumes/"
+        },
+        {
+          "title": "Artifacts & Tablets",
+          "em": "Side Bag rules and geometry",
+          "path": "/artifacts/"
+        },
+        {
+          "title": "Items: scythe",
+          "em": "Dagger conversion and upgrade tree",
+          "path": "/items/scythe/"
+        },
+        {
+          "title": "Co-op",
+          "em": "Party pressure, trades, revives",
+          "path": "/coop/"
+        },
+        {
+          "title": "Wishing Fountain",
+          "em": "Pre-run Artifact picks",
+          "path": "/wishing-fountain/"
         }
       ]
     }
   ],
   "what_h2": "What this site is",
-  "what_html": "<p>Two unofficial guide sections share this domain. The Football Manager 27 section covers mods, skins, logo packs, player databases, tactics and the release timeline. The Sephiria section covers Hard Mode, the Destiny Inscription tree, builds, weapons, bosses and co-op.</p><p>Both are written by one person and checked against the publisher's own pages, Steam posts and dated community guides. Pages that depend on a game build say which build they describe, and a page that cannot settle a question says so rather than filling the gap. Files are never hosted here: mod, skin and pack pages link to the maintainer's own download page, because that is where the current version and installation notes live.</p>",
+  "what_html": "<p>Unofficial fan guides for Sephiria by Team Horay. Hard Mode unlock, the Destiny Inscription tree, builds, weapons, bosses, co-op, costumes and secret rooms — checked against the 1.0.33 public build. Every page answers one question and lists the sources it was checked against. Not affiliated with the developer.</p><p>If you are looking for Football Manager 27 guides, they are not on this domain.</p>",
   "order": 0
 }

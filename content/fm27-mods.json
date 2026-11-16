@@ -40,6 +40,6 @@
   ],
   "in_guides": false,
   "order": 230,
-  "noindex": false,
-  "sitemap_exclude": false
+  "noindex": true,
+  "sitemap_exclude": true
 }
