@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-24",
- "build": "Demo build",
+ "updated": "2026-11-27",
+ "build": "Launch build (patch 2.1.8)",
  "entries": [
   {
    "id": "termagant",
@@ -109,7 +109,7 @@
    "name": "Bomb Squigs",
    "faction": "40K",
    "type": "Enemy",
-   "description": "Named in the Ork reveal; behaviour pending launch.",
+   "description": "Named in the Ork reveal; behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
    "group": "Orks",
@@ -252,7 +252,7 @@
    "name": "Poxwalkers",
    "faction": "40K",
    "type": "Enemy",
-   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour pending launch.",
+   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Death Guard",
@@ -264,7 +264,7 @@
    "name": "Plaguebearers",
    "faction": "40K",
    "type": "Enemy",
-   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour pending launch.",
+   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Death Guard",
@@ -276,7 +276,7 @@
    "name": "Plague Marines",
    "faction": "40K",
    "type": "Enemy",
-   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour pending launch.",
+   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Death Guard",
@@ -288,7 +288,7 @@
    "name": "Blightlord Terminators",
    "faction": "40K",
    "type": "Enemy",
-   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour pending launch.",
+   "description": "Named among the Death Guard units seen in the Skulls trailer. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Death Guard",
@@ -441,7 +441,7 @@
    "name": "Bloodreavers",
    "faction": "AoS",
    "type": "Enemy",
-   "description": "Mortal ranks of the Blades of Khorne named in the Chaos reveal. Behaviour pending launch.",
+   "description": "Mortal ranks of the Blades of Khorne named in the Chaos reveal. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Blades of Khorne",
@@ -453,7 +453,7 @@
    "name": "Blood Warriors",
    "faction": "AoS",
    "type": "Enemy",
-   "description": "Mortal ranks of the Blades of Khorne named in the Chaos reveal. Behaviour pending launch.",
+   "description": "Mortal ranks of the Blades of Khorne named in the Chaos reveal. Behaviour not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783557691",
    "confidence": "official",
    "group": "Blades of Khorne",
@@ -465,24 +465,24 @@
    "name": "Squigs",
    "faction": "AoS",
    "type": "Enemy",
-   "description": "Gloomspite Gitz monsters named in the release-date reveal. Behaviour and stage pending launch.",
+   "description": "Gloomspite Gitz monsters named in the release-date reveal. Behaviour and stage not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656396506",
    "confidence": "official",
    "group": "Gloomspite Gitz",
-   "tier": "Pending launch",
-   "stage": "Pending launch"
+   "tier": "Not verified",
+   "stage": "Not verified"
   },
   {
    "id": "troggoths",
    "name": "Troggoths",
    "faction": "AoS",
    "type": "Enemy",
-   "description": "Gloomspite Gitz monsters named in the release-date reveal. Behaviour and stage pending launch.",
+   "description": "Gloomspite Gitz monsters named in the release-date reveal. Behaviour and stage not verified.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656396506",
    "confidence": "official",
    "group": "Gloomspite Gitz",
-   "tier": "Pending launch",
-   "stage": "Pending launch"
+   "tier": "Not verified",
+   "stage": "Not verified"
   },
   {
    "id": "great-unclean-one",
@@ -494,7 +494,7 @@
    "confidence": "official",
    "group": "Other bosses",
    "tier": "Boss",
-   "stage": "Pending launch"
+   "stage": "Not verified"
   }
  ]
 }

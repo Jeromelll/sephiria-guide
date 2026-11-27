@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-24",
- "build": "Demo build",
+ "updated": "2026-11-27",
+ "build": "Launch build (patch 2.1.8)",
  "entries": [
   {
    "id": "chainsword",
@@ -48,7 +48,7 @@
    "description": "Rains missiles down from above (IGN hands-on). Officially evolves into Orbital Bombardment.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "evolves_to": "orbital-bombardment",
    "extra_sources": [
     "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview"
@@ -62,7 +62,7 @@
    "description": "Crushes xenos threats. Evolving it brings Marneus Calgar to your side, wielding the Gauntlets of Ultramar and firing bolter rounds with every attack.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "evolves_to": "gauntlets-of-ultramar"
   },
   {
@@ -116,7 +116,7 @@
    "description": "Swings around the player in a brutal arc, gaining speed and strength and changing direction as you move. Stops once a certain amount of damage is dealt; standing idle reduces its damage.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1825727806704618",
    "confidence": "official",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "evolves_to": "zangrom-thaz"
   },
   {
@@ -173,7 +173,7 @@
    "description": "Age of Sigmar pistol listed in the October demo evolution report.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "evolves_to": "typhoon-crossbow"
   },
   {
@@ -184,7 +184,7 @@
    "description": "Cross-universe weapon that douses foes in black wash. Survivors are slowed and become vulnerable to fire (the Oiled status), so it combos with Burning weapons.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1832700592786358",
    "confidence": "official",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "evolves_to": "mordant-earth",
    "extra_sources": [
     "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840310314339267"
@@ -198,7 +198,7 @@
    "description": "Cross-universe weapon usable by both 40K and AoS characters. Large dice fly in from off-screen and explode depending on the number rolled (IGN hands-on).",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
-   "wielder": "Pending launch",
+   "wielder": "Not verified",
    "extra_sources": [
     "https://www.ign.com/articles/warhammer-survivors-is-not-just-a-vampire-survivors-clone-it-aims-to-be-a-celebration-of-the-best-of-both-worlds-ign-preview"
    ]
@@ -208,7 +208,7 @@
    "name": "Eviscerator Chainsword",
    "faction": "40K",
    "type": "Evolution",
-   "description": "Reported evolution of the Chainsword with the Tape Measure passive. Effect pending launch.",
+   "description": "Reported evolution of the Chainsword with the Tape Measure passive. Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "chainsword",
@@ -219,7 +219,7 @@
    "name": "Meltagun",
    "faction": "40K",
    "type": "Evolution",
-   "description": "Reported evolution of the Lasgun with the Gauntlet passive. Effect pending launch.",
+   "description": "Reported evolution of the Lasgun with the Gauntlet passive. Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "lasgun",
@@ -258,7 +258,7 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
    "evolves_from": "power-fists",
-   "requires": "Pending launch"
+   "requires": "Not verified"
   },
   {
    "id": "ripper-pistol",
@@ -284,7 +284,7 @@
    "source_url": "https://blog.playstation.com/2026/10/06/warhammer-survivors-launches-november-10-new-characters-revealed/",
    "confidence": "official",
    "evolves_from": "heavy-bolter-fidelis",
-   "requires": "Pending launch"
+   "requires": "Not verified"
   },
   {
    "id": "whirlwind-axes",
@@ -309,7 +309,7 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1825727806704618",
    "confidence": "official",
    "evolves_from": "fyrestorm-greataxe",
-   "requires": "Pending launch"
+   "requires": "Not verified"
   },
   {
    "id": "ghost-of-rhea",
@@ -328,7 +328,7 @@
    "name": "Master of Runes",
    "faction": "AoS",
    "type": "Evolution",
-   "description": "Reported evolution of the Brazier Staff with Liquid Green Stuff. Effect pending launch.",
+   "description": "Reported evolution of the Brazier Staff with Liquid Green Stuff. Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "brazier-staff",
@@ -339,7 +339,7 @@
    "name": "Aquatic Illusions",
    "faction": "AoS",
    "type": "Evolution",
-   "description": "Reported evolution of Nebulous Sea Fog with Bugman's Tankard (May demo list said Glue). Effect pending launch.",
+   "description": "Reported evolution of Nebulous Sea Fog with Bugman's Tankard (May demo list said Glue). Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "nebulous-sea-fog",
@@ -350,7 +350,7 @@
    "name": "Typhoon Crossbow",
    "faction": "AoS",
    "type": "Evolution",
-   "description": "Reported evolution of the Boltstorm Pistol with Dice Cube. Effect pending launch.",
+   "description": "Reported evolution of the Boltstorm Pistol with Dice Cube. Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "boltstorm-pistol",
@@ -361,7 +361,7 @@
    "name": "Mordant Earth",
    "faction": "Cross",
    "type": "Evolution",
-   "description": "Reported evolution of Nuln Oil with Hourglass, listed in both universes. Effect pending launch.",
+   "description": "Reported evolution of Nuln Oil with Hourglass, listed in both universes. Effect not verified.",
    "source_url": "https://whsurvivors.wiki/weapon-evolutions/",
    "confidence": "community",
    "evolves_from": "nuln-oil",
@@ -384,7 +384,7 @@
    "name": "Tape Measure",
    "faction": "40K",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -396,7 +396,7 @@
    "name": "Gauntlet",
    "faction": "40K",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -408,7 +408,7 @@
    "name": "Dice Cube",
    "faction": "Cross",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -421,7 +421,7 @@
    "name": "Liquid Green Stuff",
    "faction": "Cross",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -434,7 +434,7 @@
    "name": "Bandolier",
    "faction": "40K",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -446,7 +446,7 @@
    "name": "White Dwarf",
    "faction": "AoS",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -458,7 +458,7 @@
    "name": "Hourglass",
    "faction": "Cross",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [
@@ -470,7 +470,7 @@
    "name": "Bugman's Tankard",
    "faction": "AoS",
    "type": "Passive",
-   "description": "Evolution companion named in the October demo community report. Stat effect pending launch.",
+   "description": "Evolution companion named in the October demo community report. Stat effect not verified.",
    "source_url": "https://whsurvivors.wiki/power-ups/",
    "confidence": "community",
    "pairs_with": [

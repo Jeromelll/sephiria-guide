@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-24",
- "build": "Demo build",
+ "updated": "2026-11-27",
+ "build": "Launch build (patch 2.1.8)",
  "entries": [
   {
    "id": "malum-caedo",
@@ -13,8 +13,8 @@
    "title": "Sternguard Veteran",
    "starting_weapon": "Chainsword",
    "ability": "Chainsword: horizontal serrated attacks that hit multiple enemies",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Playable in the May and October demos",
    "image": "characters/malum-caedo.webp",
    "extra_sources": [
@@ -54,8 +54,8 @@
    "title": "Space Marine Intercessor",
    "starting_weapon": "Boltgun",
    "ability": "Boltgun evolves into the Heavy Bolter, a stream of unrelenting firepower",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not named in the October demo roster",
    "image": "characters/brother-luca.webp"
   },
@@ -71,7 +71,7 @@
    "starting_weapon": "Frag Grenade",
    "ability": "Higher movement speed than other Survivors",
    "unlock": "Rescue encounter guarded by Tyranid Warriors using Synapse in the October demo (IGN hands-on, press)",
-   "squad": "Pending launch",
+   "squad": "Not verified",
    "demo": "New in the October demo",
    "image": "characters/legend-of-catachan.webp",
    "extra_sources": [
@@ -88,9 +88,9 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
    "title": "Chapter Master of the Ultramarines",
-   "starting_weapon": "Gauntlets of Ultramar (signature weapon named; starting loadout pending launch)",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
+   "starting_weapon": "Gauntlets of Ultramar (signature weapon named; starting loadout not verified)",
+   "ability": "Not verified",
+   "unlock": "Not verified",
    "squad": "Keyword-restricted: other champions get Calgar as a follower via the Power Fists evolution.",
    "demo": "Not in the October demo",
    "extra_sources": [
@@ -106,10 +106,10 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561",
    "confidence": "official",
    "title": "Knight-Commander",
-   "starting_weapon": "Pending launch",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "starting_weapon": "Not verified",
+   "ability": "Not verified",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not in the October demo",
    "extra_sources": [
     "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842212951299753"
@@ -124,10 +124,10 @@
    "source_url": "https://store.steampowered.com/app/3669620/Warhammer_Survivors/",
    "confidence": "official",
    "title": "Commissar",
-   "starting_weapon": "Pending launch",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "starting_weapon": "Not verified",
+   "ability": "Not verified",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not in the October demo",
    "extra_sources": [
     "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1829528821307561"
@@ -142,10 +142,10 @@
    "source_url": "https://www.warhammer-community.com/en-gb/articles/sxfxzwun/first-look-new-characters-and-enemies-for-warhammer-survivors/",
    "confidence": "official",
    "title": "Salamanders Chaplain",
-   "starting_weapon": "Pending launch",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "starting_weapon": "Not verified",
+   "ability": "Not verified",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not in the October demo"
   },
   {
@@ -159,8 +159,8 @@
    "title": "High Abbess Sanctorum",
    "starting_weapon": "Heavy Bolter Fidelis",
    "ability": "Fidelis has a chance to trigger a miracle, blessing Vahl and increasing the weapon's rate of fire",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not in the October demo"
   },
   {
@@ -172,9 +172,9 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114029178",
    "confidence": "official",
    "title": "Black Templars Castellan",
-   "starting_weapon": "Pending launch",
+   "starting_weapon": "Not verified",
    "ability": "Attack power and skill scale with the number of followers",
-   "unlock": "Pending launch",
+   "unlock": "Not verified",
    "squad": "Official combo: pair with Trooper Kozlowski — each Cadian Shock Trooper from Lasgun upgrades contributes to the Castellan's damage.",
    "demo": "Not in the October demo"
   },
@@ -187,10 +187,10 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835871199300397",
    "confidence": "official",
    "title": "Trailer appearance",
-   "starting_weapon": "Pending launch",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "starting_weapon": "Not verified",
+   "ability": "Not verified",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not in the October demo"
   },
   {
@@ -204,8 +204,8 @@
    "title": "Living weapon of Sigmar",
    "starting_weapon": "Tempest Axes (October demo, IGN); the November 2025 reveal calls her starter the Whirlwind Axes",
    "ability": "Axe evolution adds arcing lightning",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Playable in the May and October demos",
    "image": "characters/neave-blacktalon.webp",
    "extra_sources": [
@@ -224,8 +224,8 @@
    "title": "Stormcast Eternal Vanquisher",
    "starting_weapon": "Grandblade",
    "ability": "Grandblade level-ups add a huge circular cleave",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Not named in the October demo roster",
    "image": "characters/sharynn-azurwrath.webp"
   },
@@ -238,9 +238,9 @@
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1816849002007457",
    "confidence": "official",
    "title": "The Realmslayer",
-   "starting_weapon": "Zangrom-Thaz (signature weapon; starting loadout pending launch)",
-   "ability": "Pending launch",
-   "unlock": "Pending launch",
+   "starting_weapon": "Zangrom-Thaz (signature weapon; starting loadout not verified)",
+   "ability": "Not verified",
+   "unlock": "Not verified",
    "squad": "Keyword-restricted. Other champions get Gotrek as a follower via the Fyrestorm Greataxe evolution; playing as Gotrek, the evolution does not spawn a clone.",
    "demo": "Not named in the October demo roster",
    "image": "characters/gotrek-gurnisson.webp",
@@ -260,8 +260,8 @@
    "title": "Auric Runemaster",
    "starting_weapon": "Brazier Staff",
    "ability": "Higher starting health pool",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "Named in the October demo roster",
    "image": "characters/ulgromthier.webp"
   },
@@ -276,8 +276,8 @@
    "title": "Saviour of Cinderfall",
    "starting_weapon": "Rope and Grapnel",
    "ability": "Rope and Grapnel evolves into the Ghost of Rhea",
-   "unlock": "Pending launch",
-   "squad": "Pending launch",
+   "unlock": "Not verified",
+   "squad": "Not verified",
    "demo": "New in the October demo",
    "image": "characters/lyssa-revenya.webp",
    "extra_sources": [
@@ -292,10 +292,10 @@
    "description": "Wields Uskavar the Sunderer, striking out in specific close-range patterns.",
    "source_url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114029178",
    "confidence": "official",
-   "title": "Pending launch",
+   "title": "Not verified",
    "starting_weapon": "Uskavar the Sunderer",
    "ability": "Close-range damage patterns",
-   "unlock": "Pending launch",
+   "unlock": "Not verified",
    "squad": "Official combo: with Lorai, whose Nebulous Sea Fog draws enemies into Bastian's close-range damage zones.",
    "demo": "Not in the October demo"
   },
@@ -310,7 +310,7 @@
    "title": "Child of the Abyss",
    "starting_weapon": "Nebulous Sea Fog",
    "ability": "Pull effect that groups enemies",
-   "unlock": "Pending launch",
+   "unlock": "Not verified",
    "squad": "Official combo: pull enemies into Bastian Carthalos's close-range attacks.",
    "demo": "Not in the October demo"
   }
