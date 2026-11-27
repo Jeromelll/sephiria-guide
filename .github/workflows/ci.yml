@@ -1,0 +1,78 @@
+name: CI
+
+# pull_request only. Do not switch this workflow to pull_request_target:
+# that event checks out the PR and can read repository secrets.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sephiria-pr:
+    name: sephiria-pr
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Detect Sephiria paths
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 tools/ci_paths.py --product sephiria --base "$BASE_SHA" --head HEAD >> "$GITHUB_OUTPUT"
+
+      - name: No Sephiria changes
+        if: steps.scope.outputs.run != 'true'
+        run: echo "sephiria-pr stays green. This pull request does not change Sephiria paths."
+
+      - uses: actions/setup-python@v5
+        if: steps.scope.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        if: steps.scope.outputs.run == 'true'
+        with:
+          node-version: "20"
+
+      - name: Syntax, build, and tests
+        if: steps.scope.outputs.run == 'true'
+        run: bash tools/ci_sephiria.sh
+
+  warhammer-pr:
+    name: warhammer-pr
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Detect Warhammer paths
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python3 tools/ci_paths.py --product warhammer --base "$BASE_SHA" --head HEAD >> "$GITHUB_OUTPUT"
+
+      - name: No Warhammer changes
+        if: steps.scope.outputs.run != 'true'
+        run: echo "warhammer-pr stays green. This pull request does not change Warhammer paths."
+
+      - uses: actions/setup-python@v5
+        if: steps.scope.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        if: steps.scope.outputs.run == 'true'
+        with:
+          node-version: "20"
+
+      - name: Syntax, build, and tests
+        if: steps.scope.outputs.run == 'true'
+        run: bash tools/ci_warhammer.sh

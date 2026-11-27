@@ -27,13 +27,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Build static site
-        run: python3 build.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-      - name: Check static site
-        run: python3 tools/check_seo_consistency.py && python3 tools/swap_test.py
+      - name: Syntax, build, and tests
+        run: bash tools/ci_sephiria.sh
 
       - name: Deploy to Cloudflare Pages
-        # Only fires once the CLOUDFLARE_API_TOKEN secret is configured in the repo.
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        # Production only, and only after the local checks above. A pull request
+        # never triggers this workflow. Manual dispatch from another branch does not deploy.
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.ref == 'refs/heads/main' }}
         run: npx wrangler@4.129.0 pages deploy dist --project-name sephiria-guide
+
+      - name: Probe production after deploy
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && github.ref == 'refs/heads/main' }}
+        timeout-minutes: 10
+        run: python3 tools/probe_live.py --site sephiria

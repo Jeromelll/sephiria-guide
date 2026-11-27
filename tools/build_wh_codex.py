@@ -66,7 +66,9 @@ def nav_html(path: str) -> str:
     links = []
     for href, label in NAV:
         on = href == path or (href == "codex/" and path in ("codex/characters/", "weapons/", "enemies/"))
-        links.append(f'<a{" class=\"on\"" if on else ""} href="{P}{href}">{label}</a>')
+        # The class marker stays outside the f-string. Python 3.11 rejects a backslash in an f-string expression.
+        marker = ' class="on"' if on else ""
+        links.append(f'<a{marker} href="{P}{href}">{label}</a>')
     links.append('<a class="login" href="/login.html">Log in</a>')
     return ('<header><div class="wrap hd"><a class="brand" href="/warhammer-survivors/" aria-label="Warhammer Survivors Guide home">'
             '<span class="b1">Warhammer</span><span class="b2">Survivors Guide</span></a><nav>' + "".join(links) + "</nav></div></header>")
@@ -74,7 +76,11 @@ def nav_html(path: str) -> str:
 
 def codex_tabs(path: str) -> str:
     tabs = [("codex/", "Codex home"), ("codex/characters/", "Characters"), ("weapons/", "Weapons & Items"), ("enemies/", "Enemies")]
-    out = "".join(f'<a{" class=\"on\" aria-current=\"page\"" if h == path else ""} href="{P}{h}">{l}</a>' for h, l in tabs)
+    parts = []
+    for href, label in tabs:
+        current = ' class="on" aria-current="page"' if href == path else ""
+        parts.append(f'<a{current} href="{P}{href}">{label}</a>')
+    out = "".join(parts)
     return f'<nav class="cx-tabs" aria-label="Codex sections">{out}</nav>'
 
 
