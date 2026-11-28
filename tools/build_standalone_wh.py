@@ -23,6 +23,12 @@ OUT = ROOT / "warhammer-dist"
 OLD_DOMAIN = "https://sephiria-guide.com/warhammer-survivors/"
 NEW_DOMAIN = "https://warhammersurvivors.com/"
 PREFIX = "/warhammer-survivors/"
+# Single date source for the body stamp and the footer line. A page updated
+# after SITE_UPDATED gets an entry in PAGE_UPDATED; both dates are rendered
+# from here, so the footer can no longer drift from the stamp above it.
+SITE_UPDATED = "2026-11-27"
+PAGE_UPDATED = {"evolutions/best-evolutions": "2026-11-28"}
+FOOTER_BADGE = "Launch build (patch 2.1.8)"
 # AdSense publisher id for this site (account: ads@be-winner.com).
 ADSENSE_CLIENT = "ca-pub-8359621843582672"
 # Bing IndexNow key for the apex. Filename and body must match; the file is
@@ -96,7 +102,27 @@ def redirects_file() -> str:
     return "\n".join(lines) + "\n"
 
 
-def rewrite(html: str) -> str:
+def page_updated(key: str) -> str:
+    return PAGE_UPDATED.get(key, SITE_UPDATED)
+
+
+def rewrite(html: str, key: str = "") -> str:
+    # Dates come from SITE_UPDATED / PAGE_UPDATED, never from the HTML literal,
+    # so the body stamp and the footer line cannot disagree. Only pages carrying
+    # the launch stamp are retargeted; /about/, /contact/ and /privacy/ keep their
+    # own unrelated dates.
+    day = page_updated(key)
+    if FOOTER_BADGE in html:
+        html = re.sub(
+            r'(<p class="stamp">Last updated )\d{4}-\d{2}-\d{2}',
+            lambda m: m.group(1) + day,
+            html,
+        )
+        html = re.sub(
+            r"Last updated (?:[A-Z][a-z]+ \d{1,2}, \d{4}|\d{4}-\d{2}-\d{2})\.",
+            f"Last updated {day}.",
+            html,
+        )
     html = html.replace('<span class="fm">Warhammer Survivors Guide</span>', '<span class="fm">Warhammer Survivors Guide</span><span class="flinks"><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></span>')
     # AdSense: one head snippet for every page, injected here so the source
     # sub-site stays free of a hard-coded publisher id.
@@ -268,7 +294,7 @@ def main() -> int:
         parts = [p for p in rel_dir.parts if p not in ("", ".")]
         dest_dir = OUT.joinpath(*parts) if parts else OUT
         dest_dir.mkdir(parents=True, exist_ok=True)
-        html = rewrite(index.read_text(encoding="utf-8"))
+        html = rewrite(index.read_text(encoding="utf-8"), rel_dir.as_posix() if parts else "")
         (dest_dir / "index.html").write_text(html, encoding="utf-8")
         url = NEW_DOMAIN + ("/".join(parts) + "/" if parts else "")
         urls.append(url)
